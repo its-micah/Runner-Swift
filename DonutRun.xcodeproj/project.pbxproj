@@ -7,9 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C75175F71B8F973400527E3A /* SampleAssets.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C75175F61B8F973400527E3A /* SampleAssets.atlas */; };
+		C75175FD1B8FB7AC00527E3A /* LayerHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75175F91B8FB7AC00527E3A /* LayerHUD.swift */; };
+		C75175FE1B8FB7AC00527E3A /* LayerWorld.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75175FA1B8FB7AC00527E3A /* LayerWorld.swift */; };
+		C75175FF1B8FB7AC00527E3A /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75175FB1B8FB7AC00527E3A /* Layer.swift */; };
+		C75176001B8FB7AC00527E3A /* LayerBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75175FC1B8FB7AC00527E3A /* LayerBackground.swift */; };
+		C75E19BD1B8F693800FE5BAC /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75E19BA1B8F693800FE5BAC /* GameScene.swift */; };
+		C75E19BE1B8F693800FE5BAC /* LevelUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75E19BB1B8F693800FE5BAC /* LevelUnit.swift */; };
+		C75E19BF1B8F693800FE5BAC /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75E19BC1B8F693800FE5BAC /* Object.swift */; };
 		C791D1E91B7B985E000D4A7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C791D1E81B7B985E000D4A7E /* AppDelegate.swift */; };
 		C791D1EB1B7B985E000D4A7E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C791D1EA1B7B985E000D4A7E /* GameScene.sks */; };
-		C791D1ED1B7B985E000D4A7E /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C791D1EC1B7B985E000D4A7E /* GameScene.swift */; };
 		C791D1EF1B7B985E000D4A7E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C791D1EE1B7B985E000D4A7E /* GameViewController.swift */; };
 		C791D1F21B7B985E000D4A7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C791D1F01B7B985E000D4A7E /* Main.storyboard */; };
 		C791D1F41B7B985E000D4A7E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C791D1F31B7B985E000D4A7E /* Images.xcassets */; };
@@ -18,9 +25,7 @@
 		C791D20E1B7B9915000D4A7E /* coffeeBean.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C791D20C1B7B9915000D4A7E /* coffeeBean.atlas */; };
 		C791D20F1B7B9915000D4A7E /* donutRunTest.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C791D20D1B7B9915000D4A7E /* donutRunTest.atlas */; };
 		C791D2111B7BC845000D4A7E /* Donut.swift in Sources */ = {isa = PBXBuildFile; fileRef = C791D2101B7BC845000D4A7E /* Donut.swift */; };
-		C791D2151B7C37C0000D4A7E /* LevelUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C791D2141B7C37C0000D4A7E /* LevelUnit.swift */; };
 		C791D2171B7C3A9B000D4A7E /* Ogre.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C791D2161B7C3A9B000D4A7E /* Ogre.atlas */; };
-		C7EE872D1B7FC74200165B64 /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EE872C1B7FC74200165B64 /* Object.swift */; };
 		C7EE872F1B83D4CB00165B64 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EE872E1B83D4CB00165B64 /* MainMenu.swift */; };
 		C7EE87341B83D52700165B64 /* SGScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EE87301B83D52700165B64 /* SGScene.swift */; };
 		C7EE87351B83D52700165B64 /* SGExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EE87311B83D52700165B64 /* SGExtensions.swift */; };
@@ -42,11 +47,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C75175F61B8F973400527E3A /* SampleAssets.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = SampleAssets.atlas; sourceTree = "<group>"; };
+		C75175F91B8FB7AC00527E3A /* LayerHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerHUD.swift; sourceTree = "<group>"; };
+		C75175FA1B8FB7AC00527E3A /* LayerWorld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerWorld.swift; sourceTree = "<group>"; };
+		C75175FB1B8FB7AC00527E3A /* Layer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
+		C75175FC1B8FB7AC00527E3A /* LayerBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerBackground.swift; sourceTree = "<group>"; };
+		C75E19BA1B8F693800FE5BAC /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		C75E19BB1B8F693800FE5BAC /* LevelUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelUnit.swift; sourceTree = "<group>"; };
+		C75E19BC1B8F693800FE5BAC /* Object.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
 		C791D1E31B7B985E000D4A7E /* DonutRun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DonutRun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C791D1E71B7B985E000D4A7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C791D1E81B7B985E000D4A7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C791D1EA1B7B985E000D4A7E /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		C791D1EC1B7B985E000D4A7E /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		C791D1EE1B7B985E000D4A7E /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		C791D1F11B7B985E000D4A7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C791D1F31B7B985E000D4A7E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -57,9 +69,7 @@
 		C791D20C1B7B9915000D4A7E /* coffeeBean.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = coffeeBean.atlas; sourceTree = "<group>"; };
 		C791D20D1B7B9915000D4A7E /* donutRunTest.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = donutRunTest.atlas; sourceTree = "<group>"; };
 		C791D2101B7BC845000D4A7E /* Donut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Donut.swift; sourceTree = "<group>"; };
-		C791D2141B7C37C0000D4A7E /* LevelUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelUnit.swift; sourceTree = "<group>"; };
 		C791D2161B7C3A9B000D4A7E /* Ogre.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Ogre.atlas; sourceTree = "<group>"; };
-		C7EE872C1B7FC74200165B64 /* Object.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
 		C7EE872E1B83D4CB00165B64 /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		C7EE87301B83D52700165B64 /* SGScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGScene.swift; sourceTree = "<group>"; };
 		C7EE87311B83D52700165B64 /* SGExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGExtensions.swift; sourceTree = "<group>"; };
@@ -88,6 +98,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C75175F81B8FB79300527E3A /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				C75E19BC1B8F693800FE5BAC /* Object.swift */,
+				C75E19BB1B8F693800FE5BAC /* LevelUnit.swift */,
+				C75175F91B8FB7AC00527E3A /* LayerHUD.swift */,
+				C75175FA1B8FB7AC00527E3A /* LayerWorld.swift */,
+				C75175FB1B8FB7AC00527E3A /* Layer.swift */,
+				C75175FC1B8FB7AC00527E3A /* LayerBackground.swift */,
+			);
+			name = Layers;
+			sourceTree = "<group>";
+		};
+		C75176011B8FB7DB00527E3A /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				C75E19BA1B8F693800FE5BAC /* GameScene.swift */,
+				C791D1EA1B7B985E000D4A7E /* GameScene.sks */,
+				C7EE87381B83D57300165B64 /* Introducer.swift */,
+				C7EE872E1B83D4CB00165B64 /* MainMenu.swift */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
+		C75176021B8FBC9900527E3A /* Players */ = {
+			isa = PBXGroup;
+			children = (
+				C791D2101B7BC845000D4A7E /* Donut.swift */,
+			);
+			name = Players;
+			sourceTree = "<group>";
+		};
 		C791D1DA1B7B985E000D4A7E = {
 			isa = PBXGroup;
 			children = (
@@ -118,15 +160,12 @@
 				C791D20C1B7B9915000D4A7E /* coffeeBean.atlas */,
 				C791D20D1B7B9915000D4A7E /* donutRunTest.atlas */,
 				C791D1E81B7B985E000D4A7E /* AppDelegate.swift */,
-				C791D2141B7C37C0000D4A7E /* LevelUnit.swift */,
-				C791D1EA1B7B985E000D4A7E /* GameScene.sks */,
-				C7EE872E1B83D4CB00165B64 /* MainMenu.swift */,
-				C791D1EC1B7B985E000D4A7E /* GameScene.swift */,
-				C7EE87381B83D57300165B64 /* Introducer.swift */,
 				C7EE873A1B83D8E500165B64 /* SGAssetManager.swift */,
+				C75175F61B8F973400527E3A /* SampleAssets.atlas */,
 				C791D1EE1B7B985E000D4A7E /* GameViewController.swift */,
-				C7EE872C1B7FC74200165B64 /* Object.swift */,
-				C791D2101B7BC845000D4A7E /* Donut.swift */,
+				C75176011B8FB7DB00527E3A /* Scenes */,
+				C75176021B8FBC9900527E3A /* Players */,
+				C75175F81B8FB79300527E3A /* Layers */,
 				C791D1F01B7B985E000D4A7E /* Main.storyboard */,
 				C791D1F31B7B985E000D4A7E /* Images.xcassets */,
 				C791D1F51B7B985E000D4A7E /* LaunchScreen.xib */,
@@ -247,6 +286,7 @@
 				C791D1EB1B7B985E000D4A7E /* GameScene.sks in Resources */,
 				C791D20F1B7B9915000D4A7E /* donutRunTest.atlas in Resources */,
 				C791D1F21B7B985E000D4A7E /* Main.storyboard in Resources */,
+				C75175F71B8F973400527E3A /* SampleAssets.atlas in Resources */,
 				C7EE873D1B83D92900165B64 /* GameSettings.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,18 +306,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7EE87341B83D52700165B64 /* SGScene.swift in Sources */,
-				C791D2151B7C37C0000D4A7E /* LevelUnit.swift in Sources */,
 				C7EE87351B83D52700165B64 /* SGExtensions.swift in Sources */,
 				C7EE87391B83D57300165B64 /* Introducer.swift in Sources */,
+				C75175FF1B8FB7AC00527E3A /* Layer.swift in Sources */,
 				C791D2111B7BC845000D4A7E /* Donut.swift in Sources */,
 				C7EE872F1B83D4CB00165B64 /* MainMenu.swift in Sources */,
+				C75E19BD1B8F693800FE5BAC /* GameScene.swift in Sources */,
+				C75E19BE1B8F693800FE5BAC /* LevelUnit.swift in Sources */,
 				C7EE873B1B83D8E500165B64 /* SGAssetManager.swift in Sources */,
 				C7EE87361B83D52700165B64 /* SGResolution.swift in Sources */,
-				C791D1ED1B7B985E000D4A7E /* GameScene.swift in Sources */,
 				C791D1EF1B7B985E000D4A7E /* GameViewController.swift in Sources */,
+				C75175FE1B8FB7AC00527E3A /* LayerWorld.swift in Sources */,
+				C75E19BF1B8F693800FE5BAC /* Object.swift in Sources */,
 				C7EE87371B83D52700165B64 /* SGGameKit.swift in Sources */,
-				C7EE872D1B7FC74200165B64 /* Object.swift in Sources */,
 				C791D1E91B7B985E000D4A7E /* AppDelegate.swift in Sources */,
+				C75176001B8FB7AC00527E3A /* LayerBackground.swift in Sources */,
+				C75175FD1B8FB7AC00527E3A /* LayerHUD.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -42,6 +42,13 @@ var jumpCount:Int = 0;
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
 
+    enum gameState {
+        case gamePreGame
+        case gamePaused
+        case gameActive
+        case gameDeath
+    }
+
     let tapRec = UITapGestureRecognizer()
 
     var levelUnitCounter:CGFloat = 0
@@ -50,8 +57,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var initialUnits:Int = 2
     var levelUnitCurrentlyOn:LevelUnit?
 
-    let loopingBG = SKSpriteNode(imageNamed: "Looping_BG@2x")
-    let loopingBG2 = SKSpriteNode(imageNamed: "Looping_BG@2x")
+    //let loopingBG = SKSpriteNode(imageNamed: "Looping_BG@2x")
+    //let loopingBG2 = SKSpriteNode(imageNamed: "Looping_BG@2x")
+
+    //GameState
+    var currentGameState:gameState = .gameActive
+    var lastUpdateTime: NSTimeInterval = 0
+    var dt: NSTimeInterval = 0
+
+    //    let loopingBG = SKSpriteNode(imageNamed: "Looping_BG@2x")
+    //    let loopingBG2 = SKSpriteNode(imageNamed: "Looping_BG@2x")
+
+    var layerBackground01Static = SKNode()
+    var layerBackground02Slow = LayerBackground()
+    var layerBackground03Fast = LayerBackground()
 
 
 
@@ -113,35 +132,93 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         thePlayer.setScale(0.7)
 
         addLevelUnits()
-        addChild(loopingBG)
-        addChild(loopingBG2)
-
-        loopingBG.zPosition = -200
-        loopingBG2.zPosition = -200
-
-        loopingBG.yScale = 1.1
-        loopingBG2.yScale = 1.1
+//        addChild(loopingBG)
+//        addChild(loopingBG2)
+//
+//        loopingBG.zPosition = -200
+//        loopingBG2.zPosition = -200
+//
+//        loopingBG.yScale = 1.1
+//        loopingBG2.yScale = 1.1
 
         startLoopingBackground()
+
+        assignLayers()
+        setUpLayers()
+
+    }
+
+    func assignLayers() {
+
+        addChild(layerBackground01Static)
+        //addChild(layerBackground02Slow)
+        //layerBackground02Slow.layerVelocity = CGPoint(x: -50.0, y: 0.0)
+        addChild(layerBackground03Fast)
+        layerBackground03Fast.layerVelocity = CGPoint(x: -100.0, y: 0.0)
+        //addChild(hud)
 
     }
 
 
+    func setUpLayers() {
+        let background = SKSpriteNode(imageNamed: "Looping_BG@2x")
+        background.posByCanvas(0, y: -0.09)
+        background.zPosition = -3
+        layerBackground01Static.addChild(background)
+
+        /*This code below called slowBackgroundLayer would put something in the midground area. The z position needs to be
+        addressed so it's behind the bushes, but more importantly, I can't figure out why some of the images are in the right
+        area, while others are really high. They are also not spaced correctly either. Uncomment to see for yourself. */
+
+        //        let background2 = SKSpriteNode(imageNamed: "BG002")
+        //        background2.posByCanvas(0, y: 0)
+        //        background2.anchorPoint = CGPointZero
+        //        background2.zPosition = -2
+        //        background2.name = "A"
+        //        layerBackground02Slow.addChild(background2)
+        //        let background3 = SKSpriteNode(imageNamed: "BG002")
+        //        background2.posByCanvas(1, y: 0)
+        //        background2.anchorPoint = CGPointZero
+        //        background2.zPosition = -2
+        //        background2.name = "B"
+        //        layerBackground02Slow.addChild(background3)
+
+
+        //layerBackground03Fast
+        let background4 = SKSpriteNode(imageNamed: "BG003")
+        background4.position = CGPoint (x: 0, y: -400)
+        background4.anchorPoint = CGPointZero
+        background4.zPosition = -2.5
+        background4.name = "A"
+        layerBackground03Fast.addChild(background4)
+        let background5 = SKSpriteNode(imageNamed: "BG003")
+        background5.position = CGPoint(x: background4.size.width - 3, y: -400)
+        background5.anchorPoint = CGPointZero
+        background5.zPosition = -2.5
+        background5.name = "B"
+        layerBackground03Fast.addChild(background5)
+        
+        
+        
+    }
+
+
+
     func startLoopingBackground() {
 
-        resetLoopingBackground()
-
-        loopingBG.position = CGPointMake(0, -50)
-        loopingBG2.position = CGPointMake(loopingBG2.size.width - 3, -50)
-
-        let move = SKAction.moveByX(-loopingBG2.size.width, y: 0, duration: 20)
-        let moveBack = SKAction.moveByX(loopingBG.size.width, y: 0, duration: 0)
-
-        let seq = SKAction.sequence([move,moveBack])
-        let repeat = SKAction.repeatActionForever(seq)
-
-        loopingBG.runAction(repeat)
-        loopingBG2.runAction(repeat)
+//        resetLoopingBackground()
+//
+//        loopingBG.position = CGPointMake(0, -50)
+//        loopingBG2.position = CGPointMake(loopingBG2.size.width - 3, -50)
+//
+//        let move = SKAction.moveByX(-loopingBG2.size.width, y: 0, duration: 20)
+//        let moveBack = SKAction.moveByX(loopingBG.size.width, y: 0, duration: 0)
+//
+//        let seq = SKAction.sequence([move,moveBack])
+//        let repeat = SKAction.repeatActionForever(seq)
+//
+//        loopingBG.runAction(repeat)
+//        loopingBG2.runAction(repeat)
 
 
 
@@ -269,35 +346,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
 
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-//
-//        jumpCount++;
-//
-//        if (donut.isJumping == false) {
-//            donut.isJumping = true;
-//            factor = 1.0;
-//            jump()
-////            self.jumpTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(jump) userInfo:nil repeats:YES];
-//
-//
-//        }
-//
-//        if jumpCount != 2 {
-//            donut.physicsBody?.applyImpulse(CGVectorMake(0, 180))
-//            jumpCount++;
-//        } else if jumpCount == 2 {
-//            donut.physicsBody?.applyImpulse(CGVectorMake(0, 0))
-//        }
 
-        /* Called when a touch begins */
-        
-//        for touch in (touches as! Set<UITouch>) {
-//            let location = touch.locationInNode(self)
-//            
-//        }
     }
    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
+
+        //get the delta time
+        if lastUpdateTime > 0 {
+            dt = currentTime - lastUpdateTime
+        } else {
+            dt = 0
+        }
+        lastUpdateTime = currentTime
+
+
+        //Update game
+        if currentGameState == .gameActive {
+            layerBackground02Slow.update(dt, affectAllNodes: true, parallax: true)
+            layerBackground03Fast.update(dt, affectAllNodes: true, parallax: true)
+            //layerGameWorld?.update(dt, affectAllNodes: true, parallax: true)
+            
+        }
+
 
         let nextTier:CGFloat = ((levelUnitCounter * levelUnitWidth) - (CGFloat(initialUnits) * levelUnitWidth))
 
@@ -396,8 +467,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
             isDead = true
 
-            loopingBG.removeAllActions()
-            loopingBG2.removeAllActions()
+//            loopingBG.removeAllActions()
+//            loopingBG2.removeAllActions()
 
             let fadeOut:SKAction = SKAction.fadeAlphaTo(0, duration: 0.2)
             let move:SKAction = SKAction.moveTo(startingPosition, duration: 0.2)
@@ -411,8 +482,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let fadeInBG = SKAction.fadeAlphaTo(1, duration: 0.5)
             let seqBG = SKAction.sequence([fadeOutBG, blockBG, fadeInBG])
 
-            loopingBG.runAction(seqBG)
-            loopingBG2.runAction(seqBG)
+//            loopingBG.runAction(seqBG)
+//            loopingBG2.runAction(seqBG)
 
 
 
@@ -443,8 +514,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     func resetLoopingBackground() {
 
-        loopingBG.position = CGPointMake(0, -50)
-        loopingBG2.position = CGPointMake(loopingBG2.size.width - 3, -50)
+//        loopingBG.position = CGPointMake(0, -50)
+//        loopingBG2.position = CGPointMake(loopingBG2.size.width - 3, -50)
 
     }
 

@@ -36,11 +36,12 @@ class Introducer: SKScene {
   override func didMoveToView(view: SKView) {
     
     //Set a background color
-    self.backgroundColor = SKColor.blackColor()
+    self.backgroundColor = SKColor.whiteColor()
     
     //Animate initial
     let atlas = SKTextureAtlas(named: "SampleAssets")
-    logoSprite = SKSpriteNode(texture: atlas.textureNamed("SwiftGamer"))
+    logoSprite = SKSpriteNode(texture: atlas.textureNamed("myLogo"))
+    logoSprite?.size = CGSizeMake(40, 40)
     logoSprite!.posByCanvas(0.5, y: 0.5)
     addChild(logoSprite!)
     
@@ -55,20 +56,20 @@ class Introducer: SKScene {
     //Animate
     
     if (logoSprite != nil) {
-      if (gameSettings?.objectForKey("Defaults")?.objectForKey("ALL-Introduce") as! Bool) {
+      //if (gameSettings?.objectForKey("Defaults")?.objectForKey("ALL-Introduce") as! Bool) {
         logoSprite!.alpha = 0.0
         logoSprite!.xScale = 0.0
         logoSprite!.yScale = 0.0
         logoSprite!.runAction(SKAction.sequence([animInitial,animFill]))
         
-      } else {
+      //} else {
         logoSprite!.alpha = 1.0
         logoSprite!.xScale = 1.0
         logoSprite!.yScale = 1.0
         startLoadingAssets()
-      }
+      //}
     }
-    
+
   }
   
   func startLoadingAssets() {
@@ -78,27 +79,29 @@ class Introducer: SKScene {
     
     //Prepare textures to load
     var textureAtlasesArray : [SKTextureAtlas] = []
-    //let atlas01 = SKTextureAtlas(named: "Sample")
-    //textureAtlasesArray.append(atlas01)
+    let atlas01 = SKTextureAtlas(named: "SampleAssets")
+    textureAtlasesArray.append(atlas01)
 
     
     //Prepare sounds to load
     
-    
+
     SKTextureAtlas.preloadTextureAtlases(textureAtlasesArray, withCompletionHandler: {
-      gameTextures = textureAtlasesArray
-      let endTime = CACurrentMediaTime()
-      let timeDifference = endTime - startTime
-      println(NSString(format: "Loaded Texture Atlases in %0.2f seconds", timeDifference))
-      self.transitionToNextScene()
+        gameTextures = textureAtlasesArray
+        let endTime = CACurrentMediaTime()
+        let timeDifference = endTime - startTime
+        println(NSString(format: "Loaded Texture Atlases in %0.2f seconds", timeDifference))
+        self.transitionToNextScene()
+
     })
+
     
   }
   
   func transitionToNextScene() {
     let mainMenu = MainMenu(size: self.scene!.size)
     mainMenu.scaleMode = self.scaleMode
-    self.view?.presentScene(mainMenu, transition: SKTransition.fadeWithDuration(0.6))
+    self.view?.presentScene(mainMenu, transition: SKTransition.fadeWithDuration(2))
   }
   
 }

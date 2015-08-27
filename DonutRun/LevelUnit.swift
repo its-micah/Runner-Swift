@@ -17,7 +17,7 @@ class LevelUnit:SKNode {
     var levelUnitHeight:CGFloat = 0
     var theType:LevelType = LevelType.ground
     
-    var xAmount:CGFloat = 0.8  //essentially this is our speed
+    var xAmount:CGFloat = 0.7  //essentially this is our speed
     var direction:CGFloat = 1 //will be saved as either 1 or -1
     var numberOfObjectsInLevel:UInt32 = 0
     var offscreenCounter:Int = 0 //anytime an object goes offscreen we add to this, for resetting speed purposes

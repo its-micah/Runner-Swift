@@ -111,8 +111,8 @@ class Object: SKNode {
          else if imageName == "Wheel" {
 
             objectSprite.physicsBody = SKPhysicsBody(circleOfRadius: objectSprite.size.width / 2)
-            objectSprite.physicsBody!.categoryBitMask = BodyType.deathObject.rawValue
-            objectSprite.physicsBody!.contactTestBitMask = BodyType.deathObject.rawValue
+            //objectSprite.physicsBody!.categoryBitMask = BodyType.deathObject.rawValue
+            //objectSprite.physicsBody!.contactTestBitMask = BodyType.deathObject.rawValue
             objectSprite.physicsBody!.friction = 1
             objectSprite.physicsBody!.dynamic = true
             objectSprite.physicsBody!.affectedByGravity = true
