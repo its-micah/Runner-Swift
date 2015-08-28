@@ -7,3 +7,102 @@
 //
 
 import Foundation
+import UIKit
+import SpriteKit
+
+class Cop: SKSpriteNode {
+
+    var runAction:SKAction?
+
+    var maxJump:CGFloat = 30
+    var minSpeed:CGFloat = 13
+
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    init (imageNamed:String) {
+
+        let imageTexture = SKTexture(imageNamed: imageNamed)
+
+
+
+        super.init(texture: imageTexture, color:SKColor.clearColor(), size: imageTexture.size() )  //Swift 2
+
+
+
+
+
+        //let body:SKPhysicsBody = SKPhysicsBody(circleOfRadius: imageTexture.size().width / 2 )
+        //let body:SKPhysicsBody = SKPhysicsBody(texture: imageTexture, size: imageTexture.size())
+        let body:SKPhysicsBody = SKPhysicsBody(circleOfRadius: imageTexture.size().height / 2.5)
+
+        body.dynamic = true
+        body.affectedByGravity = true
+        body.allowsRotation = false
+        body.restitution = 0.15
+        body.categoryBitMask = BodyType.player.rawValue
+        body.contactTestBitMask = BodyType.platformObject.rawValue | BodyType.deathObject.rawValue | BodyType.water.rawValue | BodyType.grass.rawValue
+        body.collisionBitMask = BodyType.platformObject.rawValue | BodyType.grass.rawValue
+        body.friction = 0.9 //0 is like glass, 1 is like sandpaper to walk on
+        self.physicsBody = body
+
+        setUpRun()
+        startRun()
+
+
+
+    }
+
+    func setUpRun() {
+
+        let atlas = SKTextureAtlas (named: "Cop")
+
+        var array = [String]()
+
+        //or setup an array with exactly the sequential frames start from 1
+        for var i=1; i <= 30; i++ {
+
+            let nameString = String(format: "Cop_%i", i)
+            array.append(nameString)
+
+        }
+
+        //create another array this time with SKTexture as the type (textures being the .png images)
+        var atlasTextures:[SKTexture] = []
+
+        for (var i = 0; i < array.count; i++ ) {
+
+            let texture:SKTexture = atlas.textureNamed( array[i] )
+            atlasTextures.insert(texture, atIndex:i)
+
+        }
+
+        let atlasAnimation = SKAction.animateWithTextures(atlasTextures, timePerFrame: 1/24, resize: true , restore:false )
+        runAction =  SKAction.repeatActionForever(atlasAnimation)
+        
+        
+        
+    }
+
+    func startRun(){
+
+        self.runAction(runAction!, withKey: "runKey")
+        
+    }
+
+    func update() {
+
+
+        self.position = CGPointMake(self.position.x + minSpeed, 0)
+
+        
+        
+    }
+
+
+
+
+
+}
