@@ -70,6 +70,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     var layerBackground01Static = SKNode()
     var layerBackground02Slow = LayerBackground()
+    var layerClouds = LayerBackground()
     var layerBackground03Fast = LayerBackground()
 
 
@@ -151,8 +152,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func assignLayers() {
 
         addChild(layerBackground01Static)
-        //addChild(layerBackground02Slow)
-        //layerBackground02Slow.layerVelocity = CGPoint(x: -50.0, y: 0.0)
+        addChild(layerBackground02Slow)
+        layerBackground02Slow.layerVelocity = CGPoint(x: -50.0, y: 0.0)
+        addChild(layerClouds)
+        layerClouds.layerVelocity = CGPoint(x: -25, y: 0.0)
         addChild(layerBackground03Fast)
         layerBackground03Fast.layerVelocity = CGPoint(x: -100.0, y: 0.0)
         //addChild(hud)
@@ -166,22 +169,38 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         background.zPosition = -3
         layerBackground01Static.addChild(background)
 
-        /*This code below called slowBackgroundLayer would put something in the midground area. The z position needs to be
-        addressed so it's behind the bushes, but more importantly, I can't figure out why some of the images are in the right
-        area, while others are really high. They are also not spaced correctly either. Uncomment to see for yourself. */
 
-        //        let background2 = SKSpriteNode(imageNamed: "BG002")
-        //        background2.posByCanvas(0, y: 0)
-        //        background2.anchorPoint = CGPointZero
-        //        background2.zPosition = -2
-        //        background2.name = "A"
-        //        layerBackground02Slow.addChild(background2)
-        //        let background3 = SKSpriteNode(imageNamed: "BG002")
-        //        background2.posByCanvas(1, y: 0)
-        //        background2.anchorPoint = CGPointZero
-        //        background2.zPosition = -2
-        //        background2.name = "B"
-        //        layerBackground02Slow.addChild(background3)
+        let clouds = SKSpriteNode(imageNamed: "clouds")
+        clouds.posByCanvas(0, y: 0.15)
+        clouds.anchorPoint = CGPointZero
+        clouds.zPosition = -2.9
+        clouds.alpha = 0.5
+        clouds.name = "A"
+        layerClouds.addChild(clouds)
+
+        let clouds2 = SKSpriteNode(imageNamed: "clouds")
+        clouds2.posByCanvas(1, y: 0.15)
+        clouds2.anchorPoint = CGPointZero
+        clouds2.zPosition = -2.9
+        clouds.alpha = 0.5
+        clouds2.name = "B"
+        layerClouds.addChild(clouds2)
+
+
+        /*I think the building images need to be bigger images, so they don't get cut off like they are currently*/
+
+        let background2 = SKSpriteNode(imageNamed: "buildings1")
+        background2.posByCanvas(0, y: -0.33)
+        background2.anchorPoint = CGPointZero
+        background2.zPosition = -2.7
+        background2.name = "A"
+        layerBackground02Slow.addChild(background2)
+        let background3 = SKSpriteNode(imageNamed: "buildings1")
+        background3.posByCanvas(1, y: -0.33)
+        background3.anchorPoint = CGPointZero
+        background3.zPosition = -2.7
+        background3.name = "B"
+        layerBackground02Slow.addChild(background3)
 
 
         //layerBackground03Fast
@@ -365,6 +384,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if currentGameState == .gameActive {
             layerBackground02Slow.update(dt, affectAllNodes: true, parallax: true)
             layerBackground03Fast.update(dt, affectAllNodes: true, parallax: true)
+            layerClouds.update(dt, affectAllNodes: true, parallax: true)
             //layerGameWorld?.update(dt, affectAllNodes: true, parallax: true)
             
         }
