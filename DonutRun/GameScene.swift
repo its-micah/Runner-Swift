@@ -63,6 +63,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //GameState
     var currentGameState:gameState = .gameActive
     var lastUpdateTime: NSTimeInterval = 0
+    var timeSinceCopAdded: NSTimeInterval = 0
     var dt: NSTimeInterval = 0
 
     //    let loopingBG = SKSpriteNode(imageNamed: "Looping_BG@2x")
@@ -79,11 +80,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var screenHeight:CGFloat = 0
     let worldNode:SKNode = SKNode()
     let thePlayer:Donut = Donut(imageNamed: "DonutRun_1")
+    var cop:Cop = Cop(imageNamed: "Cop_1")
 
     var isDead:Bool = false
     var clearOffscreenLevelUnits:Bool = false
 
     let startingPosition:CGPoint = CGPointMake(0, 0)
+    var copStartingPosition:CGPoint = CGPointMake(0, 0)
+
 
 
     var lastUpdateTimeInterval:Int = 0;
@@ -116,6 +120,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         screenWidth = self.view!.bounds.width
         screenHeight = self.view!.bounds.height
 
+        copStartingPosition = CGPointMake(screenWidth, 0)
+
+
         levelUnitWidth = screenWidth
         levelUnitHeight = screenHeight
 
@@ -128,9 +135,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(worldNode)
 
         worldNode.addChild(thePlayer)
+        worldNode.addChild(cop)
         thePlayer.position = startingPosition
         thePlayer.zPosition = 101
         thePlayer.setScale(0.7)
+
+        cop.position = copStartingPosition
+        cop.zPosition = 101
+        cop.setScale(0.22)
 
         addLevelUnits()
 //        addChild(loopingBG)
@@ -153,7 +165,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         addChild(layerBackground01Static)
         addChild(layerBackground02Slow)
-        layerBackground02Slow.layerVelocity = CGPoint(x: -50.0, y: 0.0)
+        layerBackground02Slow.layerVelocity = CGPoint(x: -80.0, y: 0.0)
         addChild(layerClouds)
         layerClouds.layerVelocity = CGPoint(x: -25, y: 0.0)
         addChild(layerBackground03Fast)
@@ -179,24 +191,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         layerClouds.addChild(clouds)
 
         let clouds2 = SKSpriteNode(imageNamed: "clouds")
-        clouds2.posByCanvas(1, y: 0.15)
+        clouds2.posByCanvas(1, y: 0.12)
         clouds2.anchorPoint = CGPointZero
         clouds2.zPosition = -2.9
-        clouds.alpha = 0.5
+        clouds2.alpha = 0.5
         clouds2.name = "B"
         layerClouds.addChild(clouds2)
 
 
         /*I think the building images need to be bigger images, so they don't get cut off like they are currently*/
 
-        let background2 = SKSpriteNode(imageNamed: "buildings1")
-        background2.posByCanvas(0, y: -0.33)
+        let background2 = SKSpriteNode(imageNamed: "buildings2")
+        background2.posByCanvas(2, y: -0.33)
         background2.anchorPoint = CGPointZero
         background2.zPosition = -2.7
         background2.name = "A"
         layerBackground02Slow.addChild(background2)
-        let background3 = SKSpriteNode(imageNamed: "buildings1")
-        background3.posByCanvas(1, y: -0.33)
+        let background3 = SKSpriteNode(imageNamed: "buildings2")
+        background3.position = CGPoint(x: background2.size.width, y: -300)
         background3.anchorPoint = CGPointZero
         background3.zPosition = -2.7
         background3.name = "B"
@@ -357,16 +369,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
 
         }
+        
+    }
 
-        //print( "levelUnits in the scene is \(nodeCount)")
-        
-        
+    func randomValueBetween(low: CFTimeInterval, high: CFTimeInterval) -> CFTimeInterval {
+        return ((high * low) + low) - (low / 3)
     }
     
 
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
 
     }
+    
    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
@@ -386,7 +400,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             layerBackground03Fast.update(dt, affectAllNodes: true, parallax: true)
             layerClouds.update(dt, affectAllNodes: true, parallax: true)
             //layerGameWorld?.update(dt, affectAllNodes: true, parallax: true)
-            
+
+            if lastUpdateTime == 0 {
+                timeSinceCopAdded += currentTime - lastUpdateTime;
+            }
+
+            if timeSinceCopAdded > 5 {
+                worldNode.addChild(cop)
+                cop.position = copStartingPosition
+                cop.zPosition = 101
+                cop.setScale(0.22)
+                self.timeSinceCopAdded = 0
+            }
+
+
+
         }
 
 
@@ -403,6 +431,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if isDead == false {
 
             thePlayer.update()
+            cop.update()
+
 
         }
 
@@ -411,6 +441,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
 
         thePlayer.position = CGPointMake(thePlayer.position.x + 5, thePlayer.position.y)
+
+        //cop.position = CGPointMake(cop.position.x + 5, cop.position.y)
 
     }
 

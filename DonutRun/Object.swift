@@ -18,6 +18,7 @@ class Object: SKNode {
 
     var levelUnitWidth:CGFloat = 0
     var levelUnitHeight:CGFloat = 0
+
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -44,24 +45,24 @@ class Object: SKNode {
                 
             } else if ( diceRoll == 1) {
                 
-                imageName = "Cactus"
+                //imageName = "Cactus"
                 
             } else if ( diceRoll == 2) {
                 
-                imageName = "Barrel"
+                //imageName = "Barrel"
                 
             } else if ( diceRoll == 3) {
                 
-                imageName = "Wheel"
+                //imageName = "Wheel"
                 
             } else if ( diceRoll == 4) {
                 
-                imageName = "Rock"
+                //imageName = "Rock"
                 
             } else if ( diceRoll == 5) {
                 
-                imageName = "Money"
-                
+                //imageName = "Money"
+    
             }
 
             
@@ -71,7 +72,7 @@ class Object: SKNode {
         
         
         
-        self.addChild(objectSprite)
+        //self.addChild(objectSprite)
 
         if imageName == "Platform2" {
 
@@ -103,40 +104,42 @@ class Object: SKNode {
             let diceRollX = arc4random_uniform(width)
 
             self.position = CGPointMake(CGFloat(diceRollX) - (levelUnitWidth / 2) , self.position.y)
+            self.addChild(objectSprite)
+
 
         }
 
 
 
-         else if imageName == "Wheel" {
-
-            objectSprite.physicsBody = SKPhysicsBody(circleOfRadius: objectSprite.size.width / 2)
-            //objectSprite.physicsBody!.categoryBitMask = BodyType.deathObject.rawValue
-            //objectSprite.physicsBody!.contactTestBitMask = BodyType.deathObject.rawValue
-            objectSprite.physicsBody!.friction = 1
-            objectSprite.physicsBody!.dynamic = true
-            objectSprite.physicsBody!.affectedByGravity = true
-            objectSprite.physicsBody!.restitution = 0.0
-            objectSprite.physicsBody!.allowsRotation = false
-            self.position = CGPointMake(0 ,  0)
-
-
-        } else if imageName == "Money" {
-
-        } else {
-
-            objectSprite.physicsBody = SKPhysicsBody(circleOfRadius: objectSprite.size.width / 2)
-//            objectSprite.physicsBody!.categoryBitMask = BodyType.deathObject.rawValue
-//            objectSprite.physicsBody!.contactTestBitMask = BodyType.deathObject.rawValue
-            objectSprite.physicsBody!.friction = 1
-            objectSprite.physicsBody!.dynamic = true
-            objectSprite.physicsBody!.affectedByGravity = true
-            objectSprite.physicsBody!.restitution = 0.0
-            objectSprite.physicsBody!.allowsRotation = false
-            self.position = CGPointMake(0 ,  0)
+//         else if imageName == "Wheel" {
+//
+//            objectSprite.physicsBody = SKPhysicsBody(circleOfRadius: objectSprite.size.width / 2)
+//            //objectSprite.physicsBody!.categoryBitMask = BodyType.deathObject.rawValue
+//            //objectSprite.physicsBody!.contactTestBitMask = BodyType.deathObject.rawValue
+//            objectSprite.physicsBody!.friction = 1
+//            objectSprite.physicsBody!.dynamic = true
+//            objectSprite.physicsBody!.affectedByGravity = true
+//            objectSprite.physicsBody!.restitution = 0.0
+//            objectSprite.physicsBody!.allowsRotation = false
+//            self.position = CGPointMake(0 ,  0)
 //
 //
-        }
+//        } else if imageName == "Money" {
+//
+//        } else {
+//
+//            objectSprite.physicsBody = SKPhysicsBody(circleOfRadius: objectSprite.size.width / 2)
+////            objectSprite.physicsBody!.categoryBitMask = BodyType.deathObject.rawValue
+////            objectSprite.physicsBody!.contactTestBitMask = BodyType.deathObject.rawValue
+//            objectSprite.physicsBody!.friction = 1
+//            objectSprite.physicsBody!.dynamic = true
+//            objectSprite.physicsBody!.affectedByGravity = true
+//            objectSprite.physicsBody!.restitution = 0.0
+//            objectSprite.physicsBody!.allowsRotation = false
+//            self.position = CGPointMake(0 ,  0)
+////
+////
+//        }
 
 
         self.name = "obstacle"

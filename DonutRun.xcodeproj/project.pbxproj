@@ -26,6 +26,8 @@
 		C791D20F1B7B9915000D4A7E /* donutRunTest.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C791D20D1B7B9915000D4A7E /* donutRunTest.atlas */; };
 		C791D2111B7BC845000D4A7E /* Donut.swift in Sources */ = {isa = PBXBuildFile; fileRef = C791D2101B7BC845000D4A7E /* Donut.swift */; };
 		C791D2171B7C3A9B000D4A7E /* Ogre.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C791D2161B7C3A9B000D4A7E /* Ogre.atlas */; };
+		C7DA30F21B90E14000977F75 /* Cop.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DA30F11B90E14000977F75 /* Cop.swift */; };
+		C7DA30F61B90FA0200977F75 /* Cop.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C7DA30F51B90FA0200977F75 /* Cop.atlas */; };
 		C7EE872F1B83D4CB00165B64 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EE872E1B83D4CB00165B64 /* MainMenu.swift */; };
 		C7EE87341B83D52700165B64 /* SGScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EE87301B83D52700165B64 /* SGScene.swift */; };
 		C7EE87351B83D52700165B64 /* SGExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EE87311B83D52700165B64 /* SGExtensions.swift */; };
@@ -70,6 +72,8 @@
 		C791D20D1B7B9915000D4A7E /* donutRunTest.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = donutRunTest.atlas; sourceTree = "<group>"; };
 		C791D2101B7BC845000D4A7E /* Donut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Donut.swift; sourceTree = "<group>"; };
 		C791D2161B7C3A9B000D4A7E /* Ogre.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Ogre.atlas; sourceTree = "<group>"; };
+		C7DA30F11B90E14000977F75 /* Cop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cop.swift; sourceTree = "<group>"; };
+		C7DA30F51B90FA0200977F75 /* Cop.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Cop.atlas; sourceTree = "<group>"; };
 		C7EE872E1B83D4CB00165B64 /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		C7EE87301B83D52700165B64 /* SGScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGScene.swift; sourceTree = "<group>"; };
 		C7EE87311B83D52700165B64 /* SGExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGExtensions.swift; sourceTree = "<group>"; };
@@ -126,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				C791D2101B7BC845000D4A7E /* Donut.swift */,
+				C7DA30F11B90E14000977F75 /* Cop.swift */,
 			);
 			name = Players;
 			sourceTree = "<group>";
@@ -151,6 +156,7 @@
 		C791D1E51B7B985E000D4A7E /* DonutRun */ = {
 			isa = PBXGroup;
 			children = (
+				C7DA30F51B90FA0200977F75 /* Cop.atlas */,
 				C7EE873C1B83D92900165B64 /* GameSettings.plist */,
 				C7EE87301B83D52700165B64 /* SGScene.swift */,
 				C7EE87311B83D52700165B64 /* SGExtensions.swift */,
@@ -287,6 +293,7 @@
 				C791D20F1B7B9915000D4A7E /* donutRunTest.atlas in Resources */,
 				C791D1F21B7B985E000D4A7E /* Main.storyboard in Resources */,
 				C75175F71B8F973400527E3A /* SampleAssets.atlas in Resources */,
+				C7DA30F61B90FA0200977F75 /* Cop.atlas in Resources */,
 				C7EE873D1B83D92900165B64 /* GameSettings.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -321,6 +328,7 @@
 				C7EE87371B83D52700165B64 /* SGGameKit.swift in Sources */,
 				C791D1E91B7B985E000D4A7E /* AppDelegate.swift in Sources */,
 				C75176001B8FB7AC00527E3A /* LayerBackground.swift in Sources */,
+				C7DA30F21B90E14000977F75 /* Cop.swift in Sources */,
 				C75175FD1B8FB7AC00527E3A /* LayerHUD.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
