@@ -12,14 +12,18 @@ import SpriteKit
 class Object: SKNode {
     
     var objectSprite:SKSpriteNode = SKSpriteNode()
+    var cop:Cop = Cop(imageNamed: "Cop2_1")
+
     var imageName:String = ""
     var xAmount :CGFloat = 1
     var theType:LevelType = LevelType.ground
 
     var levelUnitWidth:CGFloat = 0
     var levelUnitHeight:CGFloat = 0
+    var copsAdded:Int = 0
 
-    
+
+
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -61,15 +65,29 @@ class Object: SKNode {
                 
             } else if ( diceRoll == 5) {
                 
-                //imageName = "Money"
-    
+                objectSprite = cop
+                objectSprite.physicsBody = SKPhysicsBody(circleOfRadius: objectSprite.size.width / 2)
+                //objectSprite.physicsBody!.categoryBitMask = BodyType.deathObject.rawValue
+                //objectSprite.physicsBody!.contactTestBitMask = BodyType.deathObject.rawValue
+                objectSprite.physicsBody!.friction = 1
+                objectSprite.physicsBody!.dynamic = true
+                objectSprite.physicsBody!.affectedByGravity = true
+                objectSprite.physicsBody!.restitution = 0.0
+                objectSprite.setScale(0.28)
+                objectSprite.physicsBody!.allowsRotation = false
+                self.position = CGPointMake(-300 ,  0)
+                self.addChild(cop)
+                copsAdded++
+                println(copsAdded)
+
             }
 
             
         }
-        
+
         objectSprite = SKSpriteNode(imageNamed:imageName)
-        
+
+
         
         
         //self.addChild(objectSprite)
@@ -90,7 +108,7 @@ class Object: SKNode {
             let diceRoll = arc4random_uniform(3)
 
             if diceRoll == 0 {
-                self.position = CGPointMake(0 , 10)
+                self.position = CGPointMake(0 , 15)
 
             } else if diceRoll == 1 {
                 self.position = CGPointMake(0 ,  25)
@@ -107,26 +125,7 @@ class Object: SKNode {
             self.addChild(objectSprite)
 
 
-        }
-
-
-
-//         else if imageName == "Wheel" {
-//
-//            objectSprite.physicsBody = SKPhysicsBody(circleOfRadius: objectSprite.size.width / 2)
-//            //objectSprite.physicsBody!.categoryBitMask = BodyType.deathObject.rawValue
-//            //objectSprite.physicsBody!.contactTestBitMask = BodyType.deathObject.rawValue
-//            objectSprite.physicsBody!.friction = 1
-//            objectSprite.physicsBody!.dynamic = true
-//            objectSprite.physicsBody!.affectedByGravity = true
-//            objectSprite.physicsBody!.restitution = 0.0
-//            objectSprite.physicsBody!.allowsRotation = false
-//            self.position = CGPointMake(0 ,  0)
-//
-//
-//        } else if imageName == "Money" {
-//
-//        } else {
+        } else {
 //
 //            objectSprite.physicsBody = SKPhysicsBody(circleOfRadius: objectSprite.size.width / 2)
 ////            objectSprite.physicsBody!.categoryBitMask = BodyType.deathObject.rawValue
@@ -139,7 +138,7 @@ class Object: SKNode {
 //            self.position = CGPointMake(0 ,  0)
 ////
 ////
-//        }
+        }
 
 
         self.name = "obstacle"

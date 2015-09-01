@@ -22,8 +22,8 @@ class Donut: SKSpriteNode {
     var isRunning:Bool = false
 
     var jumpAmount:CGFloat = 0
-    var maxJump:CGFloat = 30
-    var minSpeed:CGFloat = 3
+    var maxJump:CGFloat = 31
+    var minSpeed:CGFloat = 2.5
 
 
 
@@ -43,16 +43,14 @@ class Donut: SKSpriteNode {
 
 
 
-        //let body:SKPhysicsBody = SKPhysicsBody(circleOfRadius: imageTexture.size().width / 2 )
-        //let body:SKPhysicsBody = SKPhysicsBody(texture: imageTexture, size: imageTexture.size())
         let body:SKPhysicsBody = SKPhysicsBody(circleOfRadius: imageTexture.size().height / 2.15)
 
         body.dynamic = true
         body.affectedByGravity = true
         body.allowsRotation = false
         body.restitution = 0.15
-        body.categoryBitMask = BodyType.player.rawValue
-        body.contactTestBitMask = BodyType.platformObject.rawValue | BodyType.deathObject.rawValue | BodyType.water.rawValue | BodyType.grass.rawValue
+        //body.categoryBitMask = BodyType.deathObject.rawValue
+        body.contactTestBitMask = BodyType.platformObject.rawValue | BodyType.player.rawValue | BodyType.water.rawValue | BodyType.grass.rawValue
         body.collisionBitMask = BodyType.platformObject.rawValue | BodyType.grass.rawValue
         body.friction = 0.9 //0 is like glass, 1 is like sandpaper to walk on
         self.physicsBody = body

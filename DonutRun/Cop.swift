@@ -15,7 +15,7 @@ class Cop: SKSpriteNode {
     var runAction:SKAction?
 
     var maxJump:CGFloat = 30
-    var minSpeed:CGFloat = 13
+    var minSpeed:CGFloat = 3
 
 
     required init(coder aDecoder: NSCoder) {
@@ -35,8 +35,8 @@ class Cop: SKSpriteNode {
 
 
         //let body:SKPhysicsBody = SKPhysicsBody(circleOfRadius: imageTexture.size().width / 2 )
-        //let body:SKPhysicsBody = SKPhysicsBody(texture: imageTexture, size: imageTexture.size())
-        let body:SKPhysicsBody = SKPhysicsBody(circleOfRadius: imageTexture.size().height / 2.5)
+        let body:SKPhysicsBody = SKPhysicsBody(texture: imageTexture, size: imageTexture.size())
+        //let body:SKPhysicsBody = SKPhysicsBody(circleOfRadius: imageTexture.size().height / 2.5)
 
         body.dynamic = true
         body.affectedByGravity = true
@@ -57,14 +57,14 @@ class Cop: SKSpriteNode {
 
     func setUpRun() {
 
-        let atlas = SKTextureAtlas (named: "Cop")
+        let atlas = SKTextureAtlas (named: "Cop2")
 
         var array = [String]()
 
         //or setup an array with exactly the sequential frames start from 1
         for var i=1; i <= 30; i++ {
 
-            let nameString = String(format: "Cop_%i", i)
+            let nameString = String(format: "Cop2_%i", i)
             array.append(nameString)
 
         }
@@ -79,7 +79,7 @@ class Cop: SKSpriteNode {
 
         }
 
-        let atlasAnimation = SKAction.animateWithTextures(atlasTextures, timePerFrame: 1/24, resize: true , restore:false )
+        let atlasAnimation = SKAction.animateWithTextures(atlasTextures, timePerFrame: 1/30, resize: true , restore:false )
         runAction =  SKAction.repeatActionForever(atlasAnimation)
         
         
@@ -95,7 +95,7 @@ class Cop: SKSpriteNode {
     func update() {
 
 
-        self.position = CGPointMake(self.position.x + minSpeed, 0)
+        self.position = CGPointMake(self.position.x + minSpeed, self.position.y)
 
         
         

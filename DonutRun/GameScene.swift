@@ -80,7 +80,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var screenHeight:CGFloat = 0
     let worldNode:SKNode = SKNode()
     let thePlayer:Donut = Donut(imageNamed: "DonutRun_1")
-    var cop:Cop = Cop(imageNamed: "Cop_1")
+    //var cop:Cop = Cop(imageNamed: "Cop2_1")
 
     var isDead:Bool = false
     var clearOffscreenLevelUnits:Bool = false
@@ -120,7 +120,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         screenWidth = self.view!.bounds.width
         screenHeight = self.view!.bounds.height
 
-        copStartingPosition = CGPointMake(screenWidth, 0)
+        copStartingPosition = CGPointMake(screenWidth + 400, 0)
 
 
         levelUnitWidth = screenWidth
@@ -135,26 +135,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(worldNode)
 
         worldNode.addChild(thePlayer)
-        worldNode.addChild(cop)
         thePlayer.position = startingPosition
         thePlayer.zPosition = 101
         thePlayer.setScale(0.7)
 
-        cop.position = copStartingPosition
-        cop.zPosition = 101
-        cop.setScale(0.22)
-
         addLevelUnits()
-//        addChild(loopingBG)
-//        addChild(loopingBG2)
-//
-//        loopingBG.zPosition = -200
-//        loopingBG2.zPosition = -200
-//
-//        loopingBG.yScale = 1.1
-//        loopingBG2.yScale = 1.1
-
-        startLoopingBackground()
 
         assignLayers()
         setUpLayers()
@@ -231,28 +216,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         
-    }
-
-
-
-    func startLoopingBackground() {
-
-//        resetLoopingBackground()
-//
-//        loopingBG.position = CGPointMake(0, -50)
-//        loopingBG2.position = CGPointMake(loopingBG2.size.width - 3, -50)
-//
-//        let move = SKAction.moveByX(-loopingBG2.size.width, y: 0, duration: 20)
-//        let moveBack = SKAction.moveByX(loopingBG.size.width, y: 0, duration: 0)
-//
-//        let seq = SKAction.sequence([move,moveBack])
-//        let repeat = SKAction.repeatActionForever(seq)
-//
-//        loopingBG.runAction(repeat)
-//        loopingBG2.runAction(repeat)
-
-
-
     }
 
 
@@ -400,21 +363,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             layerBackground03Fast.update(dt, affectAllNodes: true, parallax: true)
             layerClouds.update(dt, affectAllNodes: true, parallax: true)
             //layerGameWorld?.update(dt, affectAllNodes: true, parallax: true)
-
-            if lastUpdateTime == 0 {
-                timeSinceCopAdded += currentTime - lastUpdateTime;
-            }
-
-            if timeSinceCopAdded > 5 {
-                worldNode.addChild(cop)
-                cop.position = copStartingPosition
-                cop.zPosition = 101
-                cop.setScale(0.22)
-                self.timeSinceCopAdded = 0
-            }
-
-
-
         }
 
 
@@ -431,8 +379,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if isDead == false {
 
             thePlayer.update()
-            cop.update()
-
 
         }
 
@@ -442,7 +388,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         thePlayer.position = CGPointMake(thePlayer.position.x + 5, thePlayer.position.y)
 
-        //cop.position = CGPointMake(cop.position.x + 5, cop.position.y)
 
     }
 
@@ -519,9 +464,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
             isDead = true
 
-//            loopingBG.removeAllActions()
-//            loopingBG2.removeAllActions()
-
             let fadeOut:SKAction = SKAction.fadeAlphaTo(0, duration: 0.2)
             let move:SKAction = SKAction.moveTo(startingPosition, duration: 0.2)
             let block:SKAction = SKAction.runBlock(revivePlayer)
@@ -533,11 +475,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let blockBG = SKAction.runBlock(resetLoopingBackground)
             let fadeInBG = SKAction.fadeAlphaTo(1, duration: 0.5)
             let seqBG = SKAction.sequence([fadeOutBG, blockBG, fadeInBG])
-
-//            loopingBG.runAction(seqBG)
-//            loopingBG2.runAction(seqBG)
-
-
 
         }
 
