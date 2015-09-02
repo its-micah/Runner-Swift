@@ -118,14 +118,14 @@ class Donut: SKSpriteNode {
 
     func setUpJump() {
 
-        let atlas = SKTextureAtlas (named: "Ogre")
+        let atlas = SKTextureAtlas (named: "DonutJump")
 
         var array = [String]()
 
         //or setup an array with exactly the sequential frames start from 1
-        for var i=1; i <= 9; i++ {
+        for var i=1; i <= 10; i++ {
 
-            let nameString = String(format: "ogre_jump%i", i)
+            let nameString = String(format: "donutJump_%i", i)
             array.append(nameString)
 
         }
@@ -136,12 +136,14 @@ class Donut: SKSpriteNode {
         for (var i = 0; i < array.count; i++ ) {
 
             let texture:SKTexture = atlas.textureNamed( array[i] )
+            
             atlasTextures.insert(texture, atIndex:i)
+
 
         }
 
         let atlasAnimation = SKAction.animateWithTextures(atlasTextures, timePerFrame: 1.0/20, resize: true , restore:false )
-        jumpAction =  SKAction.repeatActionForever(atlasAnimation)
+        jumpAction =  SKAction.repeatAction(atlasAnimation, count: 1)
 
 
 

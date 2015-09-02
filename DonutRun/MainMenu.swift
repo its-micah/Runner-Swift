@@ -40,7 +40,7 @@ class MainMenu: SGScene {
                     println("play game")
                     let gameScene = GameScene(size: scene!.size)
                     gameScene.scaleMode = scaleMode
-                    let transition = SKTransition.fadeWithDuration(0.7)
+                    let transition = SKTransition.fadeWithDuration(0.3)
                     view?.presentScene(gameScene, transition: transition)
 
 

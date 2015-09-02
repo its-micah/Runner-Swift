@@ -99,11 +99,6 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
     override func didMoveToView(view: SKView) {
 
-
-        tapRec.addTarget(self, action: "tapped")
-        self.view!.addGestureRecognizer(tapRec)
-
-
         self.physicsBody = SKPhysicsBody(edgeLoopFromRect: CGRectMake(0.0, buffer, self.frame.size.width, self.frame.size.height))
         self.physicsBody!.categoryBitMask = SceneEdgeCategory;
         self.physicsBody!.contactTestBitMask = JumpDonutCategory;
@@ -115,7 +110,6 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
         screenHeight = self.view!.bounds.height
 
         copStartingPosition = CGPointMake(screenWidth + 400, 0)
-
 
         levelUnitWidth = screenWidth
         levelUnitHeight = screenHeight
@@ -133,7 +127,6 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
         thePlayer.setScale(0.7)
 
         addLevelUnits()
-
         assignLayers()
         setUpLayers()
 
@@ -224,6 +217,8 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
                 physicsWorld.speed = 1.0
                 speed = 1.0
             }
+        } else {
+            tapped()
         }
 
     }
@@ -231,7 +226,11 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
     func tapped() {
 
-        thePlayer.jump()
+        if currentGameState == .gameActive {
+            thePlayer.jump()
+        } else {
+            println("don't jump")
+        }
     }
 
 
@@ -241,7 +240,6 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
             node, stop in
 
             node.removeFromParent()
-
 
         }
 
