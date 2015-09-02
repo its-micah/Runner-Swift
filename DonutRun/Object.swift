@@ -147,6 +147,11 @@ class Object: SKNode {
         
     }
 
+
+
+    
+
+
 }
     
     

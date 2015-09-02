@@ -25,7 +25,6 @@ enum BodyType:UInt32 {
 enum LevelType:UInt32 {
 
     case ground, water
-
 }
 
 
@@ -40,7 +39,7 @@ var factor:CGFloat = 1;
 var jumpCount:Int = 0;
 
 
-class GameScene: SKScene, SKPhysicsContactDelegate {
+class GameScene: SGScene, SKPhysicsContactDelegate {
 
     enum gameState {
         case gamePreGame
@@ -57,8 +56,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var initialUnits:Int = 2
     var levelUnitCurrentlyOn:LevelUnit?
 
-    //let loopingBG = SKSpriteNode(imageNamed: "Looping_BG@2x")
-    //let loopingBG2 = SKSpriteNode(imageNamed: "Looping_BG@2x")
 
     //GameState
     var currentGameState:gameState = .gameActive
@@ -66,8 +63,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var timeSinceCopAdded: NSTimeInterval = 0
     var dt: NSTimeInterval = 0
 
-    //    let loopingBG = SKSpriteNode(imageNamed: "Looping_BG@2x")
-    //    let loopingBG2 = SKSpriteNode(imageNamed: "Looping_BG@2x")
 
     var layerBackground01Static = SKNode()
     var layerBackground02Slow = LayerBackground()
@@ -79,6 +74,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var screenWidth:CGFloat = 0
     var screenHeight:CGFloat = 0
     let worldNode:SKNode = SKNode()
+    var layerHUD:SKNode = LayerHUD()
     let thePlayer:Donut = Donut(imageNamed: "DonutRun_1")
     //var cop:Cop = Cop(imageNamed: "Cop2_1")
 
@@ -103,8 +99,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     override func didMoveToView(view: SKView) {
 
-
-        self.physicsWorld.contactDelegate = self
 
         tapRec.addTarget(self, action: "tapped")
         self.view!.addGestureRecognizer(tapRec)
@@ -133,7 +127,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.anchorPoint = CGPointMake(0.5, 0.5)
 
         addChild(worldNode)
-
         worldNode.addChild(thePlayer)
         thePlayer.position = startingPosition
         thePlayer.zPosition = 101
@@ -143,6 +136,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         assignLayers()
         setUpLayers()
+
+        physicsWorld.contactDelegate = self
 
     }
 
@@ -155,7 +150,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         layerClouds.layerVelocity = CGPoint(x: -25, y: 0.0)
         addChild(layerBackground03Fast)
         layerBackground03Fast.layerVelocity = CGPoint(x: -100.0, y: 0.0)
-        //addChild(hud)
+        addChild(layerHUD)
 
     }
 
@@ -213,9 +208,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         background5.zPosition = -2.5
         background5.name = "B"
         layerBackground03Fast.addChild(background5)
+
         
-        
-        
+    }
+
+
+    override func screenInteractionStarted(location: CGPoint) {
+        if (location.x > (self.size.width * 0.4)) && (location.y > (self.size.height * 0.29)) {
+            if currentGameState == .gameActive {
+                currentGameState = .gamePaused
+                physicsWorld.speed = 0.0
+                speed = 0.0
+            } else {
+                currentGameState = .gameActive
+                physicsWorld.speed = 1.0
+                speed = 1.0
+            }
+        }
+
     }
 
 
@@ -260,12 +270,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
             levelUnit.position = CGPointMake( xLocation , yLocation)
 
-
             //println(levelArray)
 
         }
-        
-        
+
         
     }
 
@@ -289,9 +297,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
 
         levelUnitCounter++
-
-
-
 
     }
 
@@ -328,7 +333,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
                 nodeCount++
 
-
             }
 
         }
@@ -340,10 +344,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
 
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
 
-    }
-    
    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
@@ -363,30 +364,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             layerBackground03Fast.update(dt, affectAllNodes: true, parallax: true)
             layerClouds.update(dt, affectAllNodes: true, parallax: true)
             //layerGameWorld?.update(dt, affectAllNodes: true, parallax: true)
+
+            let nextTier:CGFloat = ((levelUnitCounter * levelUnitWidth) - (CGFloat(initialUnits) * levelUnitWidth))
+
+            if (thePlayer.position.x > nextTier) {
+                createLevelUnit()
+            }
+
+
+            clearNodes()
+
+
+            if isDead == false {
+                
+                thePlayer.update()
+                
+            }
+
+            let baseSpeed:CGFloat = 5
+
+
+            thePlayer.position = CGPointMake(thePlayer.position.x + 5, thePlayer.position.y)
+
+
         }
-
-
-        let nextTier:CGFloat = ((levelUnitCounter * levelUnitWidth) - (CGFloat(initialUnits) * levelUnitWidth))
-
-        if (thePlayer.position.x > nextTier) {
-            createLevelUnit()
-        }
-
-
-        clearNodes()
-
-
-        if isDead == false {
-
-            thePlayer.update()
-
-        }
-
-
-        let baseSpeed:CGFloat = 5
-
-
-        thePlayer.position = CGPointMake(thePlayer.position.x + 5, thePlayer.position.y)
 
 
     }
@@ -406,8 +407,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let cameraPositionInScene:CGPoint = self.convertPoint(node.position, fromNode: worldNode)
         worldNode.position = CGPoint(x: worldNode.position.x - cameraPositionInScene.x - 200 , y:0  )
 
-
-
     }
 
 
@@ -417,9 +416,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
 
         // let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
-
-
-
 
         //// check on water
 
@@ -435,9 +431,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
 
         }
-
-
-
 
 
         //// check on grass
@@ -479,7 +472,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
 
 
-
     }
 
     func revivePlayer() {
@@ -508,6 +500,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     }
 
+
+
+
+
+
+
+    
 
 
 

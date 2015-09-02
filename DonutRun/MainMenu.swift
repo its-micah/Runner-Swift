@@ -12,7 +12,7 @@ import Foundation
 class MainMenu: SGScene {
 
     override func didMoveToView(view: SKView) {
-        self.backgroundColor = SKColor.blackColor()
+        self.backgroundColor = UIColor(red: 244 / 255, green: 102 / 255, blue: 186 / 255, alpha: 1.0)
         //let background = SKSpriteNode(imageNamed: "background4")
         let background = SKSpriteNode()
         //background.posByCanvas(0.5, y: 0.5)

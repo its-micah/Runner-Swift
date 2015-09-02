@@ -95,7 +95,7 @@ class Cop: SKSpriteNode {
     func update() {
 
 
-        self.position = CGPointMake(self.position.x + minSpeed, self.position.y)
+        self.position = CGPointMake(self.position.x - minSpeed, self.position.y)
 
         
         
