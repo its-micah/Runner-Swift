@@ -22,8 +22,8 @@ class Donut: SKSpriteNode {
     var isRunning:Bool = false
 
     var jumpAmount:CGFloat = 0
-    var maxJump:CGFloat = 30
-    var minSpeed:CGFloat = 3
+    var maxJump:CGFloat = 33
+    var minSpeed:CGFloat = 3.5
 
 
 

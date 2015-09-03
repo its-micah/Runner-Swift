@@ -14,7 +14,6 @@ class Cop: SKSpriteNode {
 
     var runAction:SKAction?
 
-    var maxJump:CGFloat = 30
     var minSpeed:CGFloat = 3
 
 
@@ -35,14 +34,14 @@ class Cop: SKSpriteNode {
 
 
         //let body:SKPhysicsBody = SKPhysicsBody(circleOfRadius: imageTexture.size().width / 2 )
-        //let body:SKPhysicsBody = SKPhysicsBody(texture: imageTexture, size: imageTexture.size())
-        let body:SKPhysicsBody = SKPhysicsBody(circleOfRadius: imageTexture.size().height / 2.5)
+        let body:SKPhysicsBody = SKPhysicsBody(texture: imageTexture, size: imageTexture.size())
+        //let body:SKPhysicsBody = SKPhysicsBody(circleOfRadius: imageTexture.size().height / 2.5)
 
         body.dynamic = true
         body.affectedByGravity = true
         body.allowsRotation = false
-        body.restitution = 0.15
-        body.categoryBitMask = BodyType.player.rawValue
+        body.restitution = 0
+        body.categoryBitMask = BodyType.deathObject.rawValue
         body.contactTestBitMask = BodyType.platformObject.rawValue | BodyType.deathObject.rawValue | BodyType.water.rawValue | BodyType.grass.rawValue
         body.collisionBitMask = BodyType.platformObject.rawValue | BodyType.grass.rawValue
         body.friction = 0.9 //0 is like glass, 1 is like sandpaper to walk on
@@ -79,7 +78,7 @@ class Cop: SKSpriteNode {
 
         }
 
-        let atlasAnimation = SKAction.animateWithTextures(atlasTextures, timePerFrame: 1/24, resize: true , restore:false )
+        let atlasAnimation = SKAction.animateWithTextures(atlasTextures, timePerFrame: 1/30, resize: true , restore:false )
         runAction =  SKAction.repeatActionForever(atlasAnimation)
         
         
@@ -95,7 +94,7 @@ class Cop: SKSpriteNode {
     func update() {
 
 
-        self.position = CGPointMake(self.position.x + minSpeed, 0)
+        self.position = CGPointMake(self.position.x - minSpeed, self.position.y)
 
         
         

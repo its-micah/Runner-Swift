@@ -120,7 +120,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         screenWidth = self.view!.bounds.width
         screenHeight = self.view!.bounds.height
 
-        copStartingPosition = CGPointMake(screenWidth, 0)
+        copStartingPosition = CGPointMake(900, 0)
 
 
         levelUnitWidth = screenWidth
@@ -401,17 +401,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             layerClouds.update(dt, affectAllNodes: true, parallax: true)
             //layerGameWorld?.update(dt, affectAllNodes: true, parallax: true)
 
-            if lastUpdateTime == 0 {
-                timeSinceCopAdded += currentTime - lastUpdateTime;
-            }
-
-            if timeSinceCopAdded > 5 {
-                worldNode.addChild(cop)
-                cop.position = copStartingPosition
-                cop.zPosition = 101
-                cop.setScale(0.22)
-                self.timeSinceCopAdded = 0
-            }
+//            if lastUpdateTime == 0 {
+//                timeSinceCopAdded += currentTime - lastUpdateTime;
+//            }
+//
+//            if timeSinceCopAdded > 5 {
+//                worldNode.addChild(cop)
+//                cop.position = copStartingPosition
+//                cop.zPosition = 101
+//                cop.setScale(0.22)
+//                self.timeSinceCopAdded = 0
+//            }
 
 
 
@@ -442,7 +442,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         thePlayer.position = CGPointMake(thePlayer.position.x + 5, thePlayer.position.y)
 
-        //cop.position = CGPointMake(cop.position.x + 5, cop.position.y)
+        cop.position = CGPointMake(cop.position.x + 5, cop.position.y)
 
     }
 
