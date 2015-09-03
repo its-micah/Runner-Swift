@@ -145,14 +145,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         cop.setScale(0.26)
 
         addLevelUnits()
-//        addChild(loopingBG)
-//        addChild(loopingBG2)
-//
-//        loopingBG.zPosition = -200
-//        loopingBG2.zPosition = -200
-//
-//        loopingBG.yScale = 1.1
-//        loopingBG2.yScale = 1.1
 
         startLoopingBackground()
 
@@ -237,21 +229,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     func startLoopingBackground() {
 
-//        resetLoopingBackground()
-//
-//        loopingBG.position = CGPointMake(0, -50)
-//        loopingBG2.position = CGPointMake(loopingBG2.size.width - 3, -50)
-//
-//        let move = SKAction.moveByX(-loopingBG2.size.width, y: 0, duration: 20)
-//        let moveBack = SKAction.moveByX(loopingBG.size.width, y: 0, duration: 0)
-//
-//        let seq = SKAction.sequence([move,moveBack])
-//        let repeat = SKAction.repeatActionForever(seq)
-//
-//        loopingBG.runAction(repeat)
-//        loopingBG2.runAction(repeat)
-
-
 
     }
 
@@ -311,7 +288,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     func createLevelUnit() {
 
-        var ylocation:CGFloat = -100
+        var ylocation:CGFloat = -127
         var xlocation:CGFloat = levelUnitCounter * levelUnitWidth
 
 
