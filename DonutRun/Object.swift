@@ -90,7 +90,7 @@ class Object: SKNode {
             let diceRoll = arc4random_uniform(3)
 
             if diceRoll == 0 {
-                self.position = CGPointMake(0 , 10)
+                self.position = CGPointMake(0 , 20)
 
             } else if diceRoll == 1 {
                 self.position = CGPointMake(0 ,  25)

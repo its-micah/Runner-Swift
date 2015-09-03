@@ -15,7 +15,7 @@ class Cop: SKSpriteNode {
     var runAction:SKAction?
 
     var maxJump:CGFloat = 30
-    var minSpeed:CGFloat = 13
+    var minSpeed:CGFloat = 3
 
 
     required init(coder aDecoder: NSCoder) {
@@ -57,14 +57,14 @@ class Cop: SKSpriteNode {
 
     func setUpRun() {
 
-        let atlas = SKTextureAtlas (named: "Cop")
+        let atlas = SKTextureAtlas (named: "Cop2")
 
         var array = [String]()
 
         //or setup an array with exactly the sequential frames start from 1
-        for var i=1; i <= 30; i++ {
+        for var i=1; i <= 16; i++ {
 
-            let nameString = String(format: "Cop_%i", i)
+            let nameString = String(format: "Cop2_%i", i)
             array.append(nameString)
 
         }

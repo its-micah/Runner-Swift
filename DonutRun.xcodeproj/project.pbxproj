@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C7007E831B989C00008D7921 /* DonutJump.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C7007E821B989C00008D7921 /* DonutJump.atlas */; };
+		C7007E851B989FAC008D7921 /* Cop2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C7007E841B989FAC008D7921 /* Cop2.atlas */; };
 		C75175F71B8F973400527E3A /* SampleAssets.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C75175F61B8F973400527E3A /* SampleAssets.atlas */; };
 		C75175FD1B8FB7AC00527E3A /* LayerHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75175F91B8FB7AC00527E3A /* LayerHUD.swift */; };
 		C75175FE1B8FB7AC00527E3A /* LayerWorld.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75175FA1B8FB7AC00527E3A /* LayerWorld.swift */; };
@@ -50,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		C7007E821B989C00008D7921 /* DonutJump.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = DonutJump.atlas; sourceTree = "<group>"; };
+		C7007E841B989FAC008D7921 /* Cop2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Cop2.atlas; sourceTree = "<group>"; };
 		C75175F61B8F973400527E3A /* SampleAssets.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = SampleAssets.atlas; sourceTree = "<group>"; };
 		C75175F91B8FB7AC00527E3A /* LayerHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerHUD.swift; sourceTree = "<group>"; };
 		C75175FA1B8FB7AC00527E3A /* LayerWorld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerWorld.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			children = (
 				C7DA30F51B90FA0200977F75 /* Cop.atlas */,
 				C7EE873C1B83D92900165B64 /* GameSettings.plist */,
+				C7007E841B989FAC008D7921 /* Cop2.atlas */,
 				C7EE87301B83D52700165B64 /* SGScene.swift */,
 				C7EE87311B83D52700165B64 /* SGExtensions.swift */,
 				C7007E821B989C00008D7921 /* DonutJump.atlas */,
@@ -286,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C791D20E1B7B9915000D4A7E /* coffeeBean.atlas in Resources */,
+				C7007E851B989FAC008D7921 /* Cop2.atlas in Resources */,
 				C791D1F71B7B985E000D4A7E /* LaunchScreen.xib in Resources */,
 				C791D1F41B7B985E000D4A7E /* Images.xcassets in Resources */,
 				C791D1EB1B7B985E000D4A7E /* GameScene.sks in Resources */,

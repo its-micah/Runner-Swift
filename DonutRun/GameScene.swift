@@ -80,7 +80,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var screenHeight:CGFloat = 0
     let worldNode:SKNode = SKNode()
     let thePlayer:Donut = Donut(imageNamed: "DonutRun_1")
-    var cop:Cop = Cop(imageNamed: "Cop_1")
+    var cop:Cop = Cop(imageNamed: "Cop2_1")
 
     var isDead:Bool = false
     var clearOffscreenLevelUnits:Bool = false
@@ -142,7 +142,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         cop.position = copStartingPosition
         cop.zPosition = 101
-        cop.setScale(0.22)
+        cop.setScale(0.26)
 
         addLevelUnits()
 //        addChild(loopingBG)
