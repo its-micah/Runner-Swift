@@ -79,7 +79,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var screenWidth:CGFloat = 0
     var screenHeight:CGFloat = 0
     let worldNode:SKNode = SKNode()
-    let thePlayer:Donut = Donut(imageNamed: "DonutRun_1")
+    let theDonut:Donut = Donut(imageNamed: "DonutRun_1")
     var cop:Cop = Cop(imageNamed: "Cop2_1")
 
     var isDead:Bool = false
@@ -132,11 +132,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         addChild(worldNode)
 
-        worldNode.addChild(thePlayer)
+        worldNode.addChild(theDonut)
         worldNode.addChild(cop)
-        thePlayer.position = startingPosition
-        thePlayer.zPosition = 101
-        thePlayer.setScale(0.7)
+        theDonut.position = startingPosition
+        theDonut.zPosition = 101
+        theDonut.setScale(0.7)
 
         cop.zPosition = 101
         cop.setScale(0.26)
@@ -235,7 +235,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     func tapped() {
 
-        thePlayer.jump()
+        theDonut.jump()
     }
 
 
@@ -397,8 +397,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (DRGameManager.sharedInstance.timeForNewCop()) {
             // check to see if cop is off screen
             // if yes, move cop to x, y (-300, 0)
-            if cop.position.x < (thePlayer.position.x - 300)  {
-                cop.position = CGPointMake(thePlayer.position.x + 800, -150)
+            if cop.position.x < (theDonut.position.x - 300)  {
+                cop.position = CGPointMake(theDonut.position.x + 800, -150)
             }
         }
 
@@ -406,7 +406,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         let nextTier:CGFloat = ((levelUnitCounter * levelUnitWidth) - (CGFloat(initialUnits) * levelUnitWidth))
 
-        if (thePlayer.position.x > nextTier) {
+        if (theDonut.position.x > nextTier) {
             createLevelUnit()
         }
 
@@ -416,7 +416,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         if isDead == false {
 
-            thePlayer.update()
+            theDonut.update()
             cop.update()
 
 
@@ -426,7 +426,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let baseSpeed:CGFloat = 5
 
 
-        thePlayer.position = CGPointMake(thePlayer.position.x + 5, thePlayer.position.y)
+        theDonut.position = CGPointMake(theDonut.position.x + 5, theDonut.position.y)
 
         cop.position = CGPointMake(cop.position.x + 5, cop.position.y)
 
@@ -436,7 +436,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didSimulatePhysics() {
 
 
-        self.centerOnNode(thePlayer)
+        self.centerOnNode(theDonut)
 
 
     }
@@ -513,7 +513,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let block:SKAction = SKAction.runBlock(revivePlayer)
             let seq:SKAction = SKAction.sequence([fadeOut, move, block])
 
-            thePlayer.runAction(seq)
+            theDonut.runAction(seq)
 
             let fadeOutBG = SKAction.fadeAlphaTo(0, duration: 0.5)
             let blockBG = SKAction.runBlock(resetLoopingBackground)
@@ -544,7 +544,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let wait:SKAction = SKAction.waitForDuration(1)
         let fadeIn2:SKAction = SKAction.fadeAlphaTo(1, duration: 0.2)
         let seq2:SKAction = SKAction.sequence([wait , fadeIn2])
-        thePlayer.runAction(seq2)
+        theDonut.runAction(seq2)
 
     }
 
