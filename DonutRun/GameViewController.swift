@@ -30,6 +30,13 @@ class GameViewController: UIViewController {
             skView.showsFields = gameSettings?.objectForKey("Debugging")?.objectForKey("IOS-ShowFields") as! Bool
         #endif
 
+        DRGameManager.sharedInstance.gameScore = 9
+
+        DRGameManager.sharedInstance.displayGameScore()
+
+        DRGameManager.sharedInstance.randomizeCopCounter()
+
+
         skView.ignoresSiblingOrder = true
 
         scene.scaleMode = .AspectFill

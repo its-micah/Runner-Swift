@@ -14,7 +14,7 @@ class Cop: SKSpriteNode {
 
     var runAction:SKAction?
 
-    var minSpeed:CGFloat = 3
+    var minSpeed:CGFloat = 5
 
 
     required init(coder aDecoder: NSCoder) {
@@ -41,7 +41,7 @@ class Cop: SKSpriteNode {
         body.affectedByGravity = true
         body.allowsRotation = false
         body.restitution = 0
-        body.categoryBitMask = BodyType.deathObject.rawValue
+        //body.categoryBitMask = BodyType.deathObject.rawValue
         body.contactTestBitMask = BodyType.platformObject.rawValue | BodyType.deathObject.rawValue | BodyType.water.rawValue | BodyType.grass.rawValue
         body.collisionBitMask = BodyType.platformObject.rawValue | BodyType.grass.rawValue
         body.friction = 0.9 //0 is like glass, 1 is like sandpaper to walk on

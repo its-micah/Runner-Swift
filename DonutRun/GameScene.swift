@@ -120,8 +120,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         screenWidth = self.view!.bounds.width
         screenHeight = self.view!.bounds.height
 
-        copStartingPosition = CGPointMake(900, 0)
-
 
         levelUnitWidth = screenWidth
         levelUnitHeight = screenHeight
@@ -140,9 +138,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         thePlayer.zPosition = 101
         thePlayer.setScale(0.7)
 
-        cop.position = copStartingPosition
         cop.zPosition = 101
         cop.setScale(0.26)
+        copStartingPosition = CGPointMake(screenWidth + cop.size.width, 0)
+        cop.position = copStartingPosition
+
 
         addLevelUnits()
 
@@ -393,6 +393,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
 
         }
+
+        if (DRGameManager.sharedInstance.timeForNewCop()) {
+            // check to see if cop is off screen
+            // if yes, move cop to x, y (-300, 0)
+            if cop.position.x < (thePlayer.position.x - 300)  {
+                cop.position = CGPointMake(thePlayer.position.x + 800, -150)
+            }
+        }
+
 
 
         let nextTier:CGFloat = ((levelUnitCounter * levelUnitWidth) - (CGFloat(initialUnits) * levelUnitWidth))
