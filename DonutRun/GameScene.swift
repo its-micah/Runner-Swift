@@ -81,6 +81,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let worldNode:SKNode = SKNode()
     let theDonut:Donut = Donut(imageNamed: "DonutRun_1")
     var cop:Cop = Cop(imageNamed: "Cop2_1")
+    var cop1 = Cop(imageNamed: "Cop2_1")
+//    var cop2 = Cop(imageNamed: "Cop2_1")
+//    var cop3 = Cop(imageNamed: "Cop2_1")
+
+
+    var copArray = [Cop]()
 
     var isDead:Bool = false
     var clearOffscreenLevelUnits:Bool = false
@@ -103,6 +109,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     override func didMoveToView(view: SKView) {
 
+        copArray += [cop1]
+//        copArray += [cop2]
+//        copArray += [cop3]
 
         self.physicsWorld.contactDelegate = self
 
@@ -134,14 +143,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         worldNode.addChild(theDonut)
         worldNode.addChild(cop)
+        worldNode.addChild(cop1)
+//        worldNode.addChild(cop2)
+//        worldNode.addChild(cop3)
+
         theDonut.position = startingPosition
         theDonut.zPosition = 101
         theDonut.setScale(0.7)
 
         cop.zPosition = 101
-        cop.setScale(0.26)
+//        cop.setScale(0.26)
+//        cop1.setScale(0.26)
+//        cop2.setScale(0.26)
+//        cop3.setScale(0.26)
+
         copStartingPosition = CGPointMake(screenWidth + cop.size.width, 0)
         cop.position = copStartingPosition
+        copArray[0].position = copStartingPosition
+
 
 
         addLevelUnits()
@@ -150,6 +169,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         assignLayers()
         setUpLayers()
+
+        self.view!.showsFPS = true
+        self.view!.showsNodeCount = true
 
     }
 
@@ -378,17 +400,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             layerClouds.update(dt, affectAllNodes: true, parallax: true)
             //layerGameWorld?.update(dt, affectAllNodes: true, parallax: true)
 
-//            if lastUpdateTime == 0 {
-//                timeSinceCopAdded += currentTime - lastUpdateTime;
-//            }
-//
-//            if timeSinceCopAdded > 5 {
-//                worldNode.addChild(cop)
-//                cop.position = copStartingPosition
-//                cop.zPosition = 101
-//                cop.setScale(0.22)
-//                self.timeSinceCopAdded = 0
-//            }
 
 
 
@@ -397,9 +408,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (DRGameManager.sharedInstance.timeForNewCop()) {
             // check to see if cop is off screen
             // if yes, move cop to x, y (-300, 0)
-            if cop.position.x < (theDonut.position.x - 300)  {
+            if cop.position.x < (theDonut.position.x - 400) && copArray[0].position.x > (theDonut.position.x - 300)  {
                 cop.position = CGPointMake(theDonut.position.x + 800, -150)
+            } else if copArray[0].position.x < (theDonut.position.x - 400){
+                copArray[0].position = CGPointMake(theDonut.position.x + 800, -150)
             }
+
         }
 
 
@@ -418,6 +432,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
             theDonut.update()
             cop.update()
+            cop1.update()
 
 
         }
@@ -428,7 +443,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         theDonut.position = CGPointMake(theDonut.position.x + 5, theDonut.position.y)
 
-        cop.position = CGPointMake(cop.position.x + 5, cop.position.y)
+        //cop.position = CGPointMake(cop.position.x + 5, cop.position.y)
 
     }
 

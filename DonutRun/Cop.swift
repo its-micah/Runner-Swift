@@ -14,7 +14,7 @@ class Cop: SKSpriteNode {
 
     var runAction:SKAction?
 
-    var minSpeed:CGFloat = 5
+    var minSpeed:CGFloat = 2.5
 
 
     required init(coder aDecoder: NSCoder) {

@@ -21,7 +21,7 @@ class DRGameManager {
     }
 
     func displayGameScore() {
-        println("\(__FUNCTION__) \(self.gameScore)")
+        //println("\(__FUNCTION__) \(self.gameScore)")
     }
 
     func incrementGameScore(scoreInc: Int) {
@@ -31,7 +31,7 @@ class DRGameManager {
     func randomizeCopCounter() {
         randomCopCounter = arc4random_uniform(100)
         randomCopCounter++
-        println("randomCopCounter = \(self.randomCopCounter)")
+        //println("randomCopCounter = \(self.randomCopCounter)")
     }
 
     func timeForNewCop() -> Bool {
@@ -40,7 +40,7 @@ class DRGameManager {
             DRGameManager.sharedInstance.randomizeCopCounter()
             timeForNewCop = true
         }
-        println("timeForNewCop = \(self.randomCopCounter)")
+        //println("timeForNewCop = \(self.randomCopCounter)")
         return timeForNewCop
     }
 
