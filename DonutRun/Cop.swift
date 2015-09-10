@@ -14,8 +14,7 @@ class Cop: SKSpriteNode {
 
     var runAction:SKAction?
 
-    var maxJump:CGFloat = 30
-    var minSpeed:CGFloat = 3
+    var minSpeed:CGFloat = 2.5
 
 
     required init(coder aDecoder: NSCoder) {
@@ -41,8 +40,8 @@ class Cop: SKSpriteNode {
         body.dynamic = true
         body.affectedByGravity = true
         body.allowsRotation = false
-        body.restitution = 0.15
-        body.categoryBitMask = BodyType.player.rawValue
+        body.restitution = 0
+        //body.categoryBitMask = BodyType.deathObject.rawValue
         body.contactTestBitMask = BodyType.platformObject.rawValue | BodyType.deathObject.rawValue | BodyType.water.rawValue | BodyType.grass.rawValue
         body.collisionBitMask = BodyType.platformObject.rawValue | BodyType.grass.rawValue
         body.friction = 0.9 //0 is like glass, 1 is like sandpaper to walk on
@@ -62,7 +61,7 @@ class Cop: SKSpriteNode {
         var array = [String]()
 
         //or setup an array with exactly the sequential frames start from 1
-        for var i=1; i <= 30; i++ {
+        for var i=1; i <= 16; i++ {
 
             let nameString = String(format: "Cop2_%i", i)
             array.append(nameString)
