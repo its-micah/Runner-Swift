@@ -159,8 +159,6 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
         addLevelUnits()
 
-        startLoopingBackground()
-
         assignLayers()
         setUpLayers()
 
