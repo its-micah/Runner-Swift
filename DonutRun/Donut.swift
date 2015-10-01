@@ -16,14 +16,28 @@ class Donut: SKSpriteNode {
     var runAction:SKAction?
     var doubleJumpAction:SKAction?
 
+    enum DonutState {
+        case jumping
+        case runnning
+        case falling
+        case doubleJumping
+        case dead
+    }
+
+    var donutState:DonutState?
+
 
     var isJumping:Bool = false
     var isDoubleJumping:Bool = false
     var isRunning:Bool = false
+    var isGoingNuts:Bool = false
+    var velocity:CGPoint = CGPointMake(0,0)
 
     var jumpAmount:CGFloat = 0
-    var maxJump:CGFloat = 33
+    var maxJump:CGFloat = 28
+    var maxDoubleJump:CGFloat = 33
     var minSpeed:CGFloat = 3.5
+    var jumpCount:CGFloat = 0
 
 
 
@@ -40,9 +54,6 @@ class Donut: SKSpriteNode {
         super.init(texture: imageTexture, color:SKColor.clearColor(), size: imageTexture.size() )  //Swift 2
 
 
-
-
-
         //let body:SKPhysicsBody = SKPhysicsBody(circleOfRadius: imageTexture.size().width / 2 )
         //let body:SKPhysicsBody = SKPhysicsBody(texture: imageTexture, size: imageTexture.size())
         let body:SKPhysicsBody = SKPhysicsBody(circleOfRadius: imageTexture.size().height / 2.15)
@@ -51,6 +62,7 @@ class Donut: SKSpriteNode {
         body.affectedByGravity = true
         body.allowsRotation = false
         body.restitution = 0.15
+        body.mass = 0.4
         body.categoryBitMask = BodyType.player.rawValue
         body.contactTestBitMask = BodyType.platformObject.rawValue | BodyType.deathObject.rawValue | BodyType.water.rawValue | BodyType.grass.rawValue
         body.collisionBitMask = BodyType.platformObject.rawValue | BodyType.grass.rawValue
@@ -60,7 +72,7 @@ class Donut: SKSpriteNode {
 
         setUpRun()
         setUpJump()
-        setUpGlide()
+        setUpDoubleJump()
 
         startRun()
 
@@ -69,9 +81,10 @@ class Donut: SKSpriteNode {
 
     func update() {
 
+
         if isDoubleJumping == true {
 
-            self.position = CGPointMake(self.position.x + minSpeed, self.position.y - 0.4)
+            self.position = CGPointMake(self.position.x + minSpeed, self.position.y + jumpAmount)
 
 
         } else {
@@ -79,7 +92,6 @@ class Donut: SKSpriteNode {
             self.position = CGPointMake(self.position.x + minSpeed, self.position.y + jumpAmount)
 
         }
-
 
 
     }
@@ -148,16 +160,16 @@ class Donut: SKSpriteNode {
 
     }
 
-    func setUpGlide() {
+    func setUpDoubleJump() {
 
-        let atlas = SKTextureAtlas (named: "Ogre")
+        let atlas = SKTextureAtlas (named: "DonutDoubleJump")
 
         var array = [String]()
 
         //or setup an array with exactly the sequential frames start from 1
-        for var i=1; i <= 4; i++ {
+        for var i=1; i <= 14; i++ {
 
-            let nameString = String(format: "ogre_slide%i", i)
+            let nameString = String(format: "DonutDoubleJump_%i", i)
             array.append(nameString)
 
         }
@@ -172,37 +184,70 @@ class Donut: SKSpriteNode {
 
         }
 
-        let atlasAnimation = SKAction.animateWithTextures(atlasTextures, timePerFrame: 1.0/20, resize: true , restore:false )
-        doubleJumpAction =  SKAction.repeatActionForever(atlasAnimation)
-
-
+        let atlasAnimation = SKAction.animateWithTextures(atlasTextures, timePerFrame: 1.0/30, resize: true , restore:false )
+        doubleJumpAction =  SKAction.repeatAction(atlasAnimation, count: 1)
 
     }
-
-
 
 
 
     func startRun(){
-
+        self.removeActionForKey("jumpKey")
+        self.removeActionForKey("doubleJumpKey")
         self.runAction(runAction!, withKey: "runKey")
+        isRunning = true
+        isJumping = false
+        isDoubleJumping = false
 
     }
 
     func startJump(){
-
+        self.removeActionForKey("runKey")
         self.runAction(jumpAction!, withKey: "jumpKey")
         isRunning == false
         isDoubleJumping == false
         isJumping == true
     }
 
+    func startDoubleJump(){
+        self.removeActionForKey("runKey")
+        self.removeActionForKey("jumpKey")
+        self.runAction(doubleJumpAction!, withKey: "doubleJumpKey")
+        isJumping = false
+        isRunning = false
+        isDoubleJumping = true
+    }
+
+
 
     func jump() {
+
+        // if self.position.y == -183, the donut is on the ground. Anything above that, he's in the air.
+
+        if (donutState == DonutState.jumping && isDoubleJumping == false) {
+            changeState(DonutState.doubleJumping)
+            jumpAmount = maxDoubleJump
+            startDoubleJump()
+
+            self.physicsBody?.velocity = CGVectorMake(0, jumpAmount)
+
+
+            let callAgain:SKAction = SKAction.runBlock(taperJump)
+            let wait:SKAction = SKAction.waitForDuration(1/60)
+            let seq:SKAction = SKAction.sequence([wait, callAgain])
+            let repeat = SKAction.repeatAction(seq, count: 20)
+            let stop = SKAction.runBlock(stopDoubleJump)
+            let seq2 = SKAction.sequence([repeat, stop])
+            
+            self.runAction(seq2)
+
+
+        }
 
         if isJumping == false && isDoubleJumping == false {
 
             startJump()
+            changeState(DonutState.jumping)
 
             jumpAmount = maxJump
 
@@ -214,25 +259,6 @@ class Donut: SKSpriteNode {
             let seq2 = SKAction.sequence([repeat, stop])
 
             self.runAction(seq2)
-
-        }
-
-        if isJumping == true && isDoubleJumping == false {
-            
-
-            startJump()
-
-            jumpAmount = maxJump
-
-            let callAgain:SKAction = SKAction.runBlock(taperJump)
-            let wait:SKAction = SKAction.waitForDuration(1/60)
-            let seq:SKAction = SKAction.sequence([wait, callAgain])
-            let repeat = SKAction.repeatAction(seq, count: 20)
-            let stop = SKAction.runBlock(stopJump)
-            let seq2 = SKAction.sequence([repeat, stop])
-
-            self.runAction(seq2)
-
 
         }
 
@@ -253,38 +279,47 @@ class Donut: SKSpriteNode {
         jumpAmount = 0
 
         if isDoubleJumping == false {
-
+            changeState(DonutState.runnning)
             startRun()
         }
 
 
     }
 
-    
-    func startGlide(){
 
-        self.runAction(doubleJumpAction!)
-        
-    }
+    func doubleJump() {
 
+        if isJumping == true && isDoubleJumping == false {
 
-    func glide() {
-
-        if isJumping == true {
-
-            startGlide()
+            startDoubleJump()
         }
 
+        let wait:SKAction = SKAction.waitForDuration(1)
+        let block:SKAction = SKAction.runBlock(stopDoubleJump)
+        let seq:SKAction = SKAction.sequence([wait, block])
+
+        self.runAction(seq)
 
     }
 
 
 
-    func stopGlide() {
-
+    func stopDoubleJump() {
+        
+        changeState(DonutState.runnning)
         self.startRun()
 
     }
+
+
+    func changeState(newState:DonutState) {
+        if (newState == self.donutState) {
+            return
+        }
+        self.donutState = newState;
+        print("Character changeState = \(self.donutState)")
+    }
+
 
 
 

@@ -10,6 +10,19 @@
 		C7007E831B989C00008D7921 /* DonutJump.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C7007E821B989C00008D7921 /* DonutJump.atlas */; };
 		C7007E851B989FAC008D7921 /* Cop2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C7007E841B989FAC008D7921 /* Cop2.atlas */; };
 		C7007E871B9B4024008D7921 /* DRGameManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7007E861B9B4024008D7921 /* DRGameManger.swift */; };
+		C717171A1BA7493D00B3ABA4 /* DonutDoubleJump.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C71717191BA7493D00B3ABA4 /* DonutDoubleJump.atlas */; };
+		C73B36E31BA36E38006C8875 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B36D71BA36E38006C8875 /* CGFloat+Extensions.swift */; };
+		C73B36E41BA36E38006C8875 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B36D81BA36E38006C8875 /* CGPoint+Extensions.swift */; };
+		C73B36E51BA36E38006C8875 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B36D91BA36E38006C8875 /* CGVector+Extensions.swift */; };
+		C73B36E61BA36E38006C8875 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B36DA1BA36E38006C8875 /* Int+Extensions.swift */; };
+		C73B36E71BA36E38006C8875 /* SKAction+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B36DB1BA36E38006C8875 /* SKAction+Extensions.swift */; };
+		C73B36E81BA36E38006C8875 /* SKAction+SpecialEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B36DC1BA36E38006C8875 /* SKAction+SpecialEffects.swift */; };
+		C73B36E91BA36E38006C8875 /* SKColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B36DD1BA36E38006C8875 /* SKColor+Extensions.swift */; };
+		C73B36EA1BA36E38006C8875 /* SKNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B36DE1BA36E38006C8875 /* SKNode+Extensions.swift */; };
+		C73B36EB1BA36E38006C8875 /* SKTAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B36DF1BA36E38006C8875 /* SKTAudio.swift */; };
+		C73B36EC1BA36E38006C8875 /* SKTEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B36E01BA36E38006C8875 /* SKTEffects.swift */; };
+		C73B36ED1BA36E38006C8875 /* SKTTimingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B36E11BA36E38006C8875 /* SKTTimingFunctions.swift */; };
+		C73B36EE1BA36E38006C8875 /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B36E21BA36E38006C8875 /* Vector3.swift */; };
 		C75175F71B8F973400527E3A /* SampleAssets.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C75175F61B8F973400527E3A /* SampleAssets.atlas */; };
 		C75175FD1B8FB7AC00527E3A /* LayerHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75175F91B8FB7AC00527E3A /* LayerHUD.swift */; };
 		C75175FE1B8FB7AC00527E3A /* LayerWorld.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75175FA1B8FB7AC00527E3A /* LayerWorld.swift */; };
@@ -28,6 +41,8 @@
 		C791D20E1B7B9915000D4A7E /* coffeeBean.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C791D20C1B7B9915000D4A7E /* coffeeBean.atlas */; };
 		C791D20F1B7B9915000D4A7E /* donutRunTest.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C791D20D1B7B9915000D4A7E /* donutRunTest.atlas */; };
 		C791D2111B7BC845000D4A7E /* Donut.swift in Sources */ = {isa = PBXBuildFile; fileRef = C791D2101B7BC845000D4A7E /* Donut.swift */; };
+		C7B8ED2B1BAF7D67009FC450 /* CoffeeBean.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B8ED2A1BAF7D67009FC450 /* CoffeeBean.swift */; };
+		C7B8ED2D1BAF7EFF009FC450 /* coffeeBean.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C7B8ED2C1BAF7EFF009FC450 /* coffeeBean.atlas */; };
 		C7DA30F21B90E14000977F75 /* Cop.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DA30F11B90E14000977F75 /* Cop.swift */; };
 		C7EE872F1B83D4CB00165B64 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EE872E1B83D4CB00165B64 /* MainMenu.swift */; };
 		C7EE87341B83D52700165B64 /* SGScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EE87301B83D52700165B64 /* SGScene.swift */; };
@@ -53,6 +68,19 @@
 		C7007E821B989C00008D7921 /* DonutJump.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = DonutJump.atlas; sourceTree = "<group>"; };
 		C7007E841B989FAC008D7921 /* Cop2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Cop2.atlas; sourceTree = "<group>"; };
 		C7007E861B9B4024008D7921 /* DRGameManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DRGameManger.swift; sourceTree = "<group>"; };
+		C71717191BA7493D00B3ABA4 /* DonutDoubleJump.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = DonutDoubleJump.atlas; sourceTree = "<group>"; };
+		C73B36D71BA36E38006C8875 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
+		C73B36D81BA36E38006C8875 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
+		C73B36D91BA36E38006C8875 /* CGVector+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
+		C73B36DA1BA36E38006C8875 /* Int+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
+		C73B36DB1BA36E38006C8875 /* SKAction+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKAction+Extensions.swift"; sourceTree = "<group>"; };
+		C73B36DC1BA36E38006C8875 /* SKAction+SpecialEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKAction+SpecialEffects.swift"; sourceTree = "<group>"; };
+		C73B36DD1BA36E38006C8875 /* SKColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKColor+Extensions.swift"; sourceTree = "<group>"; };
+		C73B36DE1BA36E38006C8875 /* SKNode+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKNode+Extensions.swift"; sourceTree = "<group>"; };
+		C73B36DF1BA36E38006C8875 /* SKTAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTAudio.swift; sourceTree = "<group>"; };
+		C73B36E01BA36E38006C8875 /* SKTEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTEffects.swift; sourceTree = "<group>"; };
+		C73B36E11BA36E38006C8875 /* SKTTimingFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTTimingFunctions.swift; sourceTree = "<group>"; };
+		C73B36E21BA36E38006C8875 /* Vector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
 		C75175F61B8F973400527E3A /* SampleAssets.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = SampleAssets.atlas; sourceTree = "<group>"; };
 		C75175F91B8FB7AC00527E3A /* LayerHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerHUD.swift; sourceTree = "<group>"; };
 		C75175FA1B8FB7AC00527E3A /* LayerWorld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerWorld.swift; sourceTree = "<group>"; };
@@ -75,6 +103,8 @@
 		C791D20C1B7B9915000D4A7E /* coffeeBean.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = coffeeBean.atlas; sourceTree = "<group>"; };
 		C791D20D1B7B9915000D4A7E /* donutRunTest.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = donutRunTest.atlas; sourceTree = "<group>"; };
 		C791D2101B7BC845000D4A7E /* Donut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Donut.swift; sourceTree = "<group>"; };
+		C7B8ED2A1BAF7D67009FC450 /* CoffeeBean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeeBean.swift; sourceTree = "<group>"; };
+		C7B8ED2C1BAF7EFF009FC450 /* coffeeBean.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = coffeeBean.atlas; sourceTree = "<group>"; };
 		C7DA30F11B90E14000977F75 /* Cop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cop.swift; sourceTree = "<group>"; };
 		C7EE872E1B83D4CB00165B64 /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		C7EE87301B83D52700165B64 /* SGScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGScene.swift; sourceTree = "<group>"; };
@@ -104,6 +134,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C73B36D61BA36E38006C8875 /* SKTUtils */ = {
+			isa = PBXGroup;
+			children = (
+				C73B36D71BA36E38006C8875 /* CGFloat+Extensions.swift */,
+				C73B36D81BA36E38006C8875 /* CGPoint+Extensions.swift */,
+				C73B36D91BA36E38006C8875 /* CGVector+Extensions.swift */,
+				C73B36DA1BA36E38006C8875 /* Int+Extensions.swift */,
+				C73B36DB1BA36E38006C8875 /* SKAction+Extensions.swift */,
+				C73B36DC1BA36E38006C8875 /* SKAction+SpecialEffects.swift */,
+				C73B36DD1BA36E38006C8875 /* SKColor+Extensions.swift */,
+				C73B36DE1BA36E38006C8875 /* SKNode+Extensions.swift */,
+				C73B36DF1BA36E38006C8875 /* SKTAudio.swift */,
+				C73B36E01BA36E38006C8875 /* SKTEffects.swift */,
+				C73B36E11BA36E38006C8875 /* SKTTimingFunctions.swift */,
+				C73B36E21BA36E38006C8875 /* Vector3.swift */,
+			);
+			path = SKTUtils;
+			sourceTree = "<group>";
+		};
 		C75175F81B8FB79300527E3A /* Layers */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +172,7 @@
 				C75E19BA1B8F693800FE5BAC /* GameScene.swift */,
 				C791D1EA1B7B985E000D4A7E /* GameScene.sks */,
 				C7EE87381B83D57300165B64 /* Introducer.swift */,
+				C7B8ED2A1BAF7D67009FC450 /* CoffeeBean.swift */,
 				C7EE872E1B83D4CB00165B64 /* MainMenu.swift */,
 			);
 			name = Scenes;
@@ -135,6 +185,19 @@
 				C7DA30F11B90E14000977F75 /* Cop.swift */,
 			);
 			name = Players;
+			sourceTree = "<group>";
+		};
+		C76B4A661BBDC63A008003A7 /* Atlases */ = {
+			isa = PBXGroup;
+			children = (
+				C7007E841B989FAC008D7921 /* Cop2.atlas */,
+				C71717191BA7493D00B3ABA4 /* DonutDoubleJump.atlas */,
+				C7B8ED2C1BAF7EFF009FC450 /* coffeeBean.atlas */,
+				C791D20D1B7B9915000D4A7E /* donutRunTest.atlas */,
+				C791D20C1B7B9915000D4A7E /* coffeeBean.atlas */,
+				C7007E821B989C00008D7921 /* DonutJump.atlas */,
+			);
+			name = Atlases;
 			sourceTree = "<group>";
 		};
 		C791D1DA1B7B985E000D4A7E = {
@@ -159,19 +222,16 @@
 			isa = PBXGroup;
 			children = (
 				C7EE873C1B83D92900165B64 /* GameSettings.plist */,
-				C7007E841B989FAC008D7921 /* Cop2.atlas */,
 				C7EE87301B83D52700165B64 /* SGScene.swift */,
 				C7007E861B9B4024008D7921 /* DRGameManger.swift */,
 				C7EE87311B83D52700165B64 /* SGExtensions.swift */,
-				C7007E821B989C00008D7921 /* DonutJump.atlas */,
 				C7EE87321B83D52700165B64 /* SGResolution.swift */,
 				C7EE87331B83D52700165B64 /* SGGameKit.swift */,
-				C791D20C1B7B9915000D4A7E /* coffeeBean.atlas */,
-				C791D20D1B7B9915000D4A7E /* donutRunTest.atlas */,
 				C791D1E81B7B985E000D4A7E /* AppDelegate.swift */,
 				C7EE873A1B83D8E500165B64 /* SGAssetManager.swift */,
 				C75175F61B8F973400527E3A /* SampleAssets.atlas */,
 				C791D1EE1B7B985E000D4A7E /* GameViewController.swift */,
+				C76B4A661BBDC63A008003A7 /* Atlases */,
 				C75176011B8FB7DB00527E3A /* Scenes */,
 				C75176021B8FBC9900527E3A /* Players */,
 				C75175F81B8FB79300527E3A /* Layers */,
@@ -186,6 +246,7 @@
 		C791D1E61B7B985E000D4A7E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C73B36D61BA36E38006C8875 /* SKTUtils */,
 				C791D1E71B7B985E000D4A7E /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -291,7 +352,9 @@
 				C791D20E1B7B9915000D4A7E /* coffeeBean.atlas in Resources */,
 				C7007E851B989FAC008D7921 /* Cop2.atlas in Resources */,
 				C791D1F71B7B985E000D4A7E /* LaunchScreen.xib in Resources */,
+				C717171A1BA7493D00B3ABA4 /* DonutDoubleJump.atlas in Resources */,
 				C791D1F41B7B985E000D4A7E /* Images.xcassets in Resources */,
+				C7B8ED2D1BAF7EFF009FC450 /* coffeeBean.atlas in Resources */,
 				C791D1EB1B7B985E000D4A7E /* GameScene.sks in Resources */,
 				C791D20F1B7B9915000D4A7E /* donutRunTest.atlas in Resources */,
 				C791D1F21B7B985E000D4A7E /* Main.storyboard in Resources */,
@@ -318,22 +381,35 @@
 				C7EE87341B83D52700165B64 /* SGScene.swift in Sources */,
 				C7EE87351B83D52700165B64 /* SGExtensions.swift in Sources */,
 				C7EE87391B83D57300165B64 /* Introducer.swift in Sources */,
+				C73B36E71BA36E38006C8875 /* SKAction+Extensions.swift in Sources */,
 				C75175FF1B8FB7AC00527E3A /* Layer.swift in Sources */,
+				C73B36EE1BA36E38006C8875 /* Vector3.swift in Sources */,
+				C73B36E51BA36E38006C8875 /* CGVector+Extensions.swift in Sources */,
 				C7007E871B9B4024008D7921 /* DRGameManger.swift in Sources */,
 				C791D2111B7BC845000D4A7E /* Donut.swift in Sources */,
+				C7B8ED2B1BAF7D67009FC450 /* CoffeeBean.swift in Sources */,
+				C73B36E31BA36E38006C8875 /* CGFloat+Extensions.swift in Sources */,
+				C73B36E41BA36E38006C8875 /* CGPoint+Extensions.swift in Sources */,
 				C7EE872F1B83D4CB00165B64 /* MainMenu.swift in Sources */,
+				C73B36EA1BA36E38006C8875 /* SKNode+Extensions.swift in Sources */,
 				C75E19BD1B8F693800FE5BAC /* GameScene.swift in Sources */,
 				C75E19BE1B8F693800FE5BAC /* LevelUnit.swift in Sources */,
+				C73B36EC1BA36E38006C8875 /* SKTEffects.swift in Sources */,
 				C7EE873B1B83D8E500165B64 /* SGAssetManager.swift in Sources */,
+				C73B36ED1BA36E38006C8875 /* SKTTimingFunctions.swift in Sources */,
 				C7EE87361B83D52700165B64 /* SGResolution.swift in Sources */,
 				C791D1EF1B7B985E000D4A7E /* GameViewController.swift in Sources */,
+				C73B36E61BA36E38006C8875 /* Int+Extensions.swift in Sources */,
 				C75175FE1B8FB7AC00527E3A /* LayerWorld.swift in Sources */,
+				C73B36E81BA36E38006C8875 /* SKAction+SpecialEffects.swift in Sources */,
 				C75E19BF1B8F693800FE5BAC /* Object.swift in Sources */,
 				C7EE87371B83D52700165B64 /* SGGameKit.swift in Sources */,
 				C791D1E91B7B985E000D4A7E /* AppDelegate.swift in Sources */,
 				C75176001B8FB7AC00527E3A /* LayerBackground.swift in Sources */,
 				C7DA30F21B90E14000977F75 /* Cop.swift in Sources */,
+				C73B36EB1BA36E38006C8875 /* SKTAudio.swift in Sources */,
 				C75175FD1B8FB7AC00527E3A /* LayerHUD.swift in Sources */,
+				C73B36E91BA36E38006C8875 /* SKColor+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

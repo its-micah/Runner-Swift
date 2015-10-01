@@ -40,7 +40,7 @@ var factor:CGFloat = 1;
 var jumpCount:Int = 0;
 
 
-class GameScene: SKScene, SKPhysicsContactDelegate {
+class GameScene: SGScene, SKPhysicsContactDelegate {
 
     enum gameState {
         case gamePreGame
@@ -80,6 +80,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var screenHeight:CGFloat = 0
     let worldNode:SKNode = SKNode()
     let theDonut:Donut = Donut(imageNamed: "DonutRun_1")
+    let bean:CoffeeBean = CoffeeBean(imageNamed: "coffeeBean_0")
     var cop:Cop = Cop(imageNamed: "Cop2_1")
     var cop1 = Cop(imageNamed: "Cop2_1")
 //    var cop2 = Cop(imageNamed: "Cop2_1")
@@ -93,6 +94,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     let startingPosition:CGPoint = CGPointMake(0, 0)
     var copStartingPosition:CGPoint = CGPointMake(0, 0)
+    let coffeeBeanStartingPosition:CGPoint = CGPointMake(0, 0)
 
 
 
@@ -115,8 +117,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         self.physicsWorld.contactDelegate = self
 
-        tapRec.addTarget(self, action: "tapped")
-        self.view!.addGestureRecognizer(tapRec)
+//        tapRec.addTarget(self, action: "tapped")
+//        self.view!.addGestureRecognizer(tapRec)
 
 
         self.physicsBody = SKPhysicsBody(edgeLoopFromRect: CGRectMake(0.0, buffer, self.frame.size.width, self.frame.size.height))
@@ -144,6 +146,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         worldNode.addChild(theDonut)
         worldNode.addChild(cop)
         worldNode.addChild(cop1)
+        worldNode.addChild(bean)
 //        worldNode.addChild(cop2)
 //        worldNode.addChild(cop3)
 
@@ -156,6 +159,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //        cop1.setScale(0.26)
 //        cop2.setScale(0.26)
 //        cop3.setScale(0.26)
+
+        bean.position = CGPointMake(screenWidth + bean.size.width, 100)
 
         copStartingPosition = CGPointMake(screenWidth + cop.size.width, 0)
         cop.position = copStartingPosition
@@ -256,7 +261,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
 
     func tapped() {
-
         theDonut.jump()
     }
 
@@ -374,10 +378,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func randomValueBetween(low: CFTimeInterval, high: CFTimeInterval) -> CFTimeInterval {
         return ((high * low) + low) - (low / 3)
     }
-    
 
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
 
+    override func screenInteractionStarted(location: CGPoint) {
+        if currentGameState == .gameActive {
+            tapped()
+        }
     }
     
    
@@ -433,6 +439,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             theDonut.update()
             cop.update()
             cop1.update()
+            bean.update()
 
 
         }
@@ -491,9 +498,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
 
         }
-
-
-
 
 
         //// check on grass
