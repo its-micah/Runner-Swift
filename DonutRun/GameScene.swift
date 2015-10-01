@@ -57,8 +57,6 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
     var initialUnits:Int = 2
     var levelUnitCurrentlyOn:LevelUnit?
 
-    //let loopingBG = SKSpriteNode(imageNamed: "Looping_BG@2x")
-    //let loopingBG2 = SKSpriteNode(imageNamed: "Looping_BG@2x")
 
     //GameState
     var currentGameState:gameState = .gameActive
@@ -66,8 +64,6 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
     var timeSinceCopAdded: NSTimeInterval = 0
     var dt: NSTimeInterval = 0
 
-    //    let loopingBG = SKSpriteNode(imageNamed: "Looping_BG@2x")
-    //    let loopingBG2 = SKSpriteNode(imageNamed: "Looping_BG@2x")
 
     var layerBackground01Static = SKNode()
     var layerBackground02Slow = LayerBackground()
@@ -83,8 +79,7 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
     let bean:CoffeeBean = CoffeeBean(imageNamed: "coffeeBean_0")
     var cop:Cop = Cop(imageNamed: "Cop2_1")
     var cop1 = Cop(imageNamed: "Cop2_1")
-//    var cop2 = Cop(imageNamed: "Cop2_1")
-//    var cop3 = Cop(imageNamed: "Cop2_1")
+
 
 
     var copArray = [Cop]()
@@ -147,25 +142,19 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
         worldNode.addChild(cop)
         worldNode.addChild(cop1)
         worldNode.addChild(bean)
-//        worldNode.addChild(cop2)
-//        worldNode.addChild(cop3)
+
 
         theDonut.position = startingPosition
         theDonut.zPosition = 101
         theDonut.setScale(0.7)
 
         cop.zPosition = 101
-//        cop.setScale(0.26)
-//        cop1.setScale(0.26)
-//        cop2.setScale(0.26)
-//        cop3.setScale(0.26)
 
         bean.position = CGPointMake(screenWidth + bean.size.width, 100)
 
         copStartingPosition = CGPointMake(screenWidth + cop.size.width, 0)
         cop.position = copStartingPosition
         copArray[0].position = copStartingPosition
-
 
 
         addLevelUnits()
@@ -253,13 +242,6 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
     }
 
 
-
-    func startLoopingBackground() {
-
-
-    }
-
-
     func tapped() {
         theDonut.jump()
     }
@@ -300,9 +282,6 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
             levelUnit.position = CGPointMake( xLocation , yLocation)
 
-
-            //println(levelArray)
-
         }
         
         
@@ -330,9 +309,6 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
         levelUnitCounter++
 
-
-
-
     }
 
 
@@ -343,7 +319,6 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
             createLevelUnit()
 
         }
-
 
     }
 
@@ -375,6 +350,7 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
         
     }
 
+
     func randomValueBetween(low: CFTimeInterval, high: CFTimeInterval) -> CFTimeInterval {
         return ((high * low) + low) - (low / 3)
     }
@@ -405,9 +381,6 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
             layerBackground03Fast.update(dt, affectAllNodes: true, parallax: true)
             layerClouds.update(dt, affectAllNodes: true, parallax: true)
             //layerGameWorld?.update(dt, affectAllNodes: true, parallax: true)
-
-
-
 
         }
 
@@ -474,15 +447,9 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
     }
 
 
-
-
     func didBeginContact(contact: SKPhysicsContact) {
 
-
         // let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
-
-
-
 
         //// check on water
 
@@ -542,11 +509,7 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 //            loopingBG.runAction(seqBG)
 //            loopingBG2.runAction(seqBG)
 
-
-
         }
-
-
 
     }
 
