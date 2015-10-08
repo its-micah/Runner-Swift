@@ -393,6 +393,12 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
         }
 
+        if (DRGameManager.sharedInstance.timeForCoffeeBean()) {
+            let bean:CoffeeBean = CoffeeBean(imageNamed: "coffeeBean_0")
+            bean.position = CGPointMake(screenWidth + bean.size.width, 100)
+            worldNode.addChild(bean)
+        }
+
 
 
         let nextTier:CGFloat = ((levelUnitCounter * levelUnitWidth) - (CGFloat(initialUnits) * levelUnitWidth))
@@ -465,7 +471,27 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
         }
 
 
-        //// check on grass
+        // check on ground
+
+        if contact.bodyA.categoryBitMask == BodyType.grass.rawValue && contact.bodyB.categoryBitMask == BodyType.player.rawValue {
+
+            println("ground touched")
+            theDonut.isOnGround = true
+            theDonut.startRun()
+
+        }
+
+        // check on platforms
+
+        if contact.bodyA.categoryBitMask == BodyType.platformObject.rawValue && contact.bodyB.categoryBitMask == BodyType.player.rawValue {
+
+            println("platform touched")
+            theDonut.isOnGround = true
+            theDonut.startRun()
+            
+        }
+
+        //// check on death objects
 
         if (contact.bodyA.categoryBitMask == BodyType.player.rawValue  && contact.bodyB.categoryBitMask == BodyType.deathObject.rawValue ) {
 
@@ -474,6 +500,14 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
         } else if (contact.bodyA.categoryBitMask == BodyType.deathObject.rawValue  && contact.bodyB.categoryBitMask == BodyType.player.rawValue ) {
 
             killPlayer()
+
+        }
+
+        if (contact.bodyA.categoryBitMask == BodyType.player.rawValue  && contact.bodyB.categoryBitMask == BodyType.coffeeBeanObject.rawValue ) {
+
+            bean.removeFromParent()
+            coffeeBeanCount++
+            println("coffee bean count is now \(coffeeBeanCount)")
 
         }
 

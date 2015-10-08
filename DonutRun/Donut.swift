@@ -30,6 +30,7 @@ class Donut: SKSpriteNode {
     var isJumping:Bool = false
     var isDoubleJumping:Bool = false
     var isRunning:Bool = false
+    var isOnGround:Bool = false
     var isGoingNuts:Bool = false
     var velocity:CGPoint = CGPointMake(0,0)
 
@@ -226,6 +227,7 @@ class Donut: SKSpriteNode {
 
         if (donutState == DonutState.jumping && isDoubleJumping == false) {
             changeState(DonutState.doubleJumping)
+            isOnGround = false
             jumpAmount = maxDoubleJump
             startDoubleJump()
 
@@ -248,7 +250,7 @@ class Donut: SKSpriteNode {
 
             startJump()
             changeState(DonutState.jumping)
-
+            isOnGround = false
             jumpAmount = maxJump
 
             let callAgain:SKAction = SKAction.runBlock(taperJump)
@@ -306,9 +308,11 @@ class Donut: SKSpriteNode {
 
     func stopDoubleJump() {
         
-        changeState(DonutState.runnning)
-        self.startRun()
-
+        changeState(DonutState.falling)
+        if isOnGround == true {
+            self.startRun()
+            changeState(DonutState.runnning)
+        } 
     }
 
 
