@@ -14,6 +14,8 @@ class DRGameManager {
 
     var gameScore: Int = 5
     var randomCopCounter: UInt32 = 6
+    var randomCoffeeBeanCounter: UInt32 = 3
+
 
 
     private init() {
@@ -42,6 +44,22 @@ class DRGameManager {
         }
         //println("timeForNewCop = \(self.randomCopCounter)")
         return timeForNewCop
+    }
+
+    func randomizeCoffeeBeanCounter() {
+        randomCoffeeBeanCounter = arc4random_uniform(150)
+        randomCoffeeBeanCounter++
+        //println("randomCopCounter = \(self.randomCopCounter)")
+    }
+
+    func timeForCoffeeBean() -> Bool {
+        var timeForNewCoffeeBean: Bool = false
+        if(DRGameManager.sharedInstance.randomCoffeeBeanCounter-- == 1){
+            DRGameManager.sharedInstance.randomizeCoffeeBeanCounter()
+            timeForNewCoffeeBean = true
+        }
+        //println("timeForNewCop = \(self.randomCopCounter)")
+        return timeForNewCoffeeBean
     }
 
 
