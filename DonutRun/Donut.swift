@@ -321,7 +321,7 @@ class Donut: SKSpriteNode {
             return
         }
         self.donutState = newState;
-        print("Character changeState = \(self.donutState)")
+        //print("Character changeState = \(self.donutState)")
     }
 
 

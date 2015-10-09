@@ -64,34 +64,28 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
     var timeSinceCopAdded: NSTimeInterval = 0
     var dt: NSTimeInterval = 0
 
-
     var layerBackground01Static = SKNode()
     var layerBackground02Slow = LayerBackground()
     var layerClouds = LayerBackground()
     var layerBackground03Fast = LayerBackground()
 
-
-
     var screenWidth:CGFloat = 0
     var screenHeight:CGFloat = 0
     let worldNode:SKNode = SKNode()
     let theDonut:Donut = Donut(imageNamed: "DonutRun_1")
-    let bean:CoffeeBean = CoffeeBean(imageNamed: "coffeeBean_0")
+    var coffeeBean:CoffeeBean = CoffeeBean(imageNamed: "coffeeBean_0")
     var cop:Cop = Cop(imageNamed: "Cop2_1")
     var cop1 = Cop(imageNamed: "Cop2_1")
 
-
-
     var copArray = [Cop]()
+    var coffeeBeanArray = [CoffeeBean]()
 
     var isDead:Bool = false
     var clearOffscreenLevelUnits:Bool = false
 
     let startingPosition:CGPoint = CGPointMake(0, 0)
     var copStartingPosition:CGPoint = CGPointMake(0, 0)
-    let coffeeBeanStartingPosition:CGPoint = CGPointMake(0, 0)
-
-
+    var coffeeBeanStartingPosition:CGPoint = CGPointMake(0, 0)
 
     var lastUpdateTimeInterval:Int = 0;
     var timeSinceEnemyAdded:Int = 0;
@@ -107,6 +101,7 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
     override func didMoveToView(view: SKView) {
 
         copArray += [cop1]
+        coffeeBeanArray += [coffeeBean]
 //        copArray += [cop2]
 //        copArray += [cop3]
 
@@ -139,9 +134,9 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
         addChild(worldNode)
 
         worldNode.addChild(theDonut)
+        worldNode.addChild(coffeeBean)
         worldNode.addChild(cop)
-        worldNode.addChild(cop1)
-        worldNode.addChild(bean)
+        //worldNode.addChild(cop1)
 
 
         theDonut.position = startingPosition
@@ -150,10 +145,11 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
         cop.zPosition = 101
 
-        bean.position = CGPointMake(screenWidth + bean.size.width, 100)
+        coffeeBeanStartingPosition = CGPointMake(screenWidth + coffeeBean.size.width, 100)
 
         copStartingPosition = CGPointMake(screenWidth + cop.size.width, 0)
         cop.position = copStartingPosition
+        self.coffeeBean.position = coffeeBeanStartingPosition
         copArray[0].position = copStartingPosition
 
 
@@ -394,9 +390,15 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
         }
 
         if (DRGameManager.sharedInstance.timeForCoffeeBean()) {
-            let bean:CoffeeBean = CoffeeBean(imageNamed: "coffeeBean_0")
-            bean.position = CGPointMake(screenWidth + bean.size.width, 100)
-            worldNode.addChild(bean)
+            if coffeeBean.position.x < (theDonut.position.x - 400) && coffeeBeanArray[0].position.x > (theDonut.position.x - 300)  {
+                coffeeBean.position = CGPointMake(theDonut.position.x + 800, 100)
+                coffeeBean.hidden = false
+                coffeeBean.physicsBody?.categoryBitMask = BodyType.coffeeBeanObject.rawValue
+            } else if copArray[0].position.x < (theDonut.position.x - 400){
+                coffeeBeanArray[0].position = CGPointMake(theDonut.position.x + 800, 100)
+                coffeeBean.hidden = false
+                coffeeBean.physicsBody?.categoryBitMask = BodyType.coffeeBeanObject.rawValue
+            }
         }
 
 
@@ -416,7 +418,7 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
             theDonut.update()
             cop.update()
             cop1.update()
-            bean.update()
+            coffeeBean.update()
 
 
         }
@@ -453,8 +455,6 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
     func didBeginContact(contact: SKPhysicsContact) {
 
-        // let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
-
         //// check on water
 
         if (contact.bodyA.categoryBitMask == BodyType.player.rawValue  && contact.bodyB.categoryBitMask == BodyType.water.rawValue ) {
@@ -475,7 +475,7 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
         if contact.bodyA.categoryBitMask == BodyType.grass.rawValue && contact.bodyB.categoryBitMask == BodyType.player.rawValue {
 
-            println("ground touched")
+            //println("ground touched")
             theDonut.isOnGround = true
             theDonut.startRun()
 
@@ -485,7 +485,7 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
         if contact.bodyA.categoryBitMask == BodyType.platformObject.rawValue && contact.bodyB.categoryBitMask == BodyType.player.rawValue {
 
-            println("platform touched")
+            //println("platform touched")
             theDonut.isOnGround = true
             theDonut.startRun()
             
@@ -497,17 +497,19 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
             killPlayer()
 
-        } else if (contact.bodyA.categoryBitMask == BodyType.deathObject.rawValue  && contact.bodyB.categoryBitMask == BodyType.player.rawValue ) {
-
-            killPlayer()
-
         }
 
         if (contact.bodyA.categoryBitMask == BodyType.player.rawValue  && contact.bodyB.categoryBitMask == BodyType.coffeeBeanObject.rawValue ) {
 
-            bean.removeFromParent()
+            /* This works for now, but what we really need is for the bean to be removed from the parent instead of hidden. By removing it,
+               we don't have to worry about multiple touches from the two sprites making contact.
+            */
+
+            coffeeBean.hidden = true
+            coffeeBean.physicsBody?.categoryBitMask = BodyType.player.rawValue
             coffeeBeanCount++
             println("coffee bean count is now \(coffeeBeanCount)")
+
 
         }
 

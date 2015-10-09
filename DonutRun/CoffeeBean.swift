@@ -14,6 +14,8 @@ class CoffeeBean: SKSpriteNode {
 
     var runAction:SKAction?
 
+    var minSpeed:CGFloat = 2.5
+
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -31,12 +33,11 @@ class CoffeeBean: SKSpriteNode {
         body.dynamic = true
         body.affectedByGravity = false
         body.allowsRotation = false
-        body.restitution = 0.15
-        body.mass = 0.4
+        body.mass = 0
         body.categoryBitMask = BodyType.coffeeBeanObject.rawValue
         body.contactTestBitMask = BodyType.player.rawValue
         body.collisionBitMask = BodyType.player.rawValue
-        body.friction = 0.9 //0 is like glass, 1 is like sandpaper to walk on
+        body.friction = 0 //0 is like glass, 1 is like sandpaper to walk on
         self.physicsBody = body
 
         setUpRun()
@@ -83,9 +84,8 @@ class CoffeeBean: SKSpriteNode {
 
     func update() {
 
+        self.position = CGPointMake(self.position.x - minSpeed, self.position.y)
 
-                
-        
     }
 
 }
