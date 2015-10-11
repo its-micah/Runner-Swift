@@ -90,7 +90,7 @@ class Introducer: SKScene {
         gameTextures = textureAtlasesArray
         let endTime = CACurrentMediaTime()
         let timeDifference = endTime - startTime
-        println(NSString(format: "Loaded Texture Atlases in %0.2f seconds", timeDifference))
+        print(NSString(format: "Loaded Texture Atlases in %0.2f seconds", timeDifference))
         self.transitionToNextScene()
 
     })

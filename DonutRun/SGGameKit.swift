@@ -83,7 +83,7 @@ class SGGameKit: NSObject {
   func showGKGameCenterViewController(viewController: UIViewController!, state: Int) {
     
     if !gameCenterEnabled {
-      println("Local player is not authenticated")
+      print("Local player is not authenticated")
       return
     }
     
@@ -106,7 +106,7 @@ class SGGameKit: NSObject {
   
   func reportAchievements(achievements: [GKAchievement]) {
     if !gameCenterEnabled {
-      println("Local player is not authenticated")
+      print("Local player is not authenticated")
       return
     }
     GKAchievement.reportAchievements(achievements) {(error) in
@@ -117,7 +117,7 @@ class SGGameKit: NSObject {
   func reportScore(score: Int64, forLeaderBoardId leaderBoardId: String) {
     
     if !gameCenterEnabled {
-      println("Local player is not authenticated")
+      print("Local player is not authenticated")
       return
     }
     
@@ -137,7 +137,7 @@ class SGGameKit: NSObject {
 
 extension SGGameKit: GKGameCenterControllerDelegate {
   
-  func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController!) {
+  func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController) {
     #if os(iOS)
     gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
     #endif

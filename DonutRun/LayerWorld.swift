@@ -52,14 +52,14 @@ class LayerWorld: Layer {
   convenience init(atlasName: String, tileSize: CGSize,
     tileCodes: [String]) {
       self.init(tileSize: tileSize,
-        gridSize: CGSize(width: count(tileCodes[0]),
+        gridSize: CGSize(width: tileCodes[0].characters.count,
           height: tileCodes.count))
       
       atlas = SKTextureAtlas(named: atlasName)
       
       for row in 0..<tileCodes.count {
         let line = tileCodes[row]
-        for (col, code) in enumerate(line) {
+        for (col, code) in line.characters.enumerate() {
           if let tile = nodeForCode(code) {
             tile.position = positionForRow(row, col: col)
             if tile.name == "scenery" {
@@ -224,7 +224,7 @@ class LayerWorld: Layer {
 //      trigger.entityDescription = "finish-level"
 //      tile?.addChild(trigger)
     default:
-      println("Unknown tile code \(tileCode)")
+      print("Unknown tile code \(tileCode)")
     }
     
     if let sprite = tile as? SKSpriteNode {

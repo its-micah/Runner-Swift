@@ -259,10 +259,10 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
     func checkLevelUnitAroundLocation(theLocation:CGPoint) {
 
-        var xLocation:CGFloat = theLocation.x
-        var yLocation:CGFloat = theLocation.y
+        let xLocation:CGFloat = theLocation.x
+        let yLocation:CGFloat = theLocation.y
 
-        var createLevel:Bool  = true
+        let createLevel:Bool  = true
 
         if (createLevel == true) {
 
@@ -287,8 +287,8 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
     func createLevelUnit() {
 
-        var ylocation:CGFloat = -127
-        var xlocation:CGFloat = levelUnitCounter * levelUnitWidth
+        let ylocation:CGFloat = -127
+        let xlocation:CGFloat = levelUnitCounter * levelUnitWidth
 
 
         let levelUnit:LevelUnit = LevelUnit()
@@ -508,7 +508,7 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
             coffeeBean.hidden = true
             coffeeBean.physicsBody?.categoryBitMask = BodyType.player.rawValue
             coffeeBeanCount++
-            println("coffee bean count is now \(coffeeBeanCount)")
+            print("coffee bean count is now \(coffeeBeanCount)")
 
 
         }

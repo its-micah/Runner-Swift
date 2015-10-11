@@ -35,9 +35,9 @@ class MainMenu: SGScene {
     override func screenInteractionStarted(location: CGPoint) {
         for node in nodesAtPoint(location) {
             if node.isKindOfClass(SKNode) {
-                let theNode = node as! SKNode
+                let theNode = node 
                 if theNode.name == "play" {
-                    println("play game")
+                    print("play game")
                     let gameScene = GameScene(size: scene!.size)
                     gameScene.scaleMode = scaleMode
                     let transition = SKTransition.fadeWithDuration(0.3)

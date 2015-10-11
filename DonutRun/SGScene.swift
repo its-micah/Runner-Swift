@@ -28,7 +28,7 @@ class SGScene: SKScene {
   
   #if os(iOS)
   
-  override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+  override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
     
     for touch: AnyObject in touches {
       let location = touch.locationInNode(self)
@@ -36,7 +36,7 @@ class SGScene: SKScene {
     }
   }
   
-  override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
+  override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
     
     for touch: AnyObject in touches {
       let location = touch.locationInNode(self)
@@ -44,7 +44,7 @@ class SGScene: SKScene {
     }
   }
   
-  override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+  override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
     
     for touch: AnyObject in touches {
       let location = touch.locationInNode(self)
@@ -52,9 +52,9 @@ class SGScene: SKScene {
     }
   }
   
-  override func touchesCancelled(touches: Set<NSObject>, withEvent event: UIEvent) {
+  override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
     
-    for touch: AnyObject in touches {
+    for touch: AnyObject in touches! {
       let location = touch.locationInNode(self)
       screenInteractionEnded(location)
     }

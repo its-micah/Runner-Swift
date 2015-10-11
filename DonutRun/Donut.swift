@@ -237,9 +237,9 @@ class Donut: SKSpriteNode {
             let callAgain:SKAction = SKAction.runBlock(taperJump)
             let wait:SKAction = SKAction.waitForDuration(1/60)
             let seq:SKAction = SKAction.sequence([wait, callAgain])
-            let repeat = SKAction.repeatAction(seq, count: 20)
+            let `repeat` = SKAction.repeatAction(seq, count: 20)
             let stop = SKAction.runBlock(stopDoubleJump)
-            let seq2 = SKAction.sequence([repeat, stop])
+            let seq2 = SKAction.sequence([`repeat`, stop])
             
             self.runAction(seq2)
 
@@ -256,9 +256,9 @@ class Donut: SKSpriteNode {
             let callAgain:SKAction = SKAction.runBlock(taperJump)
             let wait:SKAction = SKAction.waitForDuration(1/60)
             let seq:SKAction = SKAction.sequence([wait, callAgain])
-            let repeat = SKAction.repeatAction(seq, count: 20)
+            let `repeat` = SKAction.repeatAction(seq, count: 20)
             let stop = SKAction.runBlock(stopJump)
-            let seq2 = SKAction.sequence([repeat, stop])
+            let seq2 = SKAction.sequence([`repeat`, stop])
 
             self.runAction(seq2)
 

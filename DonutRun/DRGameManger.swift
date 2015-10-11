@@ -19,7 +19,7 @@ class DRGameManager {
 
 
     private init() {
-        println(__FUNCTION__)
+        print(__FUNCTION__)
     }
 
     func displayGameScore() {

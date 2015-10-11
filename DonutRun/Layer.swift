@@ -31,11 +31,11 @@ class Layer: SKNode {
     
     if affectAllNodes {
       updateLayer(delta)
-      for (childNumber, child) in enumerate(children) {
+      for (childNumber, child) in children.enumerate() {
         if parallax {
-          updateNodesParallax(delta, childNumber: childNumber, childNode: child as! SKNode)
+          updateNodesParallax(delta, childNumber: childNumber, childNode: child )
         } else {
-          updateNodes(delta, childNumber: childNumber,childNode: child as! SKNode)
+          updateNodes(delta, childNumber: childNumber,childNode: child )
         }
       }
     } else {
@@ -50,7 +50,7 @@ class Layer: SKNode {
   }
   
   func updateNodesParallax(delta:CFTimeInterval,childNumber:Int,childNode:SKNode) {
-    var offset = layerVelocity.x * CGFloat(delta)
+    let offset = layerVelocity.x * CGFloat(delta)
     childNode.position.x += offset
     updateNodes(delta, childNumber: childNumber, childNode: childNode)
   }
