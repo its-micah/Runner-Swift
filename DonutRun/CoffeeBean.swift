@@ -30,7 +30,7 @@ class CoffeeBean: SKSpriteNode {
         //let body:SKPhysicsBody = SKPhysicsBody(texture: imageTexture, size: imageTexture.size())
         let body:SKPhysicsBody = SKPhysicsBody(circleOfRadius: imageTexture.size().height / 2.15)
 
-        body.dynamic = true
+        body.dynamic = false
         body.affectedByGravity = false
         body.allowsRotation = false
         body.mass = 0
@@ -52,7 +52,7 @@ class CoffeeBean: SKSpriteNode {
         var array = [String]()
 
         //or setup an array with exactly the sequential frames start from 1
-        for var i=0; i <= 24; i++ {
+        for var i=1; i <= 25; i++ {
 
             let nameString = String(format: "coffeeBean_%i", i)
             array.append(nameString)
