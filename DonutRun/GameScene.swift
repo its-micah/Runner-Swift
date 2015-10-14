@@ -38,6 +38,7 @@ let JumpDonutCategory:UInt32 = 0x1 << 5;
 
 var factor:CGFloat = 1;
 var jumpCount:Int = 0;
+var lastScore:Int = 0;
 
 
 class GameScene: SGScene, SKPhysicsContactDelegate {
@@ -68,6 +69,8 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
     var layerBackground02Slow = LayerBackground()
     var layerClouds = LayerBackground()
     var layerBackground03Fast = LayerBackground()
+    var layerHUD = LayerHUD()
+
 
     var screenWidth:CGFloat = 0
     var screenHeight:CGFloat = 0
@@ -161,6 +164,8 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
         self.view!.showsFPS = true
         self.view!.showsNodeCount = true
 
+
+
     }
 
     func assignLayers() {
@@ -172,7 +177,8 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
         layerClouds.layerVelocity = CGPoint(x: -25, y: 0.0)
         addChild(layerBackground03Fast)
         layerBackground03Fast.layerVelocity = CGPoint(x: -100.0, y: 0.0)
-        //addChild(hud)
+
+        addChild(layerHUD)
 
     }
 
@@ -431,6 +437,15 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
         //cop.position = CGPointMake(cop.position.x + 5, cop.position.y)
 
+
+        if arc4random_uniform(100) == 50 {
+            GameManager.sharedInstance.incrementGameScore(1)
+        }
+
+        if lastScore != GameManager.sharedInstance.gameScore {
+            layerHUD.update(dt)
+            lastScore = GameManager.sharedInstance.gameScore
+        }
     }
 
 

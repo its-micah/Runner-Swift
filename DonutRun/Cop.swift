@@ -32,9 +32,9 @@ class Cop: SKSpriteNode {
 
 
 
-
-        //let body:SKPhysicsBody = SKPhysicsBody(circleOfRadius: imageTexture.size().width / 2 )
-        let body:SKPhysicsBody = SKPhysicsBody(texture: imageTexture, size: imageTexture.size())
+// THIS IS THE COMMENTED LINE TO MAKE IT RUN
+        let body:SKPhysicsBody = SKPhysicsBody(circleOfRadius: imageTexture.size().width / 2 )
+        //let body:SKPhysicsBody = SKPhysicsBody(texture: imageTexture, size: imageTexture.size())
         //let body:SKPhysicsBody = SKPhysicsBody(circleOfRadius: imageTexture.size().height / 2.5)
 
         body.dynamic = true
