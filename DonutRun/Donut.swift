@@ -324,6 +324,18 @@ class Donut: SKSpriteNode {
         //print("Character changeState = \(self.donutState)")
     }
 
+    func goNuts() {
+
+        self.physicsBody!.contactTestBitMask = BodyType.platformObject.rawValue | BodyType.grass.rawValue
+        
+        let wait = SKAction.waitForDuration(5)
+        self.runAction(wait) { () -> Void in
+            self.physicsBody!.contactTestBitMask = BodyType.platformObject.rawValue | BodyType.deathObject.rawValue | BodyType.water.rawValue | BodyType.grass.rawValue
+            self.color = UIColor.clearColor()
+            self.colorBlendFactor = 0;
+        }
+    }
+
 
 
 

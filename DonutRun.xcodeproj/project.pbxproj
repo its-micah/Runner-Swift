@@ -44,6 +44,12 @@
 		C791D20E1B7B9915000D4A7E /* coffeeBean.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C791D20C1B7B9915000D4A7E /* coffeeBean.atlas */; };
 		C791D20F1B7B9915000D4A7E /* donutRunTest.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C791D20D1B7B9915000D4A7E /* donutRunTest.atlas */; };
 		C791D2111B7BC845000D4A7E /* Donut.swift in Sources */ = {isa = PBXBuildFile; fileRef = C791D2101B7BC845000D4A7E /* Donut.swift */; };
+		C7B50A1A1BCCA91E00509F35 /* gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B50A191BCCA91E00509F35 /* gradient.swift */; };
+		C7B50A201BCD883100509F35 /* sprinkle.png in Resources */ = {isa = PBXBuildFile; fileRef = C7B50A1F1BCD883100509F35 /* sprinkle.png */; };
+		C7B50A231BCD897100509F35 /* Sprinkles.sks in Resources */ = {isa = PBXBuildFile; fileRef = C7B50A211BCD897100509F35 /* Sprinkles.sks */; };
+		C7B50A2A1BCDA8DC00509F35 /* sprinkle2.png in Resources */ = {isa = PBXBuildFile; fileRef = C7B50A291BCDA8DC00509F35 /* sprinkle2.png */; };
+		C7B50A2C1BCDFE6100509F35 /* goNutsFlash.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C7B50A2B1BCDFE6100509F35 /* goNutsFlash.atlas */; };
+		C7B50A2E1BCE8C8E00509F35 /* GoNutsFlash.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B50A2D1BCE8C8E00509F35 /* GoNutsFlash.swift */; };
 		C7B8ED2B1BAF7D67009FC450 /* CoffeeBean.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B8ED2A1BAF7D67009FC450 /* CoffeeBean.swift */; };
 		C7B8ED2D1BAF7EFF009FC450 /* coffeeBean.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C7B8ED2C1BAF7EFF009FC450 /* coffeeBean.atlas */; };
 		C7DA30F21B90E14000977F75 /* Cop.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DA30F11B90E14000977F75 /* Cop.swift */; };
@@ -109,6 +115,12 @@
 		C791D20C1B7B9915000D4A7E /* coffeeBean.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = coffeeBean.atlas; sourceTree = "<group>"; };
 		C791D20D1B7B9915000D4A7E /* donutRunTest.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = donutRunTest.atlas; sourceTree = "<group>"; };
 		C791D2101B7BC845000D4A7E /* Donut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Donut.swift; sourceTree = "<group>"; };
+		C7B50A191BCCA91E00509F35 /* gradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = gradient.swift; sourceTree = "<group>"; };
+		C7B50A1F1BCD883100509F35 /* sprinkle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sprinkle.png; sourceTree = "<group>"; };
+		C7B50A211BCD897100509F35 /* Sprinkles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Sprinkles.sks; path = ../Sprinkles.sks; sourceTree = "<group>"; };
+		C7B50A291BCDA8DC00509F35 /* sprinkle2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sprinkle2.png; sourceTree = "<group>"; };
+		C7B50A2B1BCDFE6100509F35 /* goNutsFlash.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = goNutsFlash.atlas; sourceTree = "<group>"; };
+		C7B50A2D1BCE8C8E00509F35 /* GoNutsFlash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoNutsFlash.swift; sourceTree = "<group>"; };
 		C7B8ED2A1BAF7D67009FC450 /* CoffeeBean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeeBean.swift; sourceTree = "<group>"; };
 		C7B8ED2C1BAF7EFF009FC450 /* coffeeBean.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = coffeeBean.atlas; sourceTree = "<group>"; };
 		C7DA30F11B90E14000977F75 /* Cop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cop.swift; sourceTree = "<group>"; };
@@ -162,7 +174,12 @@
 		C75175F81B8FB79300527E3A /* Layers */ = {
 			isa = PBXGroup;
 			children = (
+				C7B50A211BCD897100509F35 /* Sprinkles.sks */,
+				C7B50A191BCCA91E00509F35 /* gradient.swift */,
+				C7B50A2D1BCE8C8E00509F35 /* GoNutsFlash.swift */,
 				C75E19BC1B8F693800FE5BAC /* Object.swift */,
+				C7B50A291BCDA8DC00509F35 /* sprinkle2.png */,
+				C7B50A1F1BCD883100509F35 /* sprinkle.png */,
 				C75E19BB1B8F693800FE5BAC /* LevelUnit.swift */,
 				C75175F91B8FB7AC00527E3A /* LayerHUD.swift */,
 				6B255B3D1BCC9DC400BA7173 /* LayerHUD.plist */,
@@ -197,6 +214,7 @@
 		C76B4A661BBDC63A008003A7 /* Atlases */ = {
 			isa = PBXGroup;
 			children = (
+				C7B50A2B1BCDFE6100509F35 /* goNutsFlash.atlas */,
 				C7007E841B989FAC008D7921 /* Cop2.atlas */,
 				C71717191BA7493D00B3ABA4 /* DonutDoubleJump.atlas */,
 				C7B8ED2C1BAF7EFF009FC450 /* coffeeBean.atlas */,
@@ -361,7 +379,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7B50A2A1BCDA8DC00509F35 /* sprinkle2.png in Resources */,
 				C791D20E1B7B9915000D4A7E /* coffeeBean.atlas in Resources */,
+				C7B50A2C1BCDFE6100509F35 /* goNutsFlash.atlas in Resources */,
+				C7B50A201BCD883100509F35 /* sprinkle.png in Resources */,
 				C7007E851B989FAC008D7921 /* Cop2.atlas in Resources */,
 				C791D1F71B7B985E000D4A7E /* LaunchScreen.xib in Resources */,
 				6B255B401BCC9DC400BA7173 /* LayerHUD.plist in Resources */,
@@ -374,6 +395,7 @@
 				C75175F71B8F973400527E3A /* SampleAssets.atlas in Resources */,
 				C7007E831B989C00008D7921 /* DonutJump.atlas in Resources */,
 				C7EE873D1B83D92900165B64 /* GameSettings.plist in Resources */,
+				C7B50A231BCD897100509F35 /* Sprinkles.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,6 +423,8 @@
 				C7007E871B9B4024008D7921 /* DRGameManger.swift in Sources */,
 				C791D2111B7BC845000D4A7E /* Donut.swift in Sources */,
 				C7B8ED2B1BAF7D67009FC450 /* CoffeeBean.swift in Sources */,
+				C7B50A2E1BCE8C8E00509F35 /* GoNutsFlash.swift in Sources */,
+				C7B50A1A1BCCA91E00509F35 /* gradient.swift in Sources */,
 				C73B36E31BA36E38006C8875 /* CGFloat+Extensions.swift in Sources */,
 				C73B36E41BA36E38006C8875 /* CGPoint+Extensions.swift in Sources */,
 				C7EE872F1B83D4CB00165B64 /* MainMenu.swift in Sources */,

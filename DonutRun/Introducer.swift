@@ -79,10 +79,18 @@ class Introducer: SKScene {
     
     //Prepare textures to load
     var textureAtlasesArray : [SKTextureAtlas] = []
-    let atlas01 = SKTextureAtlas(named: "SampleAssets")
+    let atlas01 = SKTextureAtlas(named: "donutRunTest")
     textureAtlasesArray.append(atlas01)
-
-    
+    let atlas02 = SKTextureAtlas(named: "coffeeBean")
+    textureAtlasesArray.append(atlas02)
+    let atlas03 = SKTextureAtlas(named: "Cop2")
+    textureAtlasesArray.append(atlas03)
+    let atlas04 = SKTextureAtlas(named: "DonutDoubleJump")
+    textureAtlasesArray.append(atlas04)
+    let atlas05 = SKTextureAtlas(named: "goNutsFlash")
+    textureAtlasesArray.append(atlas05)
+    let atlas06 = SKTextureAtlas(named: "DonutJump")
+    textureAtlasesArray.append(atlas06)
     //Prepare sounds to load
     
 

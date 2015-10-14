@@ -30,21 +30,17 @@ class Cop: SKSpriteNode {
         super.init(texture: imageTexture, color:SKColor.clearColor(), size: imageTexture.size() )  //Swift 2
 
 
+        let body:SKPhysicsBody = SKPhysicsBody(circleOfRadius: imageTexture.size().height / 2.6)
 
-
-// THIS IS THE COMMENTED LINE TO MAKE IT RUN
-        let body:SKPhysicsBody = SKPhysicsBody(circleOfRadius: imageTexture.size().width / 2 )
-        //let body:SKPhysicsBody = SKPhysicsBody(texture: imageTexture, size: imageTexture.size())
-        //let body:SKPhysicsBody = SKPhysicsBody(circleOfRadius: imageTexture.size().height / 2.5)
 
         body.dynamic = true
         body.affectedByGravity = true
         body.allowsRotation = false
         body.restitution = 0
-        //body.categoryBitMask = BodyType.deathObject.rawValue
+        body.categoryBitMask = BodyType.deathObject.rawValue
         body.contactTestBitMask = BodyType.platformObject.rawValue | BodyType.deathObject.rawValue | BodyType.water.rawValue | BodyType.grass.rawValue
         body.collisionBitMask = BodyType.platformObject.rawValue | BodyType.grass.rawValue
-        body.friction = 0.9 //0 is like glass, 1 is like sandpaper to walk on
+//        body.friction = 0.9 //0 is like glass, 1 is like sandpaper to walk on
         self.physicsBody = body
 
         setUpRun()

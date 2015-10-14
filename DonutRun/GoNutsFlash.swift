@@ -1,20 +1,18 @@
 //
-//  CoffeeBean.swift
+//  GoNutsFlash.swift
 //  DonutRun
 //
-//  Created by Micah Lanier on 9/20/15.
-//  Copyright (c) 2015 Micah Lanier. All rights reserved.
+//  Created by Micah Lanier on 10/14/15.
+//  Copyright © 2015 Micah Lanier. All rights reserved.
 //
 
 import Foundation
 import SpriteKit
 
 
-class CoffeeBean: SKSpriteNode {
+class GoNutsFlash: SKSpriteNode {
 
     var runAction:SKAction?
-
-    var minSpeed:CGFloat = 2.5
 
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -28,17 +26,6 @@ class CoffeeBean: SKSpriteNode {
 
         //let body:SKPhysicsBody = SKPhysicsBody(circleOfRadius: imageTexture.size().width / 2 )
         //let body:SKPhysicsBody = SKPhysicsBody(texture: imageTexture, size: imageTexture.size())
-        let body:SKPhysicsBody = SKPhysicsBody(circleOfRadius: imageTexture.size().height / 2.15)
-
-        body.dynamic = false
-        body.affectedByGravity = false
-        body.allowsRotation = false
-        body.mass = 0
-        body.categoryBitMask = BodyType.coffeeBeanObject.rawValue
-        body.contactTestBitMask = BodyType.player.rawValue
-        body.collisionBitMask = BodyType.player.rawValue
-        body.friction = 0 //0 is like glass, 1 is like sandpaper to walk on
-        self.physicsBody = body
 
         setUpRun()
         startRun()
@@ -47,14 +34,14 @@ class CoffeeBean: SKSpriteNode {
 
     func setUpRun() {
 
-        let atlas = SKTextureAtlas (named: "coffeeBean")
+        let atlas = SKTextureAtlas (named: "goNutsFlash")
 
         var array = [String]()
 
         //or setup an array with exactly the sequential frames start from 1
-        for var i=1; i <= 25; i++ {
+        for var i=1; i <= 14; i++ {
 
-            let nameString = String(format: "coffeeBean_%i", i)
+            let nameString = String(format: "goNutsFlash_%i", i)
             array.append(nameString)
 
         }
@@ -70,22 +57,22 @@ class CoffeeBean: SKSpriteNode {
         }
 
         let atlasAnimation = SKAction.animateWithTextures(atlasTextures, timePerFrame: 1/24, resize: true , restore:false )
-        runAction =  SKAction.repeatActionForever(atlasAnimation)
+        runAction =  SKAction.repeatAction(atlasAnimation, count: 1)
 
     }
 
 
     func startRun() {
-
+        
         self.runAction(runAction!)
-
+        
     }
-
-
+    
+    
     func update() {
+        
 
-        self.position = CGPointMake(self.position.x - minSpeed, self.position.y)
-
+        
     }
-
+    
 }

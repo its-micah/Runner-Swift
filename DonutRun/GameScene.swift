@@ -76,6 +76,8 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
     var screenHeight:CGFloat = 0
     let worldNode:SKNode = SKNode()
     let theDonut:Donut = Donut(imageNamed: "DonutRun_1")
+    var donutSprinkle:SKEmitterNode?
+    var flash:GoNutsFlash?
     var coffeeBean:CoffeeBean = CoffeeBean(imageNamed: "coffeeBean_0")
     var cop:Cop = Cop(imageNamed: "Cop2_1")
     var cop1 = Cop(imageNamed: "Cop2_1")
@@ -119,7 +121,26 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
         self.physicsBody!.contactTestBitMask = JumpDonutCategory;
         self.physicsBody!.collisionBitMask = SceneEdgeCategory;
 
-        self.backgroundColor = UIColor(red: 0.509, green: 0.859, blue: 1, alpha: 1)
+        let imageSize = CGSize(width: self.frame.size.width, height: self.frame.size.height)
+        let imageView = UIImageView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: imageSize))
+
+        // call the func to draw the gradient and pass the size
+        let gradientBG = GradientBG()  // make an instance of the gradient class
+        let imageGradient = gradientBG.drawGradientImage(imageSize) // call the func using the instance
+        imageView.image = imageGradient
+
+        // turn the gradient image into a SpriteKit Texture
+        let gradBack = SKTexture(image: imageGradient)
+
+        // load the texture as a normal sprite node
+        let background = SKSpriteNode(texture: gradBack)
+
+        // set the zPosition to 0 - so it is at the bottom of the pile
+        background.zPosition = -10
+        // set position to middle of frame and add the child, same as with any other Sprite.
+        background.position = CGPointMake(0, 0)
+        self.addChild(background)
+
 
         screenWidth = self.view!.bounds.width
         screenHeight = self.view!.bounds.height
@@ -214,13 +235,13 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
         background2.anchorPoint = CGPointZero
         background2.zPosition = -2.7
         background2.name = "A"
-        layerBackground02Slow.addChild(background2)
+        //layerBackground02Slow.addChild(background2)
         let background3 = SKSpriteNode(imageNamed: "buildings2")
         background3.position = CGPoint(x: background2.size.width, y: -300)
         background3.anchorPoint = CGPointZero
         background3.zPosition = -2.7
         background3.name = "B"
-        layerBackground02Slow.addChild(background3)
+        //layerBackground02Slow.addChild(background3)
 
 
         //layerBackground03Fast
@@ -400,13 +421,16 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
                 coffeeBean.position = CGPointMake(theDonut.position.x + 800, 100)
                 coffeeBean.hidden = false
                 coffeeBean.physicsBody?.categoryBitMask = BodyType.coffeeBeanObject.rawValue
-            } else if copArray[0].position.x < (theDonut.position.x - 400){
+            } else if coffeeBeanArray[0].position.x < (theDonut.position.x - 400){
                 coffeeBeanArray[0].position = CGPointMake(theDonut.position.x + 800, 100)
                 coffeeBean.hidden = false
                 coffeeBean.physicsBody?.categoryBitMask = BodyType.coffeeBeanObject.rawValue
             }
         }
 
+        donutSprinkle?.position = CGPointMake(theDonut.position.x - 30, theDonut.position.y)
+
+        flash?.position = CGPointMake(theDonut.position.x + 10, theDonut.position.y)
 
 
         let nextTier:CGFloat = ((levelUnitCounter * levelUnitWidth) - (CGFloat(initialUnits) * levelUnitWidth))
@@ -523,6 +547,7 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
             coffeeBean.hidden = true
             coffeeBean.physicsBody?.categoryBitMask = BodyType.player.rawValue
             coffeeBeanCount++
+            checkOnGoNuts()
             print("coffee bean count is now \(coffeeBeanCount)")
 
 
@@ -580,6 +605,41 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
     }
 
 
+    func checkOnGoNuts() {
+        if coffeeBeanCount == 2 {
+            theDonut.goNuts()
+            coffeeBeanCount = 0
+            addSprinkles()
+            addFlash()
+        }
+    }
+
+    func addSprinkles() {
+        let donutSprinklePath = NSBundle.mainBundle().pathForResource("Sprinkles", ofType: "sks")!
+        donutSprinkle = (NSKeyedUnarchiver.unarchiveObjectWithFile(donutSprinklePath) as! SKEmitterNode)
+        donutSprinkle!.position = theDonut.position
+        donutSprinkle!.zPosition = 100
+        donutSprinkle!.name = "donutSprinkle"
+        worldNode.addChild(donutSprinkle!)
+        let wait = SKAction.waitForDuration(5)
+        self.runAction(wait) { () -> Void in
+            self.donutSprinkle?.removeFromParent()
+        }
+    }
+
+    func addFlash() {
+        flash = GoNutsFlash(imageNamed: "goNutsFlash_1")
+        flash!.zPosition = 200
+        flash!.position = theDonut.position
+        flash?.blendMode = .Add
+        worldNode.addChild(flash!)
+        let wait = SKAction.waitForDuration(0.6)
+        self.runAction(wait) { () -> Void in
+            self.flash?.removeFromParent()
+        }
+
+
+    }
 
     func resetLoopingBackground() {
 
