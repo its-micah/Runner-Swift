@@ -532,6 +532,7 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
             coffeeBean.hidden = true
             coffeeBean.physicsBody?.categoryBitMask = BodyType.player.rawValue
             coffeeBeanCount++
+            self.runAction(SKAction.playSoundFileNamed("Wood_Done3.wav", waitForCompletion: true))
             checkOnGoNuts()
             print("coffee bean count is now \(coffeeBeanCount)")
 
