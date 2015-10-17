@@ -91,6 +91,9 @@ class Introducer: SKScene {
     textureAtlasesArray.append(atlas05)
     let atlas06 = SKTextureAtlas(named: "DonutJump")
     textureAtlasesArray.append(atlas06)
+    let atlas07 = SKTextureAtlas(named: "DonutOneIdle")
+    textureAtlasesArray.append(atlas07)
+
     //Prepare sounds to load
     
 
