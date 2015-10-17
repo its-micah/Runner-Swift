@@ -31,6 +31,13 @@
 		C75E19BD1B8F693800FE5BAC /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75E19BA1B8F693800FE5BAC /* GameScene.swift */; };
 		C75E19BE1B8F693800FE5BAC /* LevelUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75E19BB1B8F693800FE5BAC /* LevelUnit.swift */; };
 		C75E19BF1B8F693800FE5BAC /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75E19BC1B8F693800FE5BAC /* Object.swift */; };
+		C768AC321BD140F300931B22 /* 8bit Jump 02.wav in Resources */ = {isa = PBXBuildFile; fileRef = C768AC311BD140F300931B22 /* 8bit Jump 02.wav */; };
+		C768AC341BD1416900931B22 /* 8bit Jump 03.wav in Resources */ = {isa = PBXBuildFile; fileRef = C768AC331BD1416900931B22 /* 8bit Jump 03.wav */; };
+		C768AC351BD1801800931B22 /* GothamRnd-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C764789B1BD17E41002A0B43 /* GothamRnd-Medium.otf */; };
+		C768AC391BD1924200931B22 /* DonutOneIdle.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C768AC381BD1924200931B22 /* DonutOneIdle.atlas */; };
+		C768AC3B1BD1993100931B22 /* preview (1).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C768AC3A1BD1993100931B22 /* preview (1).mp3 */; };
+		C768AC3D1BD19E5200931B22 /* Wood_Done3.wav in Resources */ = {isa = PBXBuildFile; fileRef = C768AC3C1BD19E5200931B22 /* Wood_Done3.wav */; };
+		C768AC3F1BD1EE8E00931B22 /* preview (2).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C768AC3E1BD1EE8E00931B22 /* preview (2).mp3 */; };
 		C78E9A6C1BD037E600632F75 /* CharSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78E9A6B1BD037E600632F75 /* CharSelect.swift */; };
 		C791D1E91B7B985E000D4A7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C791D1E81B7B985E000D4A7E /* AppDelegate.swift */; };
 		C791D1EB1B7B985E000D4A7E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C791D1EA1B7B985E000D4A7E /* GameScene.sks */; };
@@ -96,6 +103,13 @@
 		C75E19BA1B8F693800FE5BAC /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		C75E19BB1B8F693800FE5BAC /* LevelUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelUnit.swift; sourceTree = "<group>"; };
 		C75E19BC1B8F693800FE5BAC /* Object.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
+		C764789B1BD17E41002A0B43 /* GothamRnd-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GothamRnd-Medium.otf"; sourceTree = "<group>"; };
+		C768AC311BD140F300931B22 /* 8bit Jump 02.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "8bit Jump 02.wav"; sourceTree = "<group>"; };
+		C768AC331BD1416900931B22 /* 8bit Jump 03.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "8bit Jump 03.wav"; sourceTree = "<group>"; };
+		C768AC381BD1924200931B22 /* DonutOneIdle.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = DonutOneIdle.atlas; sourceTree = "<group>"; };
+		C768AC3A1BD1993100931B22 /* preview (1).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "preview (1).mp3"; sourceTree = "<group>"; };
+		C768AC3C1BD19E5200931B22 /* Wood_Done3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Wood_Done3.wav; sourceTree = "<group>"; };
+		C768AC3E1BD1EE8E00931B22 /* preview (2).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "preview (2).mp3"; sourceTree = "<group>"; };
 		C78E9A6B1BD037E600632F75 /* CharSelect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharSelect.swift; sourceTree = "<group>"; };
 		C791D1E31B7B985E000D4A7E /* DonutRun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DonutRun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C791D1E71B7B985E000D4A7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -210,6 +224,7 @@
 		C76B4A661BBDC63A008003A7 /* Atlases */ = {
 			isa = PBXGroup;
 			children = (
+				C768AC381BD1924200931B22 /* DonutOneIdle.atlas */,
 				C7B50A2B1BCDFE6100509F35 /* goNutsFlash.atlas */,
 				C7007E841B989FAC008D7921 /* Cop2.atlas */,
 				C71717191BA7493D00B3ABA4 /* DonutDoubleJump.atlas */,
@@ -242,6 +257,12 @@
 		C791D1E51B7B985E000D4A7E /* DonutRun */ = {
 			isa = PBXGroup;
 			children = (
+				C768AC3C1BD19E5200931B22 /* Wood_Done3.wav */,
+				C768AC3E1BD1EE8E00931B22 /* preview (2).mp3 */,
+				C768AC3A1BD1993100931B22 /* preview (1).mp3 */,
+				C764789B1BD17E41002A0B43 /* GothamRnd-Medium.otf */,
+				C768AC331BD1416900931B22 /* 8bit Jump 03.wav */,
+				C768AC311BD140F300931B22 /* 8bit Jump 02.wav */,
 				C7EE873C1B83D92900165B64 /* GameSettings.plist */,
 				C7EE87301B83D52700165B64 /* SGScene.swift */,
 				C7007E861B9B4024008D7921 /* DRGameManger.swift */,
@@ -372,15 +393,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C768AC351BD1801800931B22 /* GothamRnd-Medium.otf in Resources */,
 				C7B50A2A1BCDA8DC00509F35 /* sprinkle2.png in Resources */,
+				C768AC3B1BD1993100931B22 /* preview (1).mp3 in Resources */,
+				C768AC3D1BD19E5200931B22 /* Wood_Done3.wav in Resources */,
 				C791D20E1B7B9915000D4A7E /* coffeeBean.atlas in Resources */,
 				C7B50A2C1BCDFE6100509F35 /* goNutsFlash.atlas in Resources */,
+				C768AC3F1BD1EE8E00931B22 /* preview (2).mp3 in Resources */,
 				C7B50A201BCD883100509F35 /* sprinkle.png in Resources */,
 				C7007E851B989FAC008D7921 /* Cop2.atlas in Resources */,
+				C768AC321BD140F300931B22 /* 8bit Jump 02.wav in Resources */,
+				C768AC391BD1924200931B22 /* DonutOneIdle.atlas in Resources */,
 				C791D1F71B7B985E000D4A7E /* LaunchScreen.xib in Resources */,
 				C717171A1BA7493D00B3ABA4 /* DonutDoubleJump.atlas in Resources */,
 				C791D1F41B7B985E000D4A7E /* Images.xcassets in Resources */,
 				C7B8ED2D1BAF7EFF009FC450 /* coffeeBean.atlas in Resources */,
+				C768AC341BD1416900931B22 /* 8bit Jump 03.wav in Resources */,
 				C791D1EB1B7B985E000D4A7E /* GameScene.sks in Resources */,
 				C791D20F1B7B9915000D4A7E /* donutRunTest.atlas in Resources */,
 				C791D1F21B7B985E000D4A7E /* Main.storyboard in Resources */,
