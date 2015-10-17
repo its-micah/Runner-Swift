@@ -12,6 +12,9 @@ import Foundation
 class MainMenu: SGScene {
 
     override func didMoveToView(view: SKView) {
+
+        SKTAudio.sharedInstance().playBackgroundMusic("preview (1).mp3")
+
         self.backgroundColor = UIColor(red: 244 / 255, green: 102 / 255, blue: 186 / 255, alpha: 1.0)
         //let background = SKSpriteNode(imageNamed: "background4")
         let background = SKSpriteNode()
