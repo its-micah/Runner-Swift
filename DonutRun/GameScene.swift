@@ -75,7 +75,7 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
     let theDonut:Donut = Donut(imageNamed: "DonutRun_1")
     var donutSprinkle:SKEmitterNode?
     var flash:GoNutsFlash?
-    var coffeeBean:CoffeeBean = CoffeeBean(imageNamed: "coffeeBean_0")
+    var coffeeBean:CoffeeBean = CoffeeBean(imageNamed: "coffeeBean_1")
     var cop:Cop = Cop(imageNamed: "Cop2_1")
     var cop1 = Cop(imageNamed: "Cop2_1")
 
