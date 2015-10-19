@@ -13,6 +13,7 @@ import SpriteKit
 class Donut: SKSpriteNode {
 
     var idleAction:SKAction?
+    var idleTwoAction:SKAction?
     var jumpAction:SKAction?
     var runAction:SKAction?
     var doubleJumpAction:SKAction?
@@ -76,6 +77,7 @@ class Donut: SKSpriteNode {
         setUpJump()
         setUpDoubleJump()
         setUpIdle()
+        setUpIdleTwo()
         startRun()
 
 
@@ -126,6 +128,38 @@ class Donut: SKSpriteNode {
 
 
     }
+
+    func setUpIdleTwo () {
+        let atlas = SKTextureAtlas (named: "DonutTwoIdle")
+
+        var array = [String]()
+
+        //or setup an array with exactly the sequential frames start from 1
+        for var i=5; i <= 24; i++ {
+
+            let nameString = String(format: "DonutTwoIdle_%i", i)
+            array.append(nameString)
+
+        }
+
+        //create another array this time with SKTexture as the type (textures being the .png images)
+        var atlasTextures:[SKTexture] = []
+
+        for (var i = 0; i < array.count; i++ ) {
+
+            let texture:SKTexture = atlas.textureNamed( array[i] )
+            atlasTextures.insert(texture, atIndex:i)
+
+        }
+
+        let atlasAnimation = SKAction.animateWithTextures(atlasTextures, timePerFrame: 1/24, resize: true , restore:false )
+        idleTwoAction =  SKAction.repeatActionForever(atlasAnimation)
+        
+        
+    }
+
+
+    
 
     func setUpRun() {
 
@@ -225,6 +259,13 @@ class Donut: SKSpriteNode {
         self.removeActionForKey("doubleJumpKey")
         self.removeActionForKey("runKey")
         self.runAction(idleAction!)
+    }
+
+    func startIdleTwo() {
+        self.removeActionForKey("jumpKey")
+        self.removeActionForKey("doubleJumpKey")
+        self.removeActionForKey("runKey")
+        self.runAction(idleTwoAction!)
     }
 
     func startRun(){

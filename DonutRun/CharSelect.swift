@@ -52,7 +52,15 @@ class CharSelect: SGScene {
         donutOne.name = "donutOne"
         addChild(donutOne)
 
+        let donutTwo: Donut = Donut(imageNamed: "DonutTwoIdle_5")
+        donutTwo.posByScreen(0.5, y: 0.5)
+        donutTwo.physicsBody?.affectedByGravity = false
+        donutTwo.physicsBody?.dynamic = false
+        donutTwo.name = "donutTwo"
+        addChild(donutTwo)
+
         donutOne.startIdle()
+        donutTwo.startIdleTwo()
 
     }
 
