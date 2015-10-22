@@ -1,57 +1,224 @@
-/*
-* Copyright (c) 2014 Neil North.
-*
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, and to permit persons to whom the Software is
-* furnished to do so, subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be included in
-* all copies or substantial portions of the Software.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-* THE SOFTWARE.
-*/
+//
+//  LayerHUD.swift
+//  Generic Game HUD Layer
+//
+//  Created by Mick Lerche on 9/3/15.
+//  Copyright (c) 2015 Grumpy Dane Studios. All rights reserved.
+//
 
 import SpriteKit
 
 class LayerHUD: SKNode {
-  
 
-  var pauseButton:SKLabelNode!
 
-  
-  override init() {
-    super.init()
+    var pauseButton:SKLabelNode!
+    var score:SKLabelNode!
+
+    var screenSize2: CGRect!
+    var xUpperLeft: Float!
+    var yUpperLeft: Float!
+
+    var lastLifeCount: Int = 0
+    var lastBeanCount: Int = 0
+
+
+
+    override init() {
+        super.init()
+
+        // set these with screen
+        screenSize2 = UIScreen.mainScreen().bounds
+        xUpperLeft = -450.0
+        yUpperLeft = -250.0
+
+        addPause()
+
+        addScoreImage()
+
+        addScore()
+        addLifes()
+
+
+        //setupScoreboard()
+        addBean()  // add beans that are picked up to box, cleanup caode for push
+
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+
+    func addScore () {
+        var scoreLabel: SKLabelNode!
+        scoreLabel = SKLabelNode(fontNamed: "Futura")
+        scoreLabel.fontSize = 30
+        scoreLabel.position = CGPointMake(CGFloat(xUpperLeft + 280), CGFloat(210))
+        scoreLabel.fontColor = UIColor(red: 0 / 255, green: 102 / 255, blue: 186 / 255, alpha: 1.0)
+        scoreLabel.horizontalAlignmentMode = .Center
+        scoreLabel.verticalAlignmentMode = .Bottom
+        scoreLabel.zPosition = 1
+        scoreLabel.text = GameConfiguration.sharedInstance.gameScoreLabelText
+        scoreLabel.name = "scoreLabel"
+        addChild(scoreLabel)
+
+        var score: SKLabelNode!
+        score = SKLabelNode(fontNamed: "Futura")
+        score.fontSize = 30
+        score.position = CGPointMake(CGFloat(xUpperLeft + 380), CGFloat(210))
+        score.fontColor = UIColor(red: 0 / 255, green: 102 / 255, blue: 186 / 255, alpha: 1.0)
+        score.horizontalAlignmentMode = .Left
+        score.verticalAlignmentMode = .Bottom
+        score.zPosition = 1
+        score.text = String(GameManager.sharedInstance.gameScore)
+        score.name = "score"
+        addChild(score)
+        self.score = score
+
+    }
+
+    func addLifes () {
+        // let numberOfLifes: Int = GameConfiguration.sharedInstance.life
+        for index in 1...3 {
+            addLife(index)
+        }
+    }
+
+    func addLife(lifeNumber: Int) {
+
+        let lifeImageName: String = "BagOfSugar.png" //+ String(GameConfiguration.sharedInstance.gameScoreImageNumber) + ".png"
+        let lifeNode = SKSpriteNode(texture: SKTexture(imageNamed: lifeImageName))
+        lifeNode.name = "life" + String(lifeNumber)
+
+        let screenSize: CGRect = UIScreen.mainScreen().bounds
+
+        // test.setScale(0.5)  // GameConfiguration.sharedInstance.????
+        let xPoint: CGFloat = (screenSize.width / 2) - (lifeNode.frame.width / 2 ) - 20
+        let yPoint: CGFloat = (screenSize.height / 2) + (lifeNode.frame.height / 2)
+        lifeNode.position = CGPointMake(xPoint + CGFloat((lifeNumber - 1) * 100), yPoint)
+
+        addChild(lifeNode)
+    }
+
+
+    func addBean () {
+        let coffeeBean = SKSpriteNode(texture: SKTexture(imageNamed: "coffeeBean_1.png"))
+        coffeeBean.setScale(0.30)
+        coffeeBean.zPosition = 1
+        coffeeBean.position = CGPointMake(CGFloat(-380 + Int(arc4random_uniform(70))), CGFloat(150 + (arc4random_uniform(20))))
+
+        addChild(coffeeBean)
+    }
+
+    func setupScoreboard () {
+
+        // find coordinates
+        //var xx: Int = GameConfiguration.sharedInstance.gameScoreLocation
+
+        // settings are a coordinate setup of 25, 5x5
+        // 1,  2,  3,  4,  5
+        // 6,  7,  8,  9, 10
+        //11, 12, 13, 14, 15
+        //16, 17, 18, 19, 20
+        //21, 22, 23, 24, 25
+
+
+        // do math
+
+        //let xPosition: CGFloat = 0
+        //let yPosition: CGFloat = -100
+
+
+        //let xPosition = ((GameConfiguration.sharedInstance.gameScreen.width / 5) * CGFloat(GameConfiguration.sharedInstance.gameScoreLocationX))
+        //let yPosition = ((GameConfiguration.sharedInstance.gameScreen.height / 5) * CGFloat(GameConfiguration.sharedInstance.gameScoreLocationY))
+
+
+
+
+        // set position
+        //self.childNodeWithName("scoreLabel")!.position = CGPointMake(xPosition, yPosition)
+        //self.childNodeWithName("scoreLabel")!.position = CGPointMake(xPosition, yPosition)
+
+    }
+
+    func update (delta:CFTimeInterval, positionIn:CGFloat) {
+        updateLives()
+        updateScore(positionIn)
+        updateBeans()
+
+    }
+
+    func updateBeans() {
+        if lastBeanCount != GameManager.sharedInstance.beanCount {
+            lastBeanCount = GameManager.sharedInstance.beanCount
+            addBean()
+        }
+    }
+
+    func updateScore(positionIn:CGFloat) {
+        score.text = String(GameManager.sharedInstance.incrementGameScoreWithDifferential(Int(positionIn)))
+    }
+
+    func updateLives() {
+        if lastLifeCount != GameManager.sharedInstance.lifeCount {
+            lastLifeCount = GameManager.sharedInstance.lifeCount
+            childNodeWithName("life" + String(lastLifeCount))?.hidden = true
+        }
+    }
+
+    func addPause () {
+        pauseButton = SKLabelNode(fontNamed: "Futura")
+        pauseButton.fontSize = 44
+        pauseButton.position = CGPointMake(450, 250)
+        pauseButton.fontColor = UIColor(red: 244 / 255, green: 102 / 255, blue: 186 / 255, alpha: 1.0)
+        pauseButton.horizontalAlignmentMode = .Center
+        pauseButton.verticalAlignmentMode = .Top
+        pauseButton.zPosition = 1
+        pauseButton.text = "II"
+        pauseButton.name = "pauseButton"
+        addChild(pauseButton)
+    }
+
+
+    func addScoreImage () {
+        let scoreImageName: String = "ScoreImage" + String(GameConfiguration.sharedInstance.gameScoreImageNumber) + ".png"
+        let scoreImage: SKTexture = SKTexture(imageNamed: scoreImageName)
+        let test = SKSpriteNode(texture: scoreImage)
+        
+        //let screenSize: CGRect = UIScreen.mainScreen().bounds
+        let screenSize: CGRect = UIScreen.mainScreen().bounds
+        
+        //test.setScale(0.5)
+        var xPoint: CGFloat = (screenSize.width / 2) + (test.frame.width / 2 ) - 40
+        var yPoint: CGFloat = (screenSize.height / 2) + (test.frame.height / 2) - 70
+
+        //test.position = CGPointMake(-(xPoint), (screenSize.height / 2) + (test.frame.height / 2))
+
+        //xPoint = 433.5 // xPoint - 20
+
+        test.position = CGPointMake(-xPoint ,yPoint)
+
+        print("frame width: \(test.frame.width)")
+        print("frame height: \(test.frame.height)")
+        print("screen width: \(screenSize.width)")
+        print("screen height: \(screenSize.height)")
+        print("xpoint: \(xPoint)")
+        print("ypoint: \(yPoint)")
+
+        addChild(test)
+    }
     
-    pauseButton = SKLabelNode(fontNamed: "Futura")
-    pauseButton.fontSize = 44
-    pauseButton.position = CGPointMake(450, 250)
-    pauseButton.fontColor = UIColor(red: 244 / 255, green: 102 / 255, blue: 186 / 255, alpha: 1.0)
-    pauseButton.horizontalAlignmentMode = .Right
-    pauseButton.verticalAlignmentMode = .Top
-    pauseButton.zPosition = 1
-    pauseButton.text = "II"
-    pauseButton.name = "pauseButton"
-    addChild(pauseButton)
-
-
-  }
-
-  required init?(coder aDecoder: NSCoder) {
-      fatalError("init(coder:) has not been implemented")
-  }
-  
-  func update(delta:CFTimeInterval) {
     
-
-  }
-  
 }
+
+
+
+
+
+
+
+
+
+
+
+

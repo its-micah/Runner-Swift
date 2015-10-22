@@ -30,11 +30,8 @@ class Cop: SKSpriteNode {
         super.init(texture: imageTexture, color:SKColor.clearColor(), size: imageTexture.size() )  //Swift 2
 
 
-
-
-
-
         let body:SKPhysicsBody = SKPhysicsBody(circleOfRadius: imageTexture.size().height / 2.6)
+
 
         body.dynamic = true
         body.affectedByGravity = true
@@ -98,7 +95,6 @@ class Cop: SKSpriteNode {
         
         
     }
-
 
 
 

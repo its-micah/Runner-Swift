@@ -38,6 +38,7 @@ let JumpDonutCategory:UInt32 = 0x1 << 5;
 
 var factor:CGFloat = 1;
 var jumpCount:Int = 0;
+var lastScore:Int = 0;
 
 
 class GameScene: SGScene, SKPhysicsContactDelegate {
@@ -68,6 +69,8 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
     var layerBackground02Slow = LayerBackground()
     var layerClouds = LayerBackground()
     var layerBackground03Fast = LayerBackground()
+    var layerHUD = LayerHUD()
+
 
     var screenWidth:CGFloat = 0
     var screenHeight:CGFloat = 0
@@ -96,11 +99,17 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
     let buffer:CGFloat = 125;
 
-
+    //mick for lowering bean on simulator
+    var yBean: CGFloat = 100
 
 
 
     override func didMoveToView(view: SKView) {
+        // do setup of simulator vs device here
+        #if (arch(i386) || arch(x86_64)) && os(iOS)
+            yBean = -200
+        #endif
+
 
         copArray += [cop1]
         coffeeBeanArray += [coffeeBean]
@@ -166,7 +175,7 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
         cop.zPosition = 101
 
-        coffeeBeanStartingPosition = CGPointMake(screenWidth + coffeeBean.size.width, 100)
+        coffeeBeanStartingPosition = CGPointMake(screenWidth + coffeeBean.size.width, yBean)
 
         copStartingPosition = CGPointMake(screenWidth + cop.size.width, 0)
         cop.position = copStartingPosition
@@ -182,6 +191,8 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
         self.view!.showsFPS = true
         self.view!.showsNodeCount = true
 
+
+
     }
 
     func assignLayers() {
@@ -193,7 +204,8 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
         layerClouds.layerVelocity = CGPoint(x: -25, y: 0.0)
         addChild(layerBackground03Fast)
         layerBackground03Fast.layerVelocity = CGPoint(x: -100.0, y: 0.0)
-        //addChild(hud)
+
+        addChild(layerHUD)
 
     }
 
@@ -372,6 +384,9 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
 
     override func screenInteractionStarted(location: CGPoint) {
+        //self.paused = true
+
+
         if currentGameState == .gameActive {
             tapped()
         }
@@ -412,11 +427,11 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
         if (DRGameManager.sharedInstance.timeForCoffeeBean()) {
             if coffeeBean.position.x < (theDonut.position.x - 400) && coffeeBeanArray[0].position.x > (theDonut.position.x - 300)  {
-                coffeeBean.position = CGPointMake(theDonut.position.x + 800, 100)
+                coffeeBean.position = CGPointMake(theDonut.position.x + 800, yBean) 
                 coffeeBean.hidden = false
                 coffeeBean.physicsBody?.categoryBitMask = BodyType.coffeeBeanObject.rawValue
             } else if coffeeBeanArray[0].position.x < (theDonut.position.x - 400){
-                coffeeBeanArray[0].position = CGPointMake(theDonut.position.x + 800, 100)
+                coffeeBeanArray[0].position = CGPointMake(theDonut.position.x + 800, yBean)
                 coffeeBean.hidden = false
                 coffeeBean.physicsBody?.categoryBitMask = BodyType.coffeeBeanObject.rawValue
             }
@@ -454,6 +469,22 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
         theDonut.position = CGPointMake(theDonut.position.x + 5, theDonut.position.y)
 
         //cop.position = CGPointMake(cop.position.x + 5, cop.position.y)
+
+
+//        if arc4random_uniform(100) == 50 {
+//            GameManager.sharedInstance.incrementGameScore(1)
+//        }
+
+
+        //GameManager.sharedInstance.gameScore = Int(theDonut.position.x / 20)
+        //if lastScore != GameManager.sharedInstance.gameScore {
+            layerHUD.update(dt,  positionIn: theDonut.position.x)
+            //lastScore = GameManager.sharedInstance.gameScore
+        //}
+
+
+
+
 
     }
 
@@ -531,7 +562,9 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
             coffeeBean.hidden = true
             coffeeBean.physicsBody?.categoryBitMask = BodyType.player.rawValue
+            GameManager.sharedInstance.incrementBeanCount()
             coffeeBeanCount++
+
             self.runAction(SKAction.playSoundFileNamed("Wood_Done3.wav", waitForCompletion: true))
             checkOnGoNuts()
             print("coffee bean count is now \(coffeeBeanCount)")
@@ -551,6 +584,13 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
             isDead = true
 
+            GameManager.sharedInstance.incrementLifeCount()
+
+            if GameManager.sharedInstance.lifeCount == 3 {
+                let mainMenu = EndingMenu(size: self.scene!.size)
+                mainMenu.scaleMode = self.scaleMode
+                self.view?.presentScene(mainMenu, transition: SKTransition.fadeWithDuration(1))
+            }
 //            loopingBG.removeAllActions()
 //            loopingBG2.removeAllActions()
 
@@ -589,7 +629,6 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
         theDonut.runAction(seq2)
 
     }
-
 
     func checkOnGoNuts() {
         if coffeeBeanCount == 2 {
@@ -633,7 +672,6 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 //        loopingBG2.position = CGPointMake(loopingBG2.size.width - 3, -50)
 
     }
-
 
 
 

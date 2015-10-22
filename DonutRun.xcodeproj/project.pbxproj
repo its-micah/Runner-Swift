@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B255B3E1BCC9DC400BA7173 /* GameConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B255B3B1BCC9DC400BA7173 /* GameConfiguration.swift */; };
+		6B255B3F1BCC9DC400BA7173 /* GameManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B255B3C1BCC9DC400BA7173 /* GameManger.swift */; };
+		6B255B401BCC9DC400BA7173 /* LayerHUD.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B255B3D1BCC9DC400BA7173 /* LayerHUD.plist */; };
+		6B9186C61BD8764000748116 /* EndingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9186C51BD8764000748116 /* EndingMenu.swift */; };
 		C7007E831B989C00008D7921 /* DonutJump.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C7007E821B989C00008D7921 /* DonutJump.atlas */; };
 		C7007E851B989FAC008D7921 /* Cop2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C7007E841B989FAC008D7921 /* Cop2.atlas */; };
 		C7007E871B9B4024008D7921 /* DRGameManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7007E861B9B4024008D7921 /* DRGameManger.swift */; };
@@ -80,6 +84,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6B255B3B1BCC9DC400BA7173 /* GameConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameConfiguration.swift; sourceTree = "<group>"; };
+		6B255B3C1BCC9DC400BA7173 /* GameManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManger.swift; sourceTree = "<group>"; };
+		6B255B3D1BCC9DC400BA7173 /* LayerHUD.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LayerHUD.plist; sourceTree = "<group>"; };
+		6B9186C51BD8764000748116 /* EndingMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndingMenu.swift; sourceTree = "<group>"; };
 		C7007E821B989C00008D7921 /* DonutJump.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = DonutJump.atlas; sourceTree = "<group>"; };
 		C7007E841B989FAC008D7921 /* Cop2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Cop2.atlas; sourceTree = "<group>"; };
 		C7007E861B9B4024008D7921 /* DRGameManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DRGameManger.swift; sourceTree = "<group>"; };
@@ -194,6 +202,7 @@
 				C7B50A1F1BCD883100509F35 /* sprinkle.png */,
 				C75E19BB1B8F693800FE5BAC /* LevelUnit.swift */,
 				C75175F91B8FB7AC00527E3A /* LayerHUD.swift */,
+				6B255B3D1BCC9DC400BA7173 /* LayerHUD.plist */,
 				C75175FA1B8FB7AC00527E3A /* LayerWorld.swift */,
 				C75175FB1B8FB7AC00527E3A /* Layer.swift */,
 				C75175FC1B8FB7AC00527E3A /* LayerBackground.swift */,
@@ -208,6 +217,7 @@
 				C7EE87381B83D57300165B64 /* Introducer.swift */,
 				C7B8ED2A1BAF7D67009FC450 /* CoffeeBean.swift */,
 				C7EE872E1B83D4CB00165B64 /* MainMenu.swift */,
+				6B9186C51BD8764000748116 /* EndingMenu.swift */,
 				C78E9A6B1BD037E600632F75 /* CharSelect.swift */,
 				C75E19BA1B8F693800FE5BAC /* GameScene.swift */,
 			);
@@ -260,6 +270,8 @@
 		C791D1E51B7B985E000D4A7E /* DonutRun */ = {
 			isa = PBXGroup;
 			children = (
+				6B255B3B1BCC9DC400BA7173 /* GameConfiguration.swift */,
+				6B255B3C1BCC9DC400BA7173 /* GameManger.swift */,
 				C768AC3C1BD19E5200931B22 /* Wood_Done3.wav */,
 				C768AC3E1BD1EE8E00931B22 /* preview (2).mp3 */,
 				C768AC3A1BD1993100931B22 /* preview (1).mp3 */,
@@ -409,6 +421,7 @@
 				C768AC321BD140F300931B22 /* 8bit Jump 02.wav in Resources */,
 				C768AC391BD1924200931B22 /* DonutOneIdle.atlas in Resources */,
 				C791D1F71B7B985E000D4A7E /* LaunchScreen.xib in Resources */,
+				6B255B401BCC9DC400BA7173 /* LayerHUD.plist in Resources */,
 				C717171A1BA7493D00B3ABA4 /* DonutDoubleJump.atlas in Resources */,
 				C791D1F41B7B985E000D4A7E /* Images.xcassets in Resources */,
 				C7B8ED2D1BAF7EFF009FC450 /* coffeeBean.atlas in Resources */,
@@ -448,6 +461,7 @@
 				C7007E871B9B4024008D7921 /* DRGameManger.swift in Sources */,
 				C791D2111B7BC845000D4A7E /* Donut.swift in Sources */,
 				C7B8ED2B1BAF7D67009FC450 /* CoffeeBean.swift in Sources */,
+				6B9186C61BD8764000748116 /* EndingMenu.swift in Sources */,
 				C7B50A2E1BCE8C8E00509F35 /* GoNutsFlash.swift in Sources */,
 				C7B50A1A1BCCA91E00509F35 /* gradient.swift in Sources */,
 				C73B36E31BA36E38006C8875 /* CGFloat+Extensions.swift in Sources */,
@@ -466,6 +480,8 @@
 				C75175FE1B8FB7AC00527E3A /* LayerWorld.swift in Sources */,
 				C73B36E81BA36E38006C8875 /* SKAction+SpecialEffects.swift in Sources */,
 				C75E19BF1B8F693800FE5BAC /* Object.swift in Sources */,
+				6B255B3F1BCC9DC400BA7173 /* GameManger.swift in Sources */,
+				6B255B3E1BCC9DC400BA7173 /* GameConfiguration.swift in Sources */,
 				C7EE87371B83D52700165B64 /* SGGameKit.swift in Sources */,
 				C791D1E91B7B985E000D4A7E /* AppDelegate.swift in Sources */,
 				C75176001B8FB7AC00527E3A /* LayerBackground.swift in Sources */,
@@ -603,8 +619,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = DonutRun/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos9.0;
 			};
 			name = Debug;
 		};
@@ -614,8 +632,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = DonutRun/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos9.0;
 			};
 			name = Release;
 		};
