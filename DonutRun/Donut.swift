@@ -12,6 +12,8 @@ import SpriteKit
 
 class Donut: SKSpriteNode {
 
+    var idleAction:SKAction?
+    var idleTwoAction:SKAction?
     var jumpAction:SKAction?
     var runAction:SKAction?
     var doubleJumpAction:SKAction?
@@ -74,7 +76,8 @@ class Donut: SKSpriteNode {
         setUpRun()
         setUpJump()
         setUpDoubleJump()
-
+        setUpIdle()
+        setUpIdleTwo()
         startRun()
 
 
@@ -97,6 +100,66 @@ class Donut: SKSpriteNode {
 
     }
 
+    func setUpIdle () {
+        let atlas = SKTextureAtlas (named: "DonutOneIdle")
+
+        var array = [String]()
+
+        //or setup an array with exactly the sequential frames start from 1
+        for var i=1; i <= 20; i++ {
+
+            let nameString = String(format: "DonutIdle_%i", i)
+            array.append(nameString)
+
+        }
+
+        //create another array this time with SKTexture as the type (textures being the .png images)
+        var atlasTextures:[SKTexture] = []
+
+        for (var i = 0; i < array.count; i++ ) {
+
+            let texture:SKTexture = atlas.textureNamed( array[i] )
+            atlasTextures.insert(texture, atIndex:i)
+
+        }
+
+        let atlasAnimation = SKAction.animateWithTextures(atlasTextures, timePerFrame: 1/24, resize: true , restore:false )
+        idleAction =  SKAction.repeatActionForever(atlasAnimation)
+
+
+    }
+
+    func setUpIdleTwo () {
+        let atlas = SKTextureAtlas (named: "DonutTwoIdle")
+
+        var array = [String]()
+
+        //or setup an array with exactly the sequential frames start from 1
+        for var i=5; i <= 24; i++ {
+
+            let nameString = String(format: "DonutTwoIdle_%i", i)
+            array.append(nameString)
+
+        }
+
+        //create another array this time with SKTexture as the type (textures being the .png images)
+        var atlasTextures:[SKTexture] = []
+
+        for (var i = 0; i < array.count; i++ ) {
+
+            let texture:SKTexture = atlas.textureNamed( array[i] )
+            atlasTextures.insert(texture, atIndex:i)
+
+        }
+
+        let atlasAnimation = SKAction.animateWithTextures(atlasTextures, timePerFrame: 1/24, resize: true , restore:false )
+        idleTwoAction =  SKAction.repeatActionForever(atlasAnimation)
+        
+        
+    }
+
+
+    
 
     func setUpRun() {
 
@@ -105,7 +168,7 @@ class Donut: SKSpriteNode {
         var array = [String]()
 
         //or setup an array with exactly the sequential frames start from 1
-        for var i=1; i <= 25; i++ {
+        for var i=1; i <= 13; i++ {
 
             let nameString = String(format: "DonutRun_%i", i)
             array.append(nameString)
@@ -191,6 +254,19 @@ class Donut: SKSpriteNode {
     }
 
 
+    func startIdle() {
+        self.removeActionForKey("jumpKey")
+        self.removeActionForKey("doubleJumpKey")
+        self.removeActionForKey("runKey")
+        self.runAction(idleAction!)
+    }
+
+    func startIdleTwo() {
+        self.removeActionForKey("jumpKey")
+        self.removeActionForKey("doubleJumpKey")
+        self.removeActionForKey("runKey")
+        self.runAction(idleTwoAction!)
+    }
 
     func startRun(){
         self.removeActionForKey("jumpKey")
@@ -205,6 +281,7 @@ class Donut: SKSpriteNode {
     func startJump(){
         self.removeActionForKey("runKey")
         self.runAction(jumpAction!, withKey: "jumpKey")
+        playJumpSound()
         isRunning == false
         isDoubleJumping == false
         isJumping == true
@@ -214,6 +291,7 @@ class Donut: SKSpriteNode {
         self.removeActionForKey("runKey")
         self.removeActionForKey("jumpKey")
         self.runAction(doubleJumpAction!, withKey: "doubleJumpKey")
+        playDoubleJumpSound()
         isJumping = false
         isRunning = false
         isDoubleJumping = true
@@ -337,7 +415,13 @@ class Donut: SKSpriteNode {
     }
 
 
+    func playJumpSound() {
+        SKTAudio.sharedInstance().playSoundEffect("8bit Jump 02.wav")
+    }
 
+    func playDoubleJumpSound() {
+        SKTAudio.sharedInstance().playSoundEffect("8bit Jump 03.wav")
+    }
 
 
 }
