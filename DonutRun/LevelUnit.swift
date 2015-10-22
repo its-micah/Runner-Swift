@@ -13,9 +13,11 @@ class LevelUnit:SKNode {
     
     var imageName:String = ""
     var backgroundSprite:SKSpriteNode = SKSpriteNode()
+    var backgroundBuilding:SKSpriteNode = SKSpriteNode()
     var levelUnitWidth:CGFloat = 0
     var levelUnitHeight:CGFloat = 0
     var theType:LevelType = LevelType.ground
+    var buildingsLayer: LayerBackground = LayerBackground()
     
     var xAmount:CGFloat = 0.6  //essentially this is our speed
     var direction:CGFloat = 1 //will be saved as either 1 or -1
@@ -40,6 +42,8 @@ class LevelUnit:SKNode {
     
     func setUpLevel(){
         
+        buildingsLayer.layerVelocity = CGPoint(x: -80.0, y: 0.0)
+        self.addChild(buildingsLayer)
 
         let diceRoll = arc4random_uniform(6)
 
@@ -97,6 +101,7 @@ class LevelUnit:SKNode {
 
         
         createObstacle()
+        addBackgroundObjects()
     }
     
     func createObstacle() {
@@ -133,6 +138,7 @@ class LevelUnit:SKNode {
         }
 
 
+
            
             
             
@@ -166,6 +172,42 @@ class LevelUnit:SKNode {
        
         
     }
+
+    func addBackgroundObjects() {
+
+        let diceRoll = arc4random_uniform(6)
+
+        if diceRoll == 0 {
+            imageName = "buildings2"
+        } else if diceRoll == 1 {
+            //imageName = "background2"
+        } else if diceRoll == 2 {
+            //imageName = "background3"
+        } else if diceRoll == 3 {
+            //imageName = "background1"
+        } else if diceRoll == 4 {
+            //imageName = "background3"
+        } else if diceRoll == 5 {
+            //imageName = "background2"
+        } else if diceRoll == 5 {
+            //imageName = "background4"
+        }
+
+
+        let tex:SKTexture = SKTexture(imageNamed: imageName)
+        backgroundBuilding = SKSpriteNode(texture: tex, color: SKColor.clearColor(), size: tex.size())
+        backgroundBuilding.zPosition = -1.3
+        backgroundBuilding.position = CGPointMake(0, 0)
+        buildingsLayer.addChild(backgroundBuilding)
+        // backgroundSprite = SKSpriteNode(texture: nil, color:SKColor.blueColor(), size:theSize)
+
+//        self.addChild(backgroundBuilding)
+
+        
+        
+        
+    }
+
     
     
     

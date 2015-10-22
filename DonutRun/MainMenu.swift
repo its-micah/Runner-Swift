@@ -12,6 +12,9 @@ import Foundation
 class MainMenu: SGScene {
 
     override func didMoveToView(view: SKView) {
+
+        SKTAudio.sharedInstance().playBackgroundMusic("preview (1).mp3")
+
         self.backgroundColor = UIColor(red: 244 / 255, green: 102 / 255, blue: 186 / 255, alpha: 1.0)
         //let background = SKSpriteNode(imageNamed: "background4")
         let background = SKSpriteNode()
@@ -38,7 +41,7 @@ class MainMenu: SGScene {
                 let theNode = node 
                 if theNode.name == "play" {
                     print("play game")
-                    let gameScene = GameScene(size: scene!.size)
+                    let gameScene = CharSelect(size: scene!.size)
                     gameScene.scaleMode = scaleMode
                     let transition = SKTransition.fadeWithDuration(0.3)
                     view?.presentScene(gameScene, transition: transition)
