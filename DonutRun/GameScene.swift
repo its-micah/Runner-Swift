@@ -169,7 +169,7 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
         cop.zPosition = 101
 
-        coffeeBeanStartingPosition = CGPointMake(screenWidth + coffeeBean.size.width, 100)
+        coffeeBeanStartingPosition = CGPointMake(screenWidth + coffeeBean.size.width, -200) //100
 
         copStartingPosition = CGPointMake(screenWidth + cop.size.width, 0)
         cop.position = copStartingPosition
@@ -378,6 +378,9 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
 
     override func screenInteractionStarted(location: CGPoint) {
+        //self.paused = true
+
+
         if currentGameState == .gameActive {
             tapped()
         }
@@ -418,11 +421,11 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
         if (DRGameManager.sharedInstance.timeForCoffeeBean()) {
             if coffeeBean.position.x < (theDonut.position.x - 400) && coffeeBeanArray[0].position.x > (theDonut.position.x - 300)  {
-                coffeeBean.position = CGPointMake(theDonut.position.x + 800, 100)
+                coffeeBean.position = CGPointMake(theDonut.position.x + 800, -200) //100
                 coffeeBean.hidden = false
                 coffeeBean.physicsBody?.categoryBitMask = BodyType.coffeeBeanObject.rawValue
             } else if coffeeBeanArray[0].position.x < (theDonut.position.x - 400){
-                coffeeBeanArray[0].position = CGPointMake(theDonut.position.x + 800, 100)
+                coffeeBeanArray[0].position = CGPointMake(theDonut.position.x + 800, -200) //100
                 coffeeBean.hidden = false
                 coffeeBean.physicsBody?.categoryBitMask = BodyType.coffeeBeanObject.rawValue
             }
@@ -462,14 +465,21 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
         //cop.position = CGPointMake(cop.position.x + 5, cop.position.y)
 
 
-        if arc4random_uniform(100) == 50 {
-            GameManager.sharedInstance.incrementGameScore(1)
-        }
+//        if arc4random_uniform(100) == 50 {
+//            GameManager.sharedInstance.incrementGameScore(1)
+//        }
 
-        if lastScore != GameManager.sharedInstance.gameScore {
-            layerHUD.update(dt)
-            lastScore = GameManager.sharedInstance.gameScore
-        }
+
+        //GameManager.sharedInstance.gameScore = Int(theDonut.position.x / 20)
+        //if lastScore != GameManager.sharedInstance.gameScore {
+            layerHUD.update(dt,  positionIn: theDonut.position.x)
+            //lastScore = GameManager.sharedInstance.gameScore
+        //}
+
+
+
+
+
     }
 
 
@@ -546,7 +556,9 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
             coffeeBean.hidden = true
             coffeeBean.physicsBody?.categoryBitMask = BodyType.player.rawValue
+            GameManager.sharedInstance.incrementBeanCount()
             coffeeBeanCount++
+
             checkOnGoNuts()
             print("coffee bean count is now \(coffeeBeanCount)")
 
@@ -565,6 +577,13 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
             isDead = true
 
+            GameManager.sharedInstance.incrementLifeCount()
+
+            if GameManager.sharedInstance.lifeCount == 3 {
+                let mainMenu = EndingMenu(size: self.scene!.size)
+                mainMenu.scaleMode = self.scaleMode
+                self.view?.presentScene(mainMenu, transition: SKTransition.fadeWithDuration(1))
+            }
 //            loopingBG.removeAllActions()
 //            loopingBG2.removeAllActions()
 
@@ -603,7 +622,6 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
         theDonut.runAction(seq2)
 
     }
-
 
     func checkOnGoNuts() {
         if coffeeBeanCount == 2 {
@@ -647,7 +665,6 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 //        loopingBG2.position = CGPointMake(loopingBG2.size.width - 3, -50)
 
     }
-
 
 
 

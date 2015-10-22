@@ -5,9 +5,9 @@
 	<key>Score</key>
 	<dict>
 		<key>LabelText</key>
-		<string>Beans</string>
+		<string>Feet Walked</string>
 		<key>ImageNumber</key>
-		<integer>3</integer>
+		<integer>2</integer>
 		<key>LocationX</key>
 		<integer>-3</integer>
 		<key>LocationY</key>
