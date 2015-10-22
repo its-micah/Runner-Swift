@@ -36,7 +36,7 @@ class LayerHUD: SKNode {
         addScoreImage()
 
         addScore()
-        addLives()
+        addLifes()
 
 
         //setupScoreboard()
@@ -77,45 +77,29 @@ class LayerHUD: SKNode {
 
     }
 
-    func addLives () {
+    func addLifes () {
+        // let numberOfLifes: Int = GameConfiguration.sharedInstance.life
+        for index in 1...3 {
+            addLife(index)
+        }
+    }
 
-        let scoreImageName: String = "BagOfSugar.png" //+ String(GameConfiguration.sharedInstance.gameScoreImageNumber) + ".png"
-        let scoreImage: SKTexture = SKTexture(imageNamed: scoreImageName)
-        let life1 = SKSpriteNode(texture: scoreImage)
-        life1.name = "life1"
-        let life2 = SKSpriteNode(texture: scoreImage)
-        life2.name = "life2"
-        let life3 = SKSpriteNode(texture: scoreImage)
-        life3.name = "life3"
+    func addLife(lifeNumber: Int) {
 
-        //let screenSize: CGRect = UIScreen.mainScreen().bounds
+        let lifeImageName: String = "BagOfSugar.png" //+ String(GameConfiguration.sharedInstance.gameScoreImageNumber) + ".png"
+        let lifeNode = SKSpriteNode(texture: SKTexture(imageNamed: lifeImageName))
+        lifeNode.name = "life" + String(lifeNumber)
+
         let screenSize: CGRect = UIScreen.mainScreen().bounds
 
-        //test.setScale(0.5)
-        var xPoint: CGFloat = (screenSize.width / 2) - (life1.frame.width / 2 ) - 20
-        var yPoint: CGFloat = (screenSize.height / 2) + (life1.frame.height / 2)
+        // test.setScale(0.5)  // GameConfiguration.sharedInstance.????
+        let xPoint: CGFloat = (screenSize.width / 2) - (lifeNode.frame.width / 2 ) - 20
+        let yPoint: CGFloat = (screenSize.height / 2) + (lifeNode.frame.height / 2)
+        lifeNode.position = CGPointMake(xPoint + CGFloat((lifeNumber - 1) * 100), yPoint)
 
-
-        //xPoint = 433.5 // xPoint - 20
-
-        life1.position = CGPointMake(xPoint, yPoint)
-        life2.position = CGPointMake(xPoint + 100, yPoint)
-        life3.position = CGPointMake(xPoint + 200, yPoint)
-
-        print("frame width: \(life1.frame.width)")
-        print("frame height: \(life1.frame.height)")
-        print("screen width: \(screenSize.width)")
-        print("screen height: \(screenSize.height)")
-        print("xpoint: \(xPoint)")
-        print("ypoint: \(yPoint)")
-        
-        addChild(life1)
-        addChild(life2)
-        addChild(life3)
-
-
-
+        addChild(lifeNode)
     }
+
 
     func addBean () {
         let coffeeBean = SKSpriteNode(texture: SKTexture(imageNamed: "coffeeBean_1.png"))

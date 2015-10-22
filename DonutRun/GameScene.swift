@@ -99,11 +99,17 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
     let buffer:CGFloat = 125;
 
-
+    //mick for lowering bean on simulator
+    var yBean: CGFloat = 100
 
 
 
     override func didMoveToView(view: SKView) {
+        // do setup of simulator vs device here
+        #if (arch(i386) || arch(x86_64)) && os(iOS)
+            yBean = -200
+        #endif
+
 
         copArray += [cop1]
         coffeeBeanArray += [coffeeBean]
@@ -169,7 +175,7 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
         cop.zPosition = 101
 
-        coffeeBeanStartingPosition = CGPointMake(screenWidth + coffeeBean.size.width, -200) //100
+        coffeeBeanStartingPosition = CGPointMake(screenWidth + coffeeBean.size.width, yBean)
 
         copStartingPosition = CGPointMake(screenWidth + cop.size.width, 0)
         cop.position = copStartingPosition
@@ -421,11 +427,11 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
         if (DRGameManager.sharedInstance.timeForCoffeeBean()) {
             if coffeeBean.position.x < (theDonut.position.x - 400) && coffeeBeanArray[0].position.x > (theDonut.position.x - 300)  {
-                coffeeBean.position = CGPointMake(theDonut.position.x + 800, -200) //100
+                coffeeBean.position = CGPointMake(theDonut.position.x + 800, yBean) 
                 coffeeBean.hidden = false
                 coffeeBean.physicsBody?.categoryBitMask = BodyType.coffeeBeanObject.rawValue
             } else if coffeeBeanArray[0].position.x < (theDonut.position.x - 400){
-                coffeeBeanArray[0].position = CGPointMake(theDonut.position.x + 800, -200) //100
+                coffeeBeanArray[0].position = CGPointMake(theDonut.position.x + 800, yBean)
                 coffeeBean.hidden = false
                 coffeeBean.physicsBody?.categoryBitMask = BodyType.coffeeBeanObject.rawValue
             }
