@@ -75,7 +75,7 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
     var screenWidth:CGFloat = 0
     var screenHeight:CGFloat = 0
     let worldNode:SKNode = SKNode()
-    let theDonut:Donut = Donut(imageNamed: "DonutRun_1")
+    var theDonut:Donut = Donut(imageNamed: "")
     var donutSprinkle:SKEmitterNode?
     var flash:GoNutsFlash?
     var coffeeBean:CoffeeBean = CoffeeBean(imageNamed: "coffeeBean_1")
@@ -96,7 +96,7 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
     var timeSinceEnemyAdded:Int = 0;
     var coffeeBeanCount:Int = 0;
     var pauseCount:Int = 0
-
+    var selectedDonut: Int?
     let buffer:CGFloat = 125;
 
     //mick for lowering bean on simulator
@@ -162,6 +162,12 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
         self.anchorPoint = CGPointMake(0.5, 0.5)
 
         addChild(worldNode)
+
+        if self.selectedDonut == 0 {
+            theDonut = Donut(imageNamed: "DonutRun_1")
+        } else if self.selectedDonut == 1 {
+            theDonut = Donut(imageNamed: "DonutTwoRun_1")
+        }
 
         worldNode.addChild(theDonut)
         worldNode.addChild(coffeeBean)
