@@ -73,7 +73,7 @@ class Donut: SKSpriteNode {
         self.physicsBody = body
 
 
-        setUpRun()
+        setUpRunWithName(imageNamed)
         setUpJump()
         setUpDoubleJump()
         setUpIdle()
@@ -161,16 +161,18 @@ class Donut: SKSpriteNode {
 
     
 
-    func setUpRun() {
+    func setUpRunWithName(name: String) {
 
         let atlas = SKTextureAtlas (named: "donutRunTest")
 
         var array = [String]()
 
+        let formattedName = (name.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet()) as NSArray).componentsJoinedByString("")
+
         //or setup an array with exactly the sequential frames start from 1
         for var i=1; i <= 13; i++ {
 
-            let nameString = String(format: "DonutRun_%i", i)
+            let nameString = String(format: "\(formattedName)%i", i)
             array.append(nameString)
 
         }
