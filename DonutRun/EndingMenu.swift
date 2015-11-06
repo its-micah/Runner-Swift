@@ -9,7 +9,8 @@
 import SpriteKit
 import Foundation
 
-class EndingMenu: SKScene {
+//class EndingMenu: SKScene {
+class EndingMenu: SGScene {
 
     override func didMoveToView(view: SKView) {
 
@@ -48,21 +49,21 @@ class EndingMenu: SKScene {
 
     }
 
-//    override func screenInteractionStarted(location: CGPoint) {
-//        GameManager.sharedInstance.resetForNewGame()
-//        for node in nodesAtPoint(location) {
-//            if node.isKindOfClass(SKNode) {
-//                let theNode = node
-//                if theNode.name == "play" {
-//                    print("play game")
-//                    let gameScene = GameScene(size: scene!.size)
-//                    gameScene.scaleMode = scaleMode
-//                    let transition = SKTransition.fadeWithDuration(0.3)
-//                    view?.presentScene(gameScene, transition: transition)
-//                }
-//            }
-//        }
-//    }
+    override func screenInteractionStarted(location: CGPoint) {
+        GameManager.sharedInstance.resetForNewGame()
+        for node in nodesAtPoint(location) {
+            if node.isKindOfClass(SKNode) {
+                let theNode = node
+                if theNode.name == "play" {
+                    print("play game")
+                    let gameScene = GameScene(size: scene!.size)
+                    gameScene.scaleMode = scaleMode
+                    let transition = SKTransition.fadeWithDuration(0.3)
+                    view?.presentScene(gameScene, transition: transition)
+                }
+            }
+        }
+    }
 
 
     
