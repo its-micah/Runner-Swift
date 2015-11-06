@@ -27,11 +27,11 @@ let PresentAuthenticationViewController = "PresentAuthenticationViewController"
 let singleton = SGGameKit()
 
 class SGGameKit: NSObject {
-  #if os(iOS)
-  var authenticationViewController: UIViewController?
-  #else
-  var authenticationViewController: NSViewController?
-  #endif
+//  #if os(iOS)
+    var authenticationViewController: UIViewController?
+//  #else
+//  var authenticationViewController: NSViewController?
+//  #endif
   var lastError: NSError?
   var gameCenterEnabled: Bool
   
@@ -62,18 +62,18 @@ class SGGameKit: NSObject {
       }
     }
     #else
-    localPlayer.authenticateHandler = {(viewController, error) in
-      self.lastError = error
-        if viewController != nil {
-          let presenter = GKDialogController.sharedDialogController()
-          presenter.parentWindow = NSApplication.sharedApplication().windows[0] as! NSWindow
-          presenter.presentViewController(viewController as NSViewController)
-        } else if localPlayer.authenticated {
-          self.gameCenterEnabled = true
-        } else {
-          self.gameCenterEnabled = false
-        }
-      }
+//    localPlayer.authenticateHandler = {(viewController, error) in
+//      self.lastError = error
+//        if viewController != nil {
+//          let presenter = GKDialogController.sharedDialogController()
+//          presenter.parentWindow = NSApplication.sharedApplication().windows[0] as! NSWindow
+//          presenter.presentViewController(viewController as NSViewController)
+//        } else if localPlayer.authenticated {
+//          self.gameCenterEnabled = true
+//        } else {
+//          self.gameCenterEnabled = false
+//        }
+//      }
     #endif
   }
   

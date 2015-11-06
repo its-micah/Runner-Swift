@@ -101,158 +101,34 @@ class Donut: SKSpriteNode {
     }
 
     func setUpIdle () {
-        let atlas = SKTextureAtlas (named: "DonutOneIdle")
-
-        var array = [String]()
-
-        //or setup an array with exactly the sequential frames start from 1
-        for var i=1; i <= 20; i++ {
-
-            let nameString = String(format: "DonutIdle_%i", i)
-            array.append(nameString)
-
-        }
-
-        //create another array this time with SKTexture as the type (textures being the .png images)
-        var atlasTextures:[SKTexture] = []
-
-        for (var i = 0; i < array.count; i++ ) {
-
-            let texture:SKTexture = atlas.textureNamed( array[i] )
-            atlasTextures.insert(texture, atIndex:i)
-
-        }
-
-        let atlasAnimation = SKAction.animateWithTextures(atlasTextures, timePerFrame: 1/24, resize: true , restore:false )
+        let textureAtlasArray = SKTexture.createAtlas("DonutOneIdle", numberOfImages: 20)
+        let atlasAnimation = SKAction.animateWithTextures(textureAtlasArray, timePerFrame: 1/24, resize: true , restore:false )
         idleAction =  SKAction.repeatActionForever(atlasAnimation)
-
-
     }
 
     func setUpIdleTwo () {
-        let atlas = SKTextureAtlas (named: "DonutTwoIdle")
-
-        var array = [String]()
-
-        //or setup an array with exactly the sequential frames start from 1
-        for var i=5; i <= 24; i++ {
-
-            let nameString = String(format: "DonutTwoIdle_%i", i)
-            array.append(nameString)
-
-        }
-
-        //create another array this time with SKTexture as the type (textures being the .png images)
-        var atlasTextures:[SKTexture] = []
-
-        for (var i = 0; i < array.count; i++ ) {
-
-            let texture:SKTexture = atlas.textureNamed( array[i] )
-            atlasTextures.insert(texture, atIndex:i)
-
-        }
-
-        let atlasAnimation = SKAction.animateWithTextures(atlasTextures, timePerFrame: 1/24, resize: true , restore:false )
+        let textureAtlasArray = SKTexture.createAtlas("DonutTwoIdle", numberOfImages: 20)
+        let atlasAnimation = SKAction.animateWithTextures(textureAtlasArray, timePerFrame: 1/24, resize: true , restore:false )
         idleTwoAction =  SKAction.repeatActionForever(atlasAnimation)
-        
-        
     }
-
-
-    
 
     func setUpRun() {
-
-        let atlas = SKTextureAtlas (named: "donutRunTest")
-
-        var array = [String]()
-
-        //or setup an array with exactly the sequential frames start from 1
-        for var i=1; i <= 13; i++ {
-
-            let nameString = String(format: "DonutRun_%i", i)
-            array.append(nameString)
-
-        }
-
-        //create another array this time with SKTexture as the type (textures being the .png images)
-        var atlasTextures:[SKTexture] = []
-
-        for (var i = 0; i < array.count; i++ ) {
-
-            let texture:SKTexture = atlas.textureNamed( array[i] )
-            atlasTextures.insert(texture, atIndex:i)
-
-        }
-
-        let atlasAnimation = SKAction.animateWithTextures(atlasTextures, timePerFrame: 1/24, resize: true , restore:false )
+        let textureAtlasArray = SKTexture.createAtlas("DonutRun", numberOfImages: 13)
+        let atlasAnimation = SKAction.animateWithTextures(textureAtlasArray, timePerFrame: 1/24, resize: true , restore:false )
         runAction =  SKAction.repeatActionForever(atlasAnimation)
-
-
-
     }
 
-
     func setUpJump() {
-
-        let atlas = SKTextureAtlas (named: "DonutJump")
-
-        var array = [String]()
-
-        //or setup an array with exactly the sequential frames start from 1
-        for var i=1; i <= 10; i++ {
-
-            let nameString = String(format: "donutJump_%i", i)
-            array.append(nameString)
-
-        }
-
-        //create another array this time with SKTexture as the type (textures being the .png images)
-        var atlasTextures:[SKTexture] = []
-
-        for (var i = 0; i < array.count; i++ ) {
-
-            let texture:SKTexture = atlas.textureNamed( array[i] )
-            atlasTextures.insert(texture, atIndex:i)
-
-        }
-
-        let atlasAnimation = SKAction.animateWithTextures(atlasTextures, timePerFrame: 1.0/30, resize: true , restore:false )
+        let textureAtlasArray = SKTexture.createAtlas("DonutJump", numberOfImages: 10)
+        let atlasAnimation = SKAction.animateWithTextures(textureAtlasArray, timePerFrame: 1.0/30, resize: true , restore:false )
         jumpAction =  SKAction.repeatAction(atlasAnimation, count: 1)
-
-
-
     }
 
     func setUpDoubleJump() {
-
-        let atlas = SKTextureAtlas (named: "DonutDoubleJump")
-
-        var array = [String]()
-
-        //or setup an array with exactly the sequential frames start from 1
-        for var i=1; i <= 14; i++ {
-
-            let nameString = String(format: "DonutDoubleJump_%i", i)
-            array.append(nameString)
-
-        }
-
-        //create another array this time with SKTexture as the type (textures being the .png images)
-        var atlasTextures:[SKTexture] = []
-
-        for (var i = 0; i < array.count; i++ ) {
-
-            let texture:SKTexture = atlas.textureNamed( array[i] )
-            atlasTextures.insert(texture, atIndex:i)
-
-        }
-
-        let atlasAnimation = SKAction.animateWithTextures(atlasTextures, timePerFrame: 1.0/30, resize: true , restore:false )
+        let textureAtlasArray = SKTexture.createAtlas("DonutDoubleJump", numberOfImages: 14)
+        let atlasAnimation = SKAction.animateWithTextures(textureAtlasArray, timePerFrame: 1.0/30, resize: true , restore:false )
         doubleJumpAction =  SKAction.repeatAction(atlasAnimation, count: 1)
-
     }
-
 
     func startIdle() {
         self.removeActionForKey("jumpKey")
@@ -282,9 +158,9 @@ class Donut: SKSpriteNode {
         self.removeActionForKey("runKey")
         self.runAction(jumpAction!, withKey: "jumpKey")
         playJumpSound()
-        isRunning == false
-        isDoubleJumping == false
-        isJumping == true
+//        isRunning == false
+//        isDoubleJumping == false
+//        isJumping == true
     }
 
     func startDoubleJump(){
@@ -292,9 +168,9 @@ class Donut: SKSpriteNode {
         self.removeActionForKey("jumpKey")
         self.runAction(doubleJumpAction!, withKey: "doubleJumpKey")
         playDoubleJumpSound()
-        isJumping = false
-        isRunning = false
-        isDoubleJumping = true
+//        isJumping = false
+//        isRunning = false
+//        isDoubleJumping = true
     }
 
 
@@ -315,9 +191,9 @@ class Donut: SKSpriteNode {
             let callAgain:SKAction = SKAction.runBlock(taperJump)
             let wait:SKAction = SKAction.waitForDuration(1/60)
             let seq:SKAction = SKAction.sequence([wait, callAgain])
-            let `repeat` = SKAction.repeatAction(seq, count: 20)
+            let repeatAction = SKAction.repeatAction(seq, count: 20)
             let stop = SKAction.runBlock(stopDoubleJump)
-            let seq2 = SKAction.sequence([`repeat`, stop])
+            let seq2 = SKAction.sequence([repeatAction, stop])
             
             self.runAction(seq2)
 
@@ -334,9 +210,9 @@ class Donut: SKSpriteNode {
             let callAgain:SKAction = SKAction.runBlock(taperJump)
             let wait:SKAction = SKAction.waitForDuration(1/60)
             let seq:SKAction = SKAction.sequence([wait, callAgain])
-            let `repeat` = SKAction.repeatAction(seq, count: 20)
+            let repeatAction = SKAction.repeatAction(seq, count: 20)
             let stop = SKAction.runBlock(stopJump)
-            let seq2 = SKAction.sequence([`repeat`, stop])
+            let seq2 = SKAction.sequence([repeatAction, stop])
 
             self.runAction(seq2)
 

@@ -11,6 +11,7 @@ import SpriteKit
 
 let labelFont = "Gotham Rounded Medium"
 
+//class CharSelect: SGScene {
 class CharSelect: SGScene {
 
     override func didMoveToView(view: SKView) {
@@ -72,6 +73,9 @@ class CharSelect: SGScene {
                 if ((theNode.name?.containsString("player")) != nil) {
                     self.runAction(SKAction.playSoundFileNamed("Wood_Done3.wav", waitForCompletion: true))
                     let gameScene = GameScene(size: scene!.size)
+
+                    gameScene.selectedDonut = 1
+                    
                     gameScene.scaleMode = scaleMode
                     let transition = SKTransition.fadeWithDuration(1.0)
                     view?.presentScene(gameScene, transition: transition)

@@ -41,6 +41,8 @@ var jumpCount:Int = 0;
 var lastScore:Int = 0;
 
 
+
+//class GameScene: SGScene, SKPhysicsContactDelegate {
 class GameScene: SGScene, SKPhysicsContactDelegate {
 
     enum gameState {
@@ -96,6 +98,7 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
     var timeSinceEnemyAdded:Int = 0;
     var coffeeBeanCount:Int = 0;
     var pauseCount:Int = 0
+    var selectedDonut: Int = 0
 
     let buffer:CGFloat = 125;
 
@@ -414,7 +417,7 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
         }
 
-        if (DRGameManager.sharedInstance.timeForNewCop()) {
+        if (GameManager.sharedInstance.timeForNewCop()) {
             // check to see if cop is off screen
             // if yes, move cop to x, y (-300, 0)
             if cop.position.x < (theDonut.position.x - 400) && copArray[0].position.x > (theDonut.position.x - 300)  {
@@ -425,7 +428,7 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
         }
 
-        if (DRGameManager.sharedInstance.timeForCoffeeBean()) {
+        if (GameManager.sharedInstance.timeForCoffeeBean()) {
             if coffeeBean.position.x < (theDonut.position.x - 400) && coffeeBeanArray[0].position.x > (theDonut.position.x - 300)  {
                 coffeeBean.position = CGPointMake(theDonut.position.x + 800, yBean) 
                 coffeeBean.hidden = false
@@ -491,7 +494,6 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
     override func didSimulatePhysics() {
 
-
         self.centerOnNode(theDonut)
 
 
@@ -551,7 +553,8 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
         if (contact.bodyA.categoryBitMask == BodyType.player.rawValue  && contact.bodyB.categoryBitMask == BodyType.deathObject.rawValue ) {
 
             killPlayer()
-
+            cop.position = CGPointMake(cop.position.x + 1000, cop.position.y)
+            cop1.position = CGPointMake(cop.position.x + 1000, cop.position.y)
         }
 
         if (contact.bodyA.categoryBitMask == BodyType.player.rawValue  && contact.bodyB.categoryBitMask == BodyType.coffeeBeanObject.rawValue ) {
@@ -580,9 +583,9 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
     func killPlayer() {
 
 
-        if ( isDead == false) {
+        if (isDead == false) {
 
-            isDead = true
+            //isDead = true
 
             GameManager.sharedInstance.incrementLifeCount()
 
@@ -595,16 +598,17 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 //            loopingBG2.removeAllActions()
 
             let fadeOut:SKAction = SKAction.fadeAlphaTo(0, duration: 0.2)
-            let move:SKAction = SKAction.moveTo(startingPosition, duration: 0.2)
+            //let move:SKAction = SKAction.moveTo(startingPosition, duration: 0.2)
             let block:SKAction = SKAction.runBlock(revivePlayer)
-            let seq:SKAction = SKAction.sequence([fadeOut, move, block])
+            //let seq:SKAction = SKAction.sequence([fadeOut, move, block])
+            let seq:SKAction = SKAction.sequence([fadeOut, block])
 
             theDonut.runAction(seq)
 
-            let fadeOutBG = SKAction.fadeAlphaTo(0, duration: 0.5)
-            let blockBG = SKAction.runBlock(resetLoopingBackground)
-            let fadeInBG = SKAction.fadeAlphaTo(1, duration: 0.5)
-            let seqBG = SKAction.sequence([fadeOutBG, blockBG, fadeInBG])
+            //let fadeOutBG = SKAction.fadeAlphaTo(0, duration: 0.5)
+            //let blockBG = SKAction.runBlock(resetLoopingBackground)
+            //let fadeInBG = SKAction.fadeAlphaTo(1, duration: 0.5)
+            //let seqBG = SKAction.sequence([fadeOutBG, blockBG, fadeInBG])
 
 //            loopingBG.runAction(seqBG)
 //            loopingBG2.runAction(seqBG)
@@ -617,10 +621,11 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
         isDead = false
 
-        let fadeOut:SKAction = SKAction.fadeAlphaTo(0, duration: 0.2)
-        let block:SKAction = SKAction.runBlock(resetLevel)
+        //let fadeOut:SKAction = SKAction.fadeAlphaTo(0, duration: 0.2)
+        //let block:SKAction = SKAction.runBlock(resetLevel)
         let fadeIn:SKAction = SKAction.fadeAlphaTo(1, duration: 0.2)
-        let seq:SKAction = SKAction.sequence([fadeOut, block, fadeIn])
+        //let seq:SKAction = SKAction.sequence([fadeOut, block, fadeIn])
+        let seq:SKAction = SKAction.sequence([fadeIn])
         worldNode.runAction(seq)
 
         let wait:SKAction = SKAction.waitForDuration(1)
@@ -653,7 +658,7 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
     }
 
     func addFlash() {
-        flash = GoNutsFlash(imageNamed: "goNutsFlash_1")
+        flash = GoNutsFlash(imageNamed: "GoNutsFlash_1")
         flash!.zPosition = 200
         flash!.position = theDonut.position
         flash?.blendMode = .Add

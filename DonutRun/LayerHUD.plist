@@ -9,9 +9,9 @@
 		<key>ImageNumber</key>
 		<integer>2</integer>
 		<key>LocationX</key>
-		<integer>-3</integer>
+		<real>0.5</real>
 		<key>LocationY</key>
-		<integer>0</integer>
+		<real>0.5</real>
 	</dict>
 </dict>
 </plist>

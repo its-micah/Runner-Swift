@@ -14,8 +14,8 @@ class GameConfiguration {
     static let sharedInstance = GameConfiguration()
 
     var gameScore: Int = 0
-    var gameScoreLocationX: Int = -3
-    var gameScoreLocationY: Int = 0
+    var gameScoreLocationX: CGFloat = 0.0
+    var gameScoreLocationY: CGFloat = 0.0
     var gameScoreImageNumber: Int = 3
     var gameScoreLabelText: String = "Score"
 
@@ -34,8 +34,8 @@ class GameConfiguration {
         print("Screen height = \(gameScreen.height)")
 
         gameScoreImageNumber = layerHudScoreDictionary["ImageNumber"] as! Int
-        gameScoreLocationX = layerHudScoreDictionary["LocationX"] as! Int
-        gameScoreLocationY = layerHudScoreDictionary["LocationY"] as! Int
+        gameScoreLocationX = layerHudScoreDictionary["LocationX"] as! CGFloat
+        gameScoreLocationY = layerHudScoreDictionary["LocationY"] as! CGFloat
         gameScoreLabelText = layerHudScoreDictionary["LabelText"] as! String
         
     }

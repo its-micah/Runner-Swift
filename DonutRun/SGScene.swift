@@ -26,7 +26,7 @@ class SGScene: SKScene {
   
   var isScenePaused = false
   
-  #if os(iOS)
+#if os(iOS)
   
   override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
     
@@ -59,9 +59,42 @@ class SGScene: SKScene {
       screenInteractionEnded(location)
     }
   }
-  
-  #else
-  
+ #elseif os(tvOS)
+
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+
+        for touch: AnyObject in touches {
+            let location = touch.locationInNode(self)
+            screenInteractionStarted(location)
+        }
+    }
+
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+
+        for touch: AnyObject in touches {
+            let location = touch.locationInNode(self)
+            screenInteractionMoved(location)
+        }
+    }
+
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+
+        for touch: AnyObject in touches {
+            let location = touch.locationInNode(self)
+            screenInteractionEnded(location)
+        }
+    }
+
+    override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
+
+        for touch: AnyObject in touches! {
+            let location = touch.locationInNode(self)
+            screenInteractionEnded(location)
+        }
+    }
+
+ #elseif os(OSX)
+
   override func mouseDown(theEvent: NSEvent) {
   
   let location = theEvent.locationInNode(self)
@@ -91,7 +124,7 @@ class SGScene: SKScene {
   
   #endif
   
-  #if !os(iOS)
+  #if os(OSX)
   
   override func keyDown(theEvent: NSEvent) {
   handleKeyEvent(theEvent, keyDown: true)

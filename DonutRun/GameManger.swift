@@ -7,6 +7,13 @@
 //
 
 import Foundation
+import UIKit
+
+struct GameManagerDefaultsKeys {
+    static let highScoreKey = "highScore"
+    //static let someOtherString  = "someOtherString"
+    //static let someInt  = "someInt"
+}
 
 class GameManager {
 
@@ -15,12 +22,31 @@ class GameManager {
     var gameScore: Int = 0
     var gameScoreDifferential: Int = 0
     var gameScoreLast: Int = 0
+    var highScore: Int = 0
 
     var beanCount: Int = 0
     var lifeCount: Int = 0
     var randomCopCounter: UInt32 = 6
+    var randomCoffeeBeanCounter: UInt32 = 3
+
+    //var goToBackgroundObserver: AnyObject?
 
     private init() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let highScoreFromDefaults: AnyObject? = defaults.objectForKey(GameManagerDefaultsKeys.highScoreKey)
+        if highScoreFromDefaults == nil {
+            defaults.setObject(0, forKey: GameManagerDefaultsKeys.highScoreKey)
+        } else {
+            highScore = highScoreFromDefaults as! Int
+        }
+
+        //var goToBackgroundObserver: AnyObject?
+
+//        let goToBackgroundObserver: AnyObject? = NSNotificationCenter.defaultCenter()
+//            .addObserverForName(UIApplicationDidEnterBackgroundNotification, object: nil, queue: nil) { (note: NSNotification!) -> Void in
+//                GameManager.sharedInstance.Save()
+//        }
+
         print("GameManager " + __FUNCTION__)
     }
 
@@ -82,4 +108,29 @@ class GameManager {
         lifeCount = 0
     }
 
+    func Save() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if self.gameScore > self.highScore {
+            self.highScore = self.gameScore
+            defaults.setObject( self.gameScore, forKey: GameManagerDefaultsKeys.highScoreKey)
+            defaults.synchronize()
+        }
+
+    }
+
+    func timeForCoffeeBean() -> Bool {
+        var timeForNewCoffeeBean: Bool = false
+        if(GameManager.sharedInstance.randomCoffeeBeanCounter-- == 1){
+            GameManager.sharedInstance.randomizeCoffeeBeanCounter()
+            timeForNewCoffeeBean = true
+        }
+        //println("timeForNewCop = \(self.randomCopCounter)")
+        return timeForNewCoffeeBean
+    }
+
+    func randomizeCoffeeBeanCounter() {
+        randomCoffeeBeanCounter = arc4random_uniform(150)
+        randomCoffeeBeanCounter++
+        //println("randomCopCounter = \(self.randomCopCounter)")
+    }
 }

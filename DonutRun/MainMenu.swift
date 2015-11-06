@@ -9,8 +9,13 @@
 import SpriteKit
 import Foundation
 
+//class MainMenu: SGScene {
 class MainMenu: SGScene {
+    var focusedNode:SKSpriteNode?
 
+    let tapGeneralSelection = UITapGestureRecognizer()
+
+    
     override func didMoveToView(view: SKView) {
 
         SKTAudio.sharedInstance().playBackgroundMusic("preview (1).mp3")
@@ -26,6 +31,14 @@ class MainMenu: SGScene {
         addChild(background)
 
 
+        let highScore = SKLabelNode(fontNamed: "Futura")
+        highScore.text = "High Score: " + String(GameManager.sharedInstance.highScore)
+        highScore.posByScreen(0.15, y: 0.9)
+        highScore.zPosition = 10
+        highScore.name = "highScore"
+        addChild(highScore)
+
+
         let playGame = SKLabelNode(fontNamed: "Futura")
         playGame.text = "PLAY"
         playGame.posByScreen(0.5, y: 0.3)
@@ -33,6 +46,21 @@ class MainMenu: SGScene {
         playGame.name = "play"
         addChild(playGame)
 
+
+        #if os(tvOS)
+//        tapPlayPause.addTarget(self, action:"tappedPlayPause")
+//        tapPlayPause.allowedPressTypes = [NSNumber(integer: UIPressType.PlayPause.rawValue)]
+//        self.view!.addGestureRecognizer(tapPlayPause)
+//
+//        tapDown.addTarget(self, action:"tappedDown")
+//        tapDown.allowedPressTypes = [NSNumber(integer: UIPressType.DownArrow.rawValue)]
+//        self.view!.addGestureRecognizer(tapDown)
+
+        tapGeneralSelection.addTarget(self, action:"tappedGeneralSelection:")
+        tapGeneralSelection.allowedPressTypes = [NSNumber(integer: UIPressType.Select.rawValue)]
+
+        self.view!.addGestureRecognizer(tapGeneralSelection)
+        #endif
     }
 
     override func screenInteractionStarted(location: CGPoint) {
@@ -52,8 +80,14 @@ class MainMenu: SGScene {
         }
     }
 
+    func tappedGeneralSelection(sender:UITapGestureRecognizer) {
+        // this seems to just be a "click" on the touch pad
 
+        print("play game")
+        let gameScene = CharSelect(size: scene!.size)
+        gameScene.scaleMode = scaleMode
+        let transition = SKTransition.fadeWithDuration(0.3)
+        view?.presentScene(gameScene, transition: transition)
 
-
-
+    }
 }

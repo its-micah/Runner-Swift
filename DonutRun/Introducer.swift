@@ -39,7 +39,7 @@ class Introducer: SKScene {
     self.backgroundColor = SKColor.whiteColor()
     
     //Animate initial
-    let atlas = SKTextureAtlas(named: "SampleAssets")
+    let atlas = SKTextureAtlas(named: "OtherAssets")
     logoSprite = SKSpriteNode(texture: atlas.textureNamed("myLogo"))
     logoSprite?.size = CGSizeMake(40, 40)
     logoSprite!.posByCanvas(0.5, y: 0.5)
@@ -79,15 +79,15 @@ class Introducer: SKScene {
     
     //Prepare textures to load
     var textureAtlasesArray : [SKTextureAtlas] = []
-    let atlas01 = SKTextureAtlas(named: "donutRunTest")
+    let atlas01 = SKTextureAtlas(named: "DonutRun")
     textureAtlasesArray.append(atlas01)
-    let atlas02 = SKTextureAtlas(named: "coffeeBean")
+    let atlas02 = SKTextureAtlas(named: "CoffeeBean")
     textureAtlasesArray.append(atlas02)
     let atlas03 = SKTextureAtlas(named: "Cop2")
     textureAtlasesArray.append(atlas03)
     let atlas04 = SKTextureAtlas(named: "DonutDoubleJump")
     textureAtlasesArray.append(atlas04)
-    let atlas05 = SKTextureAtlas(named: "goNutsFlash")
+    let atlas05 = SKTextureAtlas(named: "GoNutsFlash")
     textureAtlasesArray.append(atlas05)
     let atlas06 = SKTextureAtlas(named: "DonutJump")
     textureAtlasesArray.append(atlas06)
@@ -113,7 +113,11 @@ class Introducer: SKScene {
   }
   
   func transitionToNextScene() {
-    let mainMenu = MainMenu(size: self.scene!.size)
+    //let mainMenu = MainMenu(size: self.scene!.size)
+    //let scene = Introducer(size: CGSize(width: 1024, height: 768))
+
+    let mainMenu = MainMenu(size: CGSize(width: 1024, height: 768))
+
     mainMenu.scaleMode = self.scaleMode
     self.view?.presentScene(mainMenu, transition: SKTransition.fadeWithDuration(2))
   }

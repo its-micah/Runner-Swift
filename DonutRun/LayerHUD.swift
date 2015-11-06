@@ -40,7 +40,7 @@ class LayerHUD: SKNode {
 
 
         //setupScoreboard()
-        addBean()  // add beans that are picked up to box, cleanup caode for push
+        //addBean()  // add beans that are picked up to box, cleanup caode for push
 
     }
 
@@ -93,9 +93,12 @@ class LayerHUD: SKNode {
         let screenSize: CGRect = UIScreen.mainScreen().bounds
 
         // test.setScale(0.5)  // GameConfiguration.sharedInstance.????
-        let xPoint: CGFloat = (screenSize.width / 2) - (lifeNode.frame.width / 2 ) - 20
-        let yPoint: CGFloat = (screenSize.height / 2) + (lifeNode.frame.height / 2)
-        lifeNode.position = CGPointMake(xPoint + CGFloat((lifeNumber - 1) * 100), yPoint)
+//        let xPoint: CGFloat = (screenSize.width / 2) - (lifeNode.frame.width / 2 ) - 20
+//        let yPoint: CGFloat = (screenSize.height / 2) + (lifeNode.frame.height / 2)
+//        lifeNode.position = CGPointMake(xPoint + CGFloat((lifeNumber - 1) * 100), yPoint)
+
+        lifeNode.posByScreen(0.5, y: 0.5)
+        lifeNode.zPosition = 1
 
         addChild(lifeNode)
     }
@@ -189,6 +192,8 @@ class LayerHUD: SKNode {
         let screenSize: CGRect = UIScreen.mainScreen().bounds
         
         //test.setScale(0.5)
+
+        
         var xPoint: CGFloat = (screenSize.width / 2) + (test.frame.width / 2 ) - 40
         var yPoint: CGFloat = (screenSize.height / 2) + (test.frame.height / 2) - 70
 
@@ -197,6 +202,11 @@ class LayerHUD: SKNode {
         //xPoint = 433.5 // xPoint - 20
 
         test.position = CGPointMake(-xPoint ,yPoint)
+
+        test.posByScreen(GameConfiguration.sharedInstance.gameScoreLocationX, y: GameConfiguration.sharedInstance.gameScoreLocationY)
+
+        test.position = CGPointMake(-xPoint ,yPoint)
+
 
         print("frame width: \(test.frame.width)")
         print("frame height: \(test.frame.height)")

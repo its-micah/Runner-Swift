@@ -46,33 +46,39 @@ class CoffeeBean: SKSpriteNode {
     }
 
     func setUpRun() {
-
-        let atlas = SKTextureAtlas (named: "coffeeBean")
-
-        var array = [String]()
-
-        //or setup an array with exactly the sequential frames start from 1
-        for var i=1; i <= 25; i++ {
-
-            let nameString = String(format: "coffeeBean_%i", i)
-            array.append(nameString)
-
-        }
-
-        //create another array this time with SKTexture as the type (textures being the .png images)
-        var atlasTextures:[SKTexture] = []
-
-        for (var i = 0; i < array.count; i++ ) {
-
-            let texture:SKTexture = atlas.textureNamed( array[i] )
-            atlasTextures.insert(texture, atIndex:i)
-
-        }
-
-        let atlasAnimation = SKAction.animateWithTextures(atlasTextures, timePerFrame: 1/24, resize: true , restore:false )
+        let textureAtlasArray = SKTexture.createAtlas("CoffeeBean", numberOfImages: 25)
+        let atlasAnimation = SKAction.animateWithTextures(textureAtlasArray, timePerFrame: 1/24, resize: true , restore:false )
         runAction =  SKAction.repeatActionForever(atlasAnimation)
-
     }
+
+//    func setUpRun() {
+//
+//        let atlas = SKTextureAtlas (named: "CoffeeBean")
+//
+//        var array = [String]()
+//
+//        //or setup an array with exactly the sequential frames start from 1
+//        for var i=1; i <= 25; i++ {
+//
+//            let nameString = String(format: "CoffeeBean_%i", i)
+//            array.append(nameString)
+//
+//        }
+//
+//        //create another array this time with SKTexture as the type (textures being the .png images)
+//        var atlasTextures:[SKTexture] = []
+//
+//        for (var i = 0; i < array.count; i++ ) {
+//
+//            let texture:SKTexture = atlas.textureNamed( array[i] )
+//            atlasTextures.insert(texture, atIndex:i)
+//
+//        }
+//
+//        let atlasAnimation = SKAction.animateWithTextures(atlasTextures, timePerFrame: 1/24, resize: true , restore:false )
+//        runAction =  SKAction.repeatActionForever(atlasAnimation)
+//
+//    }
 
 
     func startRun() {
