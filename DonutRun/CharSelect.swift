@@ -15,6 +15,8 @@ class CharSelect: SGScene {
 
     override func didMoveToView(view: SKView) {
 
+        setNeedsFocusUpdate()
+        updateFocusIfNeeded()
         self.backgroundColor = UIColor(red: 132/255, green: 202/255, blue: 255/255, alpha: 1.0)
 
         let charSelect = SKLabelNode(fontNamed: labelFont)
@@ -64,6 +66,27 @@ class CharSelect: SGScene {
 
     }
 
+    func setNeedsFocusUpdate() {
+
+    }
+
+    func updateFocusIfNeeded() {
+        print("")
+    }
+
+    @available(iOS 9.0, *)
+    func shouldUpdateFocusInContext(context: UIFocusUpdateContext) -> Bool {
+        return true
+    }
+
+    @available(iOS 9.0, *)
+    func didUpdateFocusInContext(context: UIFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
+        print("")
+
+    }
+
+
+
     override func screenInteractionStarted(location: CGPoint) {
 
         for node in nodesAtPoint(location) {
@@ -74,11 +97,11 @@ class CharSelect: SGScene {
                     let gameScene = GameScene(size: scene!.size)
 
                     if theNode.name == "donutOne" {
-                        gameScene.selectedDonut = 0
-                    } else if theNode.name == "donutTwo" {
                         gameScene.selectedDonut = 1
-                    }   else if theNode.name == "donutThree" {
+                    } else if theNode.name == "donutTwo" {
                         gameScene.selectedDonut = 2
+                    }   else if theNode.name == "donutThree" {
+                        gameScene.selectedDonut = 3
                     }
 
                     gameScene.scaleMode = scaleMode
