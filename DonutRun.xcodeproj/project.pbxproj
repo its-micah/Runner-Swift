@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		6B255B3E1BCC9DC400BA7173 /* GameConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B255B3B1BCC9DC400BA7173 /* GameConfiguration.swift */; };
 		6B255B3F1BCC9DC400BA7173 /* GameManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B255B3C1BCC9DC400BA7173 /* GameManger.swift */; };
-		6B255B401BCC9DC400BA7173 /* LayerHUD.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B255B3D1BCC9DC400BA7173 /* LayerHUD.plist */; };
 		6B39290B1BE99F2100AADAFA /* OtherAssets.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 6B39290A1BE99F2100AADAFA /* OtherAssets.atlas */; };
 		6B39290C1BE99F2100AADAFA /* OtherAssets.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 6B39290A1BE99F2100AADAFA /* OtherAssets.atlas */; };
 		6B9186C61BD8764000748116 /* EndingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9186C51BD8764000748116 /* EndingMenu.swift */; };
@@ -33,8 +32,7 @@
 		6B92C5551BE5BA3E00FF8B74 /* GameSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7EE873C1B83D92900165B64 /* GameSettings.plist */; };
 		6BC12FC31BE6355500A21C6F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C791D1F31B7B985E000D4A7E /* Images.xcassets */; };
 		6BC12FC81BE637CB00A21C6F /* SGScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EE87301B83D52700165B64 /* SGScene.swift */; };
-		6BC12FC91BE831F700A21C6F /* DonutOneIdle.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C768AC381BD1924200931B22 /* DonutOneIdle.atlas */; };
-		6BC12FCA1BE831FD00A21C6F /* DonutTwoIdle.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C77CDDD21BD457EA00C78402 /* DonutTwoIdle.atlas */; };
+		6BC12FC91BE831F700A21C6F /* DonutIdle.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C768AC381BD1924200931B22 /* DonutIdle.atlas */; };
 		6BC12FCB1BE8320200A21C6F /* GoNutsFlash.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C7B50A2B1BCDFE6100509F35 /* GoNutsFlash.atlas */; };
 		6BC12FCC1BE8320600A21C6F /* Cop2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C7007E841B989FAC008D7921 /* Cop2.atlas */; };
 		6BC12FCD1BE8320A00A21C6F /* DonutDoubleJump.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C71717191BA7493D00B3ABA4 /* DonutDoubleJump.atlas */; };
@@ -68,13 +66,14 @@
 		6BC12FED1BE85C0800A21C6F /* sprinkle2.png in Resources */ = {isa = PBXBuildFile; fileRef = C7B50A291BCDA8DC00509F35 /* sprinkle2.png */; };
 		6BC12FEE1BE85C0C00A21C6F /* sprinkle.png in Resources */ = {isa = PBXBuildFile; fileRef = C7B50A1F1BCD883100509F35 /* sprinkle.png */; };
 		6BC12FEF1BE85C1000A21C6F /* LevelUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75E19BB1B8F693800FE5BAC /* LevelUnit.swift */; };
-		6BC12FF01BE85C1500A21C6F /* LayerHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75175F91B8FB7AC00527E3A /* LayerHUD.swift */; };
-		6BC12FF11BE85C1800A21C6F /* LayerHUD.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B255B3D1BCC9DC400BA7173 /* LayerHUD.plist */; };
 		6BC12FF21BE85C1C00A21C6F /* LayerWorld.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75175FA1B8FB7AC00527E3A /* LayerWorld.swift */; };
 		6BC12FF31BE85C2000A21C6F /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75175FB1B8FB7AC00527E3A /* Layer.swift */; };
 		6BC12FF41BE85C2500A21C6F /* LayerBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75175FC1B8FB7AC00527E3A /* LayerBackground.swift */; };
 		6BC12FF51BE8C5CF00A21C6F /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EE872E1B83D4CB00165B64 /* MainMenu.swift */; };
 		6BC12FF71BE8D33600A21C6F /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75E19BA1B8F693800FE5BAC /* GameScene.swift */; };
+		6BC966B51C0E133200A0635E /* GameConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BC966B41C0E133200A0635E /* GameConfiguration.plist */; };
+		6BC966B61C0E17C500A0635E /* GameConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BC966B41C0E133200A0635E /* GameConfiguration.plist */; };
+		6BC966B81C0E87AE00A0635E /* LayerHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC966B71C0E87AE00A0635E /* LayerHUD.swift */; };
 		C7007E831B989C00008D7921 /* DonutJump.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C7007E821B989C00008D7921 /* DonutJump.atlas */; };
 		C7007E851B989FAC008D7921 /* Cop2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C7007E841B989FAC008D7921 /* Cop2.atlas */; };
 		C717171A1BA7493D00B3ABA4 /* DonutDoubleJump.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C71717191BA7493D00B3ABA4 /* DonutDoubleJump.atlas */; };
@@ -90,7 +89,6 @@
 		C73B36EC1BA36E38006C8875 /* SKTEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B36E01BA36E38006C8875 /* SKTEffects.swift */; };
 		C73B36ED1BA36E38006C8875 /* SKTTimingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B36E11BA36E38006C8875 /* SKTTimingFunctions.swift */; };
 		C73B36EE1BA36E38006C8875 /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B36E21BA36E38006C8875 /* Vector3.swift */; };
-		C75175FD1B8FB7AC00527E3A /* LayerHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75175F91B8FB7AC00527E3A /* LayerHUD.swift */; };
 		C75175FE1B8FB7AC00527E3A /* LayerWorld.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75175FA1B8FB7AC00527E3A /* LayerWorld.swift */; };
 		C75175FF1B8FB7AC00527E3A /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75175FB1B8FB7AC00527E3A /* Layer.swift */; };
 		C75176001B8FB7AC00527E3A /* LayerBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75175FC1B8FB7AC00527E3A /* LayerBackground.swift */; };
@@ -101,12 +99,10 @@
 		C768AC321BD140F300931B22 /* 8bit Jump 02.wav in Resources */ = {isa = PBXBuildFile; fileRef = C768AC311BD140F300931B22 /* 8bit Jump 02.wav */; };
 		C768AC341BD1416900931B22 /* 8bit Jump 03.wav in Resources */ = {isa = PBXBuildFile; fileRef = C768AC331BD1416900931B22 /* 8bit Jump 03.wav */; };
 		C768AC351BD1801800931B22 /* GothamRnd-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C764789B1BD17E41002A0B43 /* GothamRnd-Medium.otf */; };
-		C768AC391BD1924200931B22 /* DonutOneIdle.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C768AC381BD1924200931B22 /* DonutOneIdle.atlas */; };
+		C768AC391BD1924200931B22 /* DonutIdle.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C768AC381BD1924200931B22 /* DonutIdle.atlas */; };
 		C768AC3B1BD1993100931B22 /* preview (1).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C768AC3A1BD1993100931B22 /* preview (1).mp3 */; };
 		C768AC3D1BD19E5200931B22 /* Wood_Done3.wav in Resources */ = {isa = PBXBuildFile; fileRef = C768AC3C1BD19E5200931B22 /* Wood_Done3.wav */; };
 		C768AC3F1BD1EE8E00931B22 /* preview (2).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C768AC3E1BD1EE8E00931B22 /* preview (2).mp3 */; };
-		C769488C1BF8E00100644CDB /* SKTexture+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C769488B1BF8E00100644CDB /* SKTexture+Extentions.swift */; };
-		C77CDDD31BD457EA00C78402 /* DonutTwoIdle.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C77CDDD21BD457EA00C78402 /* DonutTwoIdle.atlas */; };
 		C78E9A6C1BD037E600632F75 /* CharSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78E9A6B1BD037E600632F75 /* CharSelect.swift */; };
 		C791D1E91B7B985E000D4A7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C791D1E81B7B985E000D4A7E /* AppDelegate.swift */; };
 		C791D1EB1B7B985E000D4A7E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C791D1EA1B7B985E000D4A7E /* GameScene.sks */; };
@@ -148,7 +144,6 @@
 /* Begin PBXFileReference section */
 		6B255B3B1BCC9DC400BA7173 /* GameConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameConfiguration.swift; sourceTree = "<group>"; };
 		6B255B3C1BCC9DC400BA7173 /* GameManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManger.swift; sourceTree = "<group>"; };
-		6B255B3D1BCC9DC400BA7173 /* LayerHUD.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LayerHUD.plist; sourceTree = "<group>"; };
 		6B39290A1BE99F2100AADAFA /* OtherAssets.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = OtherAssets.atlas; sourceTree = "<group>"; };
 		6B9186C51BD8764000748116 /* EndingMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndingMenu.swift; sourceTree = "<group>"; };
 		6B92C52F1BE5AC8B00FF8B74 /* DonutRun (tvOS).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DonutRun (tvOS).app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +154,8 @@
 		6B92C53C1BE5AC8B00FF8B74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6B92C53E1BE5AC8B00FF8B74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "DonutRun (tvOS)/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
 		6B92C5401BE5AC8B00FF8B74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6BC966B41C0E133200A0635E /* GameConfiguration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GameConfiguration.plist; sourceTree = "<group>"; };
+		6BC966B71C0E87AE00A0635E /* LayerHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerHUD.swift; sourceTree = "<group>"; };
 		C7007E821B989C00008D7921 /* DonutJump.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = DonutJump.atlas; sourceTree = "<group>"; };
 		C7007E841B989FAC008D7921 /* Cop2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Cop2.atlas; sourceTree = "<group>"; };
 		C71717191BA7493D00B3ABA4 /* DonutDoubleJump.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = DonutDoubleJump.atlas; sourceTree = "<group>"; };
@@ -174,7 +171,6 @@
 		C73B36E01BA36E38006C8875 /* SKTEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTEffects.swift; sourceTree = "<group>"; };
 		C73B36E11BA36E38006C8875 /* SKTTimingFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTTimingFunctions.swift; sourceTree = "<group>"; };
 		C73B36E21BA36E38006C8875 /* Vector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
-		C75175F91B8FB7AC00527E3A /* LayerHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerHUD.swift; sourceTree = "<group>"; };
 		C75175FA1B8FB7AC00527E3A /* LayerWorld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerWorld.swift; sourceTree = "<group>"; };
 		C75175FB1B8FB7AC00527E3A /* Layer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
 		C75175FC1B8FB7AC00527E3A /* LayerBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerBackground.swift; sourceTree = "<group>"; };
@@ -184,12 +180,10 @@
 		C764789B1BD17E41002A0B43 /* GothamRnd-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GothamRnd-Medium.otf"; sourceTree = "<group>"; };
 		C768AC311BD140F300931B22 /* 8bit Jump 02.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "8bit Jump 02.wav"; sourceTree = "<group>"; };
 		C768AC331BD1416900931B22 /* 8bit Jump 03.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "8bit Jump 03.wav"; sourceTree = "<group>"; };
-		C768AC381BD1924200931B22 /* DonutOneIdle.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = DonutOneIdle.atlas; sourceTree = "<group>"; };
+		C768AC381BD1924200931B22 /* DonutIdle.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = DonutIdle.atlas; sourceTree = "<group>"; };
 		C768AC3A1BD1993100931B22 /* preview (1).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "preview (1).mp3"; sourceTree = "<group>"; };
 		C768AC3C1BD19E5200931B22 /* Wood_Done3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Wood_Done3.wav; sourceTree = "<group>"; };
 		C768AC3E1BD1EE8E00931B22 /* preview (2).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "preview (2).mp3"; sourceTree = "<group>"; };
-		C769488B1BF8E00100644CDB /* SKTexture+Extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKTexture+Extentions.swift"; sourceTree = "<group>"; };
-		C77CDDD21BD457EA00C78402 /* DonutTwoIdle.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = DonutTwoIdle.atlas; sourceTree = "<group>"; };
 		C78E9A6B1BD037E600632F75 /* CharSelect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharSelect.swift; sourceTree = "<group>"; };
 		C791D1E31B7B985E000D4A7E /* DonutRun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DonutRun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C791D1E71B7B985E000D4A7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -255,9 +249,8 @@
 			children = (
 				C71717191BA7493D00B3ABA4 /* DonutDoubleJump.atlas */,
 				C7007E821B989C00008D7921 /* DonutJump.atlas */,
-				C768AC381BD1924200931B22 /* DonutOneIdle.atlas */,
+				C768AC381BD1924200931B22 /* DonutIdle.atlas */,
 				C791D20D1B7B9915000D4A7E /* DonutRun.atlas */,
-				C77CDDD21BD457EA00C78402 /* DonutTwoIdle.atlas */,
 				C7B50A2B1BCDFE6100509F35 /* GoNutsFlash.atlas */,
 			);
 			name = Donuts;
@@ -349,8 +342,7 @@
 				C7B50A291BCDA8DC00509F35 /* sprinkle2.png */,
 				C7B50A1F1BCD883100509F35 /* sprinkle.png */,
 				C75E19BB1B8F693800FE5BAC /* LevelUnit.swift */,
-				C75175F91B8FB7AC00527E3A /* LayerHUD.swift */,
-				6B255B3D1BCC9DC400BA7173 /* LayerHUD.plist */,
+				6BC966B71C0E87AE00A0635E /* LayerHUD.swift */,
 				C75175FA1B8FB7AC00527E3A /* LayerWorld.swift */,
 				C75175FB1B8FB7AC00527E3A /* Layer.swift */,
 				C75175FC1B8FB7AC00527E3A /* LayerBackground.swift */,
@@ -417,6 +409,7 @@
 			children = (
 				6BC12FC21BE6347700A21C6F /* Assets */,
 				6B255B3B1BCC9DC400BA7173 /* GameConfiguration.swift */,
+				6BC966B41C0E133200A0635E /* GameConfiguration.plist */,
 				6B255B3C1BCC9DC400BA7173 /* GameManger.swift */,
 				C7EE873C1B83D92900165B64 /* GameSettings.plist */,
 				C76B4A661BBDC63A008003A7 /* Atlases */,
@@ -565,11 +558,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BC12FCA1BE831FD00A21C6F /* DonutTwoIdle.atlas in Resources */,
 				6B92C53D1BE5AC8B00FF8B74 /* Main.storyboard in Resources */,
 				6BC12FCB1BE8320200A21C6F /* GoNutsFlash.atlas in Resources */,
 				6BC12FCD1BE8320A00A21C6F /* DonutDoubleJump.atlas in Resources */,
-				6BC12FC91BE831F700A21C6F /* DonutOneIdle.atlas in Resources */,
+				6BC12FC91BE831F700A21C6F /* DonutIdle.atlas in Resources */,
 				6B92C5531BE5BA3200FF8B74 /* 8bit Jump 03.wav in Resources */,
 				6B92C5341BE5AC8B00FF8B74 /* GameScene.sks in Resources */,
 				6B39290C1BE99F2100AADAFA /* OtherAssets.atlas in Resources */,
@@ -585,9 +577,9 @@
 				6B92C5521BE5BA2E00FF8B74 /* GothamRnd-Medium.otf in Resources */,
 				6BC12FCC1BE8320600A21C6F /* Cop2.atlas in Resources */,
 				6BC12FD01BE8321600A21C6F /* DonutJump.atlas in Resources */,
+				6BC966B61C0E17C500A0635E /* GameConfiguration.plist in Resources */,
 				6B92C54F1BE5BA1B00FF8B74 /* preview (1).mp3 in Resources */,
 				6BC12FC31BE6355500A21C6F /* Images.xcassets in Resources */,
-				6BC12FF11BE85C1800A21C6F /* LayerHUD.plist in Resources */,
 				6B92C5551BE5BA3E00FF8B74 /* GameSettings.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -606,17 +598,15 @@
 				6B39290B1BE99F2100AADAFA /* OtherAssets.atlas in Resources */,
 				C7007E851B989FAC008D7921 /* Cop2.atlas in Resources */,
 				C768AC321BD140F300931B22 /* 8bit Jump 02.wav in Resources */,
-				C768AC391BD1924200931B22 /* DonutOneIdle.atlas in Resources */,
+				C768AC391BD1924200931B22 /* DonutIdle.atlas in Resources */,
 				C791D1F71B7B985E000D4A7E /* LaunchScreen.xib in Resources */,
-				6B255B401BCC9DC400BA7173 /* LayerHUD.plist in Resources */,
-				C7E06DF51C0FDD4D00EE25C0 /* Coin.atlas in Resources */,
 				C717171A1BA7493D00B3ABA4 /* DonutDoubleJump.atlas in Resources */,
 				C791D1F41B7B985E000D4A7E /* Images.xcassets in Resources */,
 				C7B8ED2D1BAF7EFF009FC450 /* CoffeeBean.atlas in Resources */,
-				C77CDDD31BD457EA00C78402 /* DonutTwoIdle.atlas in Resources */,
 				C768AC341BD1416900931B22 /* 8bit Jump 03.wav in Resources */,
 				C791D1EB1B7B985E000D4A7E /* GameScene.sks in Resources */,
 				C791D20F1B7B9915000D4A7E /* DonutRun.atlas in Resources */,
+				6BC966B51C0E133200A0635E /* GameConfiguration.plist in Resources */,
 				C791D1F21B7B985E000D4A7E /* Main.storyboard in Resources */,
 				C7007E831B989C00008D7921 /* DonutJump.atlas in Resources */,
 				C7EE873D1B83D92900165B64 /* GameSettings.plist in Resources */,
@@ -652,7 +642,6 @@
 				6B92C54E1BE5BA0F00FF8B74 /* GameManger.swift in Sources */,
 				C761F2701BFBF542007C74EE /* SKTexture+Extentions.swift in Sources */,
 				6BC12FEB1BE85BFB00A21C6F /* GoNutsFlash.swift in Sources */,
-				6BC12FF01BE85C1500A21C6F /* LayerHUD.swift in Sources */,
 				6B92C54D1BE5BA0B00FF8B74 /* GameConfiguration.swift in Sources */,
 				6BC12FE51BE85B8200A21C6F /* SKTEffects.swift in Sources */,
 				6BC12FF41BE85C2500A21C6F /* LayerBackground.swift in Sources */,
@@ -695,6 +684,7 @@
 				C769488C1BF8E00100644CDB /* SKTexture+Extentions.swift in Sources */,
 				6B9186C61BD8764000748116 /* EndingMenu.swift in Sources */,
 				C7B50A2E1BCE8C8E00509F35 /* GoNutsFlash.swift in Sources */,
+				6BC966B81C0E87AE00A0635E /* LayerHUD.swift in Sources */,
 				C7B50A1A1BCCA91E00509F35 /* gradient.swift in Sources */,
 				C73B36E31BA36E38006C8875 /* CGFloat+Extensions.swift in Sources */,
 				C73B36E41BA36E38006C8875 /* CGPoint+Extensions.swift in Sources */,
@@ -719,7 +709,6 @@
 				C75176001B8FB7AC00527E3A /* LayerBackground.swift in Sources */,
 				C7DA30F21B90E14000977F75 /* Cop.swift in Sources */,
 				C73B36EB1BA36E38006C8875 /* SKTAudio.swift in Sources */,
-				C75175FD1B8FB7AC00527E3A /* LayerHUD.swift in Sources */,
 				C73B36E91BA36E38006C8875 /* SKColor+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

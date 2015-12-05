@@ -34,6 +34,7 @@ class Introducer: SKScene {
   var isLoading = false
   
   override func didMoveToView(view: SKView) {
+    GameConfiguration.sharedInstance.setGameScale()
     
     //Set a background color
     self.backgroundColor = SKColor.whiteColor()
@@ -116,10 +117,16 @@ class Introducer: SKScene {
     //let mainMenu = MainMenu(size: self.scene!.size)
     //let scene = Introducer(size: CGSize(width: 1024, height: 768))
 
-    let mainMenu = MainMenu(size: CGSize(width: 1024, height: 768))
+    //let mainMenu = MainMenu(size: CGSize(width: 1024, height: 768))
 
+
+    let mainMenu = MainMenu(size: CGSize(width: view!.bounds.size.width, height: view!.bounds.size.height))
     mainMenu.scaleMode = self.scaleMode
     self.view?.presentScene(mainMenu, transition: SKTransition.fadeWithDuration(2))
+
+//    let endingMenu = EndingMenu(size: CGSize(width: view!.bounds.size.width, height: view!.bounds.size.height))
+//    endingMenu.scaleMode = self.scaleMode
+//    self.view?.presentScene(endingMenu, transition: SKTransition.fadeWithDuration(2))
   }
   
 }

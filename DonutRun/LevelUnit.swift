@@ -30,14 +30,9 @@ class LevelUnit:SKNode {
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
-    override init () {
-        
-        super.init()
-        
-        
 
+    override init () {
+        super.init()
     }
     
     func setUpLevel(){
@@ -106,17 +101,9 @@ class LevelUnit:SKNode {
     
     func createObstacle() {
         
-      
-       
-        
         numberOfObjectsInLevel = arc4random_uniform(maxObjectsInLevelUnit)
         numberOfObjectsInLevel = numberOfObjectsInLevel + 1 // so it can't be 0
-        
-        
-        
-       
-        
-        
+
         if (theType == LevelType.ground) {
             
             for (var i = 0; i < Int(numberOfObjectsInLevel); i++) {

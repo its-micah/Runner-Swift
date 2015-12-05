@@ -50,22 +50,25 @@ class LayerHUD: SKNode {
 
 
     func addScore () {
+
         var scoreLabel: SKLabelNode!
         scoreLabel = SKLabelNode(fontNamed: "Futura")
-        scoreLabel.fontSize = 30
-        scoreLabel.position = CGPointMake(CGFloat(xUpperLeft + 280), CGFloat(210))
+        scoreLabel.fontSize = GameConfiguration.sharedInstance.getGameConfigurationCGFloat(String(self.dynamicType), settingName: "scoreFontSize")
+        scoreLabel.posByScreen(-0.25, y: 0.4)
+        scoreLabel.setScale(GameConfiguration.sharedInstance.gameScale)
         scoreLabel.fontColor = UIColor(red: 0 / 255, green: 102 / 255, blue: 186 / 255, alpha: 1.0)
         scoreLabel.horizontalAlignmentMode = .Center
         scoreLabel.verticalAlignmentMode = .Bottom
         scoreLabel.zPosition = 1
-        scoreLabel.text = GameConfiguration.sharedInstance.gameScoreLabelText
+        scoreLabel.text = GameConfiguration.sharedInstance.getGameConfigurationString(String(self.dynamicType), settingName: "scoreText")
         scoreLabel.name = "scoreLabel"
         addChild(scoreLabel)
 
         var score: SKLabelNode!
         score = SKLabelNode(fontNamed: "Futura")
-        score.fontSize = 30
-        score.position = CGPointMake(CGFloat(xUpperLeft + 380), CGFloat(210))
+        score.fontSize = GameConfiguration.sharedInstance.getGameConfigurationCGFloat(String(self.dynamicType), settingName: "scoreFontSize")
+        score.posByScreen(-0.1, y: 0.4)
+        score.setScale(GameConfiguration.sharedInstance.gameScale)
         score.fontColor = UIColor(red: 0 / 255, green: 102 / 255, blue: 186 / 255, alpha: 1.0)
         score.horizontalAlignmentMode = .Left
         score.verticalAlignmentMode = .Bottom
@@ -89,16 +92,9 @@ class LayerHUD: SKNode {
         let lifeImageName: String = "lifeDonut.png" //+ String(GameConfiguration.sharedInstance.gameScoreImageNumber) + ".png"
         let lifeNode = SKSpriteNode(texture: SKTexture(imageNamed: lifeImageName))
         lifeNode.name = "life" + String(lifeNumber)
-
-        let screenSize: CGRect = UIScreen.mainScreen().bounds
-
-        // test.setScale(0.5)  // GameConfiguration.sharedInstance.????
-//        let xPoint: CGFloat = (screenSize.width / 2) - (lifeNode.frame.width / 2 ) - 20
-//        let yPoint: CGFloat = (screenSize.height / 2) + (lifeNode.frame.height / 2)
-//        lifeNode.position = CGPointMake(xPoint + CGFloat((lifeNumber - 1) * 100), yPoint)
-
-        lifeNode.posByScreen(0.5, y: 0.5)
-        lifeNode.zPosition = 1
+        lifeNode.posByCanvas(0.25 + CGFloat(Double(lifeNumber - 1) * 0.09), y: 0.4)
+        lifeNode.setScale(GameConfiguration.sharedInstance.gameScale)
+        lifeNode.zPosition = 5
 
         addChild(lifeNode)
     }
@@ -106,42 +102,14 @@ class LayerHUD: SKNode {
 
     func addBean () {
         let coffeeBean = SKSpriteNode(texture: SKTexture(imageNamed: "coffeeBean_1.png"))
+
         coffeeBean.setScale(0.30)
+        //coffeeBean.setScale(GameConfiguration.sharedInstance.getCollectableSetting("collectableScale"))
+
         coffeeBean.zPosition = 1
         coffeeBean.position = CGPointMake(CGFloat(-380 + Int(arc4random_uniform(70))), CGFloat(150 + (arc4random_uniform(20))))
 
         addChild(coffeeBean)
-    }
-
-    func setupScoreboard () {
-
-        // find coordinates
-        //var xx: Int = GameConfiguration.sharedInstance.gameScoreLocation
-
-        // settings are a coordinate setup of 25, 5x5
-        // 1,  2,  3,  4,  5
-        // 6,  7,  8,  9, 10
-        //11, 12, 13, 14, 15
-        //16, 17, 18, 19, 20
-        //21, 22, 23, 24, 25
-
-
-        // do math
-
-        //let xPosition: CGFloat = 0
-        //let yPosition: CGFloat = -100
-
-
-        //let xPosition = ((GameConfiguration.sharedInstance.gameScreen.width / 5) * CGFloat(GameConfiguration.sharedInstance.gameScoreLocationX))
-        //let yPosition = ((GameConfiguration.sharedInstance.gameScreen.height / 5) * CGFloat(GameConfiguration.sharedInstance.gameScoreLocationY))
-
-
-
-
-        // set position
-        //self.childNodeWithName("scoreLabel")!.position = CGPointMake(xPosition, yPosition)
-        //self.childNodeWithName("scoreLabel")!.position = CGPointMake(xPosition, yPosition)
-
     }
 
     func update (delta:CFTimeInterval, positionIn:CGFloat) {
@@ -172,7 +140,8 @@ class LayerHUD: SKNode {
     func addPause () {
         pauseButton = SKLabelNode(fontNamed: "Futura")
         pauseButton.fontSize = 44
-        pauseButton.position = CGPointMake(450, 250)
+        pauseButton.posByScreen(0.45, y: 0.45)
+        pauseButton.setScale(GameConfiguration.sharedInstance.gameScale)
         pauseButton.fontColor = UIColor(red: 244 / 255, green: 102 / 255, blue: 186 / 255, alpha: 1.0)
         pauseButton.horizontalAlignmentMode = .Center
         pauseButton.verticalAlignmentMode = .Top
@@ -184,38 +153,12 @@ class LayerHUD: SKNode {
 
 
     func addScoreImage () {
-        let scoreImageName: String = "ScoreImage" + String(GameConfiguration.sharedInstance.gameScoreImageNumber) + ".png"
-        let scoreImage: SKTexture = SKTexture(imageNamed: scoreImageName)
-        let test = SKSpriteNode(texture: scoreImage)
-        
-        //let screenSize: CGRect = UIScreen.mainScreen().bounds
-        let screenSize: CGRect = UIScreen.mainScreen().bounds
-        
-        //test.setScale(0.5)
-
-        
-        var xPoint: CGFloat = (screenSize.width / 2) + (test.frame.width / 2 ) - 40
-        var yPoint: CGFloat = (screenSize.height / 2) + (test.frame.height / 2) - 70
-
-        //test.position = CGPointMake(-(xPoint), (screenSize.height / 2) + (test.frame.height / 2))
-
-        //xPoint = 433.5 // xPoint - 20
-
-        test.position = CGPointMake(-xPoint ,yPoint)
-
-        test.posByScreen(GameConfiguration.sharedInstance.gameScoreLocationX, y: GameConfiguration.sharedInstance.gameScoreLocationY)
-
-        test.position = CGPointMake(-xPoint ,yPoint)
-
-
-        print("frame width: \(test.frame.width)")
-        print("frame height: \(test.frame.height)")
-        print("screen width: \(screenSize.width)")
-        print("screen height: \(screenSize.height)")
-        print("xpoint: \(xPoint)")
-        print("ypoint: \(yPoint)")
-
-        addChild(test)
+        let scoreImageName: String = "ScoreImage" + GameConfiguration.sharedInstance.getGameConfigurationString(String(self.dynamicType), settingName: "scoreImageNumber") + ".png"
+        let scoreImageTexture: SKTexture = SKTexture(imageNamed: scoreImageName)
+        let scoreImageNode = SKSpriteNode(texture: scoreImageTexture)
+        scoreImageNode.posByScreen(-0.4, y: 0.4)
+        scoreImageNode.setScale(GameConfiguration.sharedInstance.gameScale)
+        addChild(scoreImageNode)
     }
     
     

@@ -23,6 +23,13 @@
 import SpriteKit
 
 public extension SKNode {
+    /** Send is ClassName and setting to set the location **/
+    func posBySetting(type: NSObject.Type, settingName: String) {
+        let x = GameConfiguration.sharedInstance.getGameConfigurationCGFloat(String(type), settingName: settingName + "X")
+        let y = GameConfiguration.sharedInstance.getGameConfigurationCGFloat(String(type), settingName: settingName + "Y")
+
+        self.position = CGPoint(x: CGFloat((SKMUIRect!.width * x) + SKMUIRect!.origin.x), y: CGFloat((SKMUIRect!.height * y) + SKMUIRect!.origin.y))
+    }
 
   /** Lets you treat the node's scale as a CGPoint value. */
   public var scaleAsPoint: CGPoint {

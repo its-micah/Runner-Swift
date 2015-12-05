@@ -22,6 +22,7 @@ class CharSelect: SGScene {
         let charSelect = SKLabelNode(fontNamed: labelFont)
         charSelect.text = "SELECT A DONUT"
         charSelect.posByScreen(0.5, y: 0.8)
+        charSelect.setScale(GameConfiguration.sharedInstance.getGameConfigurationCGFloat(String(self.dynamicType), settingName: "fontScale"))
         charSelect.zPosition = 10
         charSelect.name = "Select a Donut"
         addChild(charSelect)
@@ -30,12 +31,14 @@ class CharSelect: SGScene {
         player1.text = "Sprinkle"
         player1.posByScreen(0.2, y: 0.2)
         player1.zPosition = 10
+        player1.setScale(GameConfiguration.sharedInstance.getGameConfigurationCGFloat(String(self.dynamicType), settingName: "fontScale"))
         player1.name = "player1"
         addChild(player1)
 
         let player2 = SKLabelNode(fontNamed: labelFont)
         player2.text = "Dinkle"
         player2.posByScreen(0.5, y: 0.2)
+        player2.setScale(GameConfiguration.sharedInstance.getGameConfigurationCGFloat(String(self.dynamicType), settingName: "fontScale"))
         player2.zPosition = 10
         player2.name = "player2"
         addChild(player2)
@@ -43,12 +46,14 @@ class CharSelect: SGScene {
         let player3 = SKLabelNode(fontNamed: labelFont)
         player3.text = "Jeff"
         player3.posByScreen(0.8, y: 0.2)
+        player3.setScale(GameConfiguration.sharedInstance.getGameConfigurationCGFloat(String(self.dynamicType), settingName: "fontScale"))
         player3.zPosition = 10
         player3.name = "player3"
         addChild(player3)
 
         let donutOne: Donut = Donut(imageNamed: "DonutIdle_1")
         donutOne.posByScreen(0.2, y: 0.5)
+        donutOne.setScale(GameConfiguration.sharedInstance.getGameConfigurationCGFloat(String(self.dynamicType), settingName: "playerScale"))
         donutOne.physicsBody?.affectedByGravity = false
         donutOne.physicsBody?.dynamic = false
         donutOne.name = "donutOne"
@@ -56,6 +61,7 @@ class CharSelect: SGScene {
 
         let donutTwo: Donut = Donut(imageNamed: "DonutTwoIdle_5")
         donutTwo.posByScreen(0.5, y: 0.5)
+        donutTwo.setScale(GameConfiguration.sharedInstance.getGameConfigurationCGFloat(String(self.dynamicType), settingName: "playerScale"))
         donutTwo.physicsBody?.affectedByGravity = false
         donutTwo.physicsBody?.dynamic = false
         donutTwo.name = "donutTwo"

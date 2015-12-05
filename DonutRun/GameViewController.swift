@@ -16,7 +16,9 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let scene = Introducer(size: CGSize(width: 1024, height: 768))
+        //let scene = Introducer(size: CGSize(width: 1024, height: 768))
+        let scene = Introducer(size: CGSize(width: view.bounds.size.width, height: view.bounds.size.height))
+
         let skView = self.view as! SKView
 
         skView.multipleTouchEnabled = true
@@ -37,7 +39,7 @@ class GameViewController: UIViewController {
 
         skView.ignoresSiblingOrder = true
 
-        scene.scaleMode = .AspectFill
+        //scene.scaleMode = .AspectFill
 
         let SizeCon:SGResolution = SGResolution(screenSize: view.bounds.size, canvasSize: scene.size)
         
