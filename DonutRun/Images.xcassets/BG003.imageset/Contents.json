@@ -2,8 +2,8 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "BG003.png"
+      "filename" : "BG003.png",
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
@@ -12,6 +12,11 @@
     {
       "idiom" : "universal",
       "scale" : "3x"
+    },
+    {
+      "idiom" : "tv",
+      "filename" : "BG003tv.png",
+      "scale" : "1x"
     }
   ],
   "info" : {

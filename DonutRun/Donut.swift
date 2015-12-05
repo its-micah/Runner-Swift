@@ -48,13 +48,17 @@ class Donut: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
 
-    init (imageNamed:String) {
+    convenience init (imageNamed:String) {
+        self.init(imageNamed: imageNamed, donutNumber:1)
+    }
+
+    init (imageNamed:String, donutNumber:Int) {
 
         let imageTexture = SKTexture(imageNamed: imageNamed)
 
 
 
-        super.init(texture: imageTexture, color:SKColor.clearColor(), size: imageTexture.size() )  //Swift 2
+        super.init(texture:imageTexture, color:SKColor.clearColor(), size: imageTexture.size() )  //Swift 2
 
 
         //let body:SKPhysicsBody = SKPhysicsBody(circleOfRadius: imageTexture.size().width / 2 )
@@ -70,10 +74,11 @@ class Donut: SKSpriteNode {
         body.contactTestBitMask = BodyType.platformObject.rawValue | BodyType.deathObject.rawValue | BodyType.water.rawValue | BodyType.grass.rawValue
         body.collisionBitMask = BodyType.platformObject.rawValue | BodyType.grass.rawValue
         body.friction = 0.9 //0 is like glass, 1 is like sandpaper to walk on
+
         self.physicsBody = body
+        self.setScale(GameConfiguration.sharedInstance.getGameConfigurationCGFloat(String(self.dynamicType), settingName: "playerScale"))
 
-
-        setUpRun()
+        setUpRun(donutNumber)
         setUpJump()
         setUpDoubleJump()
         setUpIdle()
@@ -101,19 +106,19 @@ class Donut: SKSpriteNode {
     }
 
     func setUpIdle () {
-        let textureAtlasArray = SKTexture.createAtlas("DonutOneIdle", numberOfImages: 20)
+        let textureAtlasArray = SKTexture.createAtlas("DonutIdle", imageBatchNumber: 1, numberOfImages: 20)
         let atlasAnimation = SKAction.animateWithTextures(textureAtlasArray, timePerFrame: 1/24, resize: true , restore:false )
         idleAction =  SKAction.repeatActionForever(atlasAnimation)
     }
 
     func setUpIdleTwo () {
-        let textureAtlasArray = SKTexture.createAtlas("DonutTwoIdle", numberOfImages: 20)
+        let textureAtlasArray = SKTexture.createAtlas("DonutIdle", imageBatchNumber: 2, numberOfImages: 20)
         let atlasAnimation = SKAction.animateWithTextures(textureAtlasArray, timePerFrame: 1/24, resize: true , restore:false )
         idleTwoAction =  SKAction.repeatActionForever(atlasAnimation)
     }
 
-    func setUpRun() {
-        let textureAtlasArray = SKTexture.createAtlas("DonutRun", numberOfImages: 13)
+    func setUpRun(imageBatchNumber: Int) {
+        let textureAtlasArray = SKTexture.createAtlas("DonutRun", imageBatchNumber: imageBatchNumber, numberOfImages: 13)
         let atlasAnimation = SKAction.animateWithTextures(textureAtlasArray, timePerFrame: 1/24, resize: true , restore:false )
         runAction =  SKAction.repeatActionForever(atlasAnimation)
     }
@@ -158,9 +163,9 @@ class Donut: SKSpriteNode {
         self.removeActionForKey("runKey")
         self.runAction(jumpAction!, withKey: "jumpKey")
         playJumpSound()
-//        isRunning == false
-//        isDoubleJumping == false
-//        isJumping == true
+        isRunning = false
+        isDoubleJumping = false
+        isJumping = true
     }
 
     func startDoubleJump(){
@@ -168,9 +173,9 @@ class Donut: SKSpriteNode {
         self.removeActionForKey("jumpKey")
         self.runAction(doubleJumpAction!, withKey: "doubleJumpKey")
         playDoubleJumpSound()
-//        isJumping = false
-//        isRunning = false
-//        isDoubleJumping = true
+        isJumping = false
+        isRunning = false
+        isDoubleJumping = true
     }
 
 

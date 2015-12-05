@@ -6,12 +6,17 @@
     },
     {
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "Looping_BG@2x copy.png"
+      "filename" : "Looping_BG@2x copy.png",
+      "scale" : "2x"
     },
     {
       "idiom" : "universal",
       "scale" : "3x"
+    },
+    {
+      "idiom" : "tv",
+      "filename" : "Looping_BGtv.png",
+      "scale" : "1x"
     }
   ],
   "info" : {

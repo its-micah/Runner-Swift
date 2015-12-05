@@ -24,16 +24,22 @@ class MainMenu: SGScene {
         //let background = SKSpriteNode(imageNamed: "background4")
         let background = SKSpriteNode()
         //background.posByCanvas(0.5, y: 0.5)
-        background.xScale = 1.1
         // background.color = SKColorWithRGBA(244, 102, 186, 1)
-        background.yScale = 1.1
+
+        //background.xScale = 1.1
+        //background.yScale = 1.1
+
+
         background.zPosition = -1
         addChild(background)
 
 
         let highScore = SKLabelNode(fontNamed: "Futura")
         highScore.text = "High Score: " + String(GameManager.sharedInstance.highScore)
-        highScore.posByScreen(0.15, y: 0.9)
+        //highScore.posByScreen(0.2, y: 0.9)
+        highScore.posBySetting(self.dynamicType, settingName: "highScorePosition")
+        highScore.setScale(GameConfiguration.sharedInstance.getGameConfigurationCGFloat(String(self.dynamicType), settingName: "fontScale"))
+
         highScore.zPosition = 10
         highScore.name = "highScore"
         addChild(highScore)
@@ -41,7 +47,9 @@ class MainMenu: SGScene {
 
         let playGame = SKLabelNode(fontNamed: "Futura")
         playGame.text = "PLAY"
-        playGame.posByScreen(0.5, y: 0.3)
+        //playGame.posByScreen(0.5, y: 0.3)
+        playGame.posBySetting(self.dynamicType, settingName: "playGamePosition")
+        playGame.setScale(GameConfiguration.sharedInstance.getGameConfigurationCGFloat(String(self.dynamicType), settingName: "fontScale"))
         playGame.zPosition = 10
         playGame.name = "play"
         addChild(playGame)

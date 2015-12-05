@@ -49,7 +49,7 @@ class Layer: SKNode {
     
   }
   
-  func updateNodesParallax(delta:CFTimeInterval,childNumber:Int,childNode:SKNode) {
+  func updateNodesParallax(delta:CFTimeInterval, childNumber:Int, childNode:SKNode) {
     let offset = layerVelocity.x * CGFloat(delta)
     childNode.position.x += offset
     updateNodes(delta, childNumber: childNumber, childNode: childNode)

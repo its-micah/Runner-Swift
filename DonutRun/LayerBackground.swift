@@ -24,17 +24,23 @@ import SpriteKit
 
 class LayerBackground: Layer {
 
+  override func updateNodes(delta:CFTimeInterval, childNumber:Int, childNode:SKNode) {
 
-  override func updateNodes(delta:CFTimeInterval,childNumber:Int,childNode:SKNode) {
     if let node = childNode as? SKSpriteNode {
+        //if node.position.x <= (-(node.size.width + 500)) {
         if node.position.x <= (-(node.size.width + 500)) {
+            print ("(\(node.name).x = \(node.position.x)")
             if node.name == "A" && childNodeWithName("B") != nil {
+
                 node.position = CGPoint(x: childNodeWithName("B")!.position.x + node.size.width - 15, y: node.position.y)
+
             } else if node.name == "B" && childNodeWithName("A") != nil {
+
                 node.position = CGPoint(x: childNodeWithName("A")!.position.x + node.size.width - 15, y: node.position.y)
             }
         }
     }
+
   }
   
 }

@@ -38,7 +38,9 @@ class CoffeeBean: SKSpriteNode {
         body.contactTestBitMask = BodyType.player.rawValue
         body.collisionBitMask = BodyType.player.rawValue
         body.friction = 0 //0 is like glass, 1 is like sandpaper to walk on
+
         self.physicsBody = body
+        self.setScale(GameConfiguration.sharedInstance.getGameConfigurationCGFloat(String(self.dynamicType), settingName: "collectableScale"))
 
         setUpRun()
         startRun()
@@ -50,36 +52,6 @@ class CoffeeBean: SKSpriteNode {
         let atlasAnimation = SKAction.animateWithTextures(textureAtlasArray, timePerFrame: 1/24, resize: true , restore:false )
         runAction =  SKAction.repeatActionForever(atlasAnimation)
     }
-
-//    func setUpRun() {
-//
-//        let atlas = SKTextureAtlas (named: "CoffeeBean")
-//
-//        var array = [String]()
-//
-//        //or setup an array with exactly the sequential frames start from 1
-//        for var i=1; i <= 25; i++ {
-//
-//            let nameString = String(format: "CoffeeBean_%i", i)
-//            array.append(nameString)
-//
-//        }
-//
-//        //create another array this time with SKTexture as the type (textures being the .png images)
-//        var atlasTextures:[SKTexture] = []
-//
-//        for (var i = 0; i < array.count; i++ ) {
-//
-//            let texture:SKTexture = atlas.textureNamed( array[i] )
-//            atlasTextures.insert(texture, atIndex:i)
-//
-//        }
-//
-//        let atlasAnimation = SKAction.animateWithTextures(atlasTextures, timePerFrame: 1/24, resize: true , restore:false )
-//        runAction =  SKAction.repeatActionForever(atlasAnimation)
-//
-//    }
-
 
     func startRun() {
 

@@ -108,9 +108,9 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
     override func didMoveToView(view: SKView) {
         // do setup of simulator vs device here
-        #if (arch(i386) || arch(x86_64)) && os(iOS)
-            yBean = -200
-        #endif
+//        #if (arch(i386) || arch(x86_64)) && os(iOS)
+//            yBean = -200
+//        #endif
 
 
         copArray += [cop1]
@@ -147,6 +147,7 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
         background.zPosition = -10
         // set position to middle of frame and add the child, same as with any other Sprite.
         background.position = CGPointMake(0, 0)
+        
         self.addChild(background)
 
 
@@ -166,9 +167,9 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
         addChild(worldNode)
 
         if self.selectedDonut == 0 {
-            theDonut = Donut(imageNamed: "DonutRun_1")
+            theDonut = Donut(imageNamed: "DonutRun1_1")
         } else if self.selectedDonut == 1 {
-            theDonut = Donut(imageNamed: "DonutTwoRun_1")
+            theDonut = Donut(imageNamed: "DonutRun2_1")
         }
 
         worldNode.addChild(theDonut)
@@ -179,9 +180,12 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
         theDonut.position = startingPosition
         theDonut.zPosition = 101
-        theDonut.setScale(0.7)
+        //theDonut.setScale(0.7)
+        //theDonut.setScale(GameConfiguration.sharedInstance.gameScale) setting this in the donut
 
         cop.zPosition = 101
+        //cop.setScale(GameConfiguration.sharedInstance.gameScale)
+
 
         coffeeBeanStartingPosition = CGPointMake(screenWidth + coffeeBean.size.width, yBean)
 
@@ -213,8 +217,27 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
         addChild(layerBackground03Fast)
         layerBackground03Fast.layerVelocity = CGPoint(x: -100.0, y: 0.0)
 
-        addChild(layerHUD)
 
+        //layerHUD.scene?.view.frame.size
+
+
+        addChild(layerHUD)
+        updateScale()
+
+    }
+
+
+    func updateScale() {
+        guard let viewSize = layerHUD.scene?.view?.frame.size else {
+            return
+        }
+
+        // Resize the background node.
+        layerHUD.parent?.scene?.size = viewSize
+
+        // Scale the content so that the height always fits.
+        //let scale = viewSize.height / nativeContentSize.height
+        //contentNode.setScale(scale)
     }
 
 
@@ -260,13 +283,16 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
         //layerBackground03Fast
         let background4 = SKSpriteNode(imageNamed: "BG003")
-        background4.position = CGPoint (x: 0, y: -400)
+        //background4.position = CGPoint (x: 0, y: -400)
+        background4.position = CGPoint (x: -1000, y: -570)
         background4.anchorPoint = CGPointZero
         background4.zPosition = -2.5
         background4.name = "A"
         layerBackground03Fast.addChild(background4)
+
         let background5 = SKSpriteNode(imageNamed: "BG003")
-        background5.position = CGPoint(x: background4.size.width - 3, y: -400)
+        //background5.position = CGPoint(x: background4.size.width - 3, y: -400)
+        background5.position = CGPoint(x: background4.size.width, y: -570)
         background5.anchorPoint = CGPointZero
         background5.zPosition = -2.5
         background5.name = "B"
@@ -275,6 +301,7 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
         
         
     }
+
 
 
     func tapped() {
@@ -307,7 +334,6 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
         if (createLevel == true) {
 
-
             let levelUnit:LevelUnit = LevelUnit()
             worldNode.addChild(levelUnit)
             levelUnit.zPosition = -1
@@ -316,19 +342,14 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
             levelUnit.setUpLevel()
 
             levelUnit.position = CGPointMake( xLocation , yLocation)
-
         }
-        
-        
-        
     }
-
-
 
 
     func createLevelUnit() {
 
-        let ylocation:CGFloat = -127
+        //let ylocation:CGFloat = -127
+        let ylocation:CGFloat = 0
         let xlocation:CGFloat = levelUnitCounter * levelUnitWidth
 
 
@@ -340,49 +361,32 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
         levelUnit.setUpLevel()
 
         levelUnit.position = CGPointMake( xlocation , ylocation)
-
-
         levelUnitCounter++
-
     }
-
 
     func addLevelUnits(){
 
         for var i = 0; i < initialUnits; i++ {
 
             createLevelUnit()
-
         }
-
     }
 
-
-
     func clearNodes(){
-
 
         var nodeCount:Int = 0
 
         worldNode.enumerateChildNodesWithName("levelUnit") {
             node, stop in
 
-
             let nodeLocation:CGPoint = self.convertPoint(node.position, fromNode: self.worldNode)
 
             if ( nodeLocation.x < -(self.screenWidth / 2) - self.levelUnitWidth ) {
-
                 node.removeFromParent()
-
             } else {
-
                 nodeCount++
-
-
             }
-
         }
-        
     }
 
 
@@ -490,28 +494,15 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
             //lastScore = GameManager.sharedInstance.gameScore
         //}
 
-
-
-
-
     }
-
 
     override func didSimulatePhysics() {
-
         self.centerOnNode(theDonut)
-
-
     }
 
-
     func centerOnNode(node:SKNode) {
-
         let cameraPositionInScene:CGPoint = self.convertPoint(node.position, fromNode: worldNode)
         worldNode.position = CGPoint(x: worldNode.position.x - cameraPositionInScene.x - 200 , y:0  )
-
-
-
     }
 
 
@@ -595,9 +586,13 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
             GameManager.sharedInstance.incrementLifeCount()
 
             if GameManager.sharedInstance.lifeCount == 3 {
-                let mainMenu = EndingMenu(size: self.scene!.size)
-                mainMenu.scaleMode = self.scaleMode
-                self.view?.presentScene(mainMenu, transition: SKTransition.fadeWithDuration(1))
+                let endingMenu = EndingMenu(size: self.scene!.size)
+
+                //endingMenu.scaleMode = self.scaleMode
+
+
+
+                self.view?.presentScene(endingMenu, transition: SKTransition.fadeWithDuration(1))
             }
 //            loopingBG.removeAllActions()
 //            loopingBG2.removeAllActions()
