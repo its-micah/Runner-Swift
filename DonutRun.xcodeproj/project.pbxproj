@@ -12,8 +12,6 @@
 		6B255B401BCC9DC400BA7173 /* LayerHUD.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B255B3D1BCC9DC400BA7173 /* LayerHUD.plist */; };
 		6B39290B1BE99F2100AADAFA /* OtherAssets.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 6B39290A1BE99F2100AADAFA /* OtherAssets.atlas */; };
 		6B39290C1BE99F2100AADAFA /* OtherAssets.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 6B39290A1BE99F2100AADAFA /* OtherAssets.atlas */; };
-		6B39290E1BE9BF9700AADAFA /* SKTexture+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B39290D1BE9BF9700AADAFA /* SKTexture+Extentions.swift */; };
-		6B39290F1BE9BF9700AADAFA /* SKTexture+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B39290D1BE9BF9700AADAFA /* SKTexture+Extentions.swift */; };
 		6B9186C61BD8764000748116 /* EndingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9186C51BD8764000748116 /* EndingMenu.swift */; };
 		6B92C5321BE5AC8B00FF8B74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B92C5311BE5AC8B00FF8B74 /* AppDelegate.swift */; };
 		6B92C5341BE5AC8B00FF8B74 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6B92C5331BE5AC8B00FF8B74 /* GameScene.sks */; };
@@ -99,6 +97,7 @@
 		C75E19BD1B8F693800FE5BAC /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75E19BA1B8F693800FE5BAC /* GameScene.swift */; };
 		C75E19BE1B8F693800FE5BAC /* LevelUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75E19BB1B8F693800FE5BAC /* LevelUnit.swift */; };
 		C75E19BF1B8F693800FE5BAC /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75E19BC1B8F693800FE5BAC /* Object.swift */; };
+		C761F2701BFBF542007C74EE /* SKTexture+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C769488B1BF8E00100644CDB /* SKTexture+Extentions.swift */; };
 		C768AC321BD140F300931B22 /* 8bit Jump 02.wav in Resources */ = {isa = PBXBuildFile; fileRef = C768AC311BD140F300931B22 /* 8bit Jump 02.wav */; };
 		C768AC341BD1416900931B22 /* 8bit Jump 03.wav in Resources */ = {isa = PBXBuildFile; fileRef = C768AC331BD1416900931B22 /* 8bit Jump 03.wav */; };
 		C768AC351BD1801800931B22 /* GothamRnd-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C764789B1BD17E41002A0B43 /* GothamRnd-Medium.otf */; };
@@ -106,6 +105,7 @@
 		C768AC3B1BD1993100931B22 /* preview (1).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C768AC3A1BD1993100931B22 /* preview (1).mp3 */; };
 		C768AC3D1BD19E5200931B22 /* Wood_Done3.wav in Resources */ = {isa = PBXBuildFile; fileRef = C768AC3C1BD19E5200931B22 /* Wood_Done3.wav */; };
 		C768AC3F1BD1EE8E00931B22 /* preview (2).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C768AC3E1BD1EE8E00931B22 /* preview (2).mp3 */; };
+		C769488C1BF8E00100644CDB /* SKTexture+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C769488B1BF8E00100644CDB /* SKTexture+Extentions.swift */; };
 		C77CDDD31BD457EA00C78402 /* DonutTwoIdle.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C77CDDD21BD457EA00C78402 /* DonutTwoIdle.atlas */; };
 		C78E9A6C1BD037E600632F75 /* CharSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78E9A6B1BD037E600632F75 /* CharSelect.swift */; };
 		C791D1E91B7B985E000D4A7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C791D1E81B7B985E000D4A7E /* AppDelegate.swift */; };
@@ -126,6 +126,7 @@
 		C7B8ED2B1BAF7D67009FC450 /* CoffeeBean.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B8ED2A1BAF7D67009FC450 /* CoffeeBean.swift */; };
 		C7B8ED2D1BAF7EFF009FC450 /* CoffeeBean.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C7B8ED2C1BAF7EFF009FC450 /* CoffeeBean.atlas */; };
 		C7DA30F21B90E14000977F75 /* Cop.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DA30F11B90E14000977F75 /* Cop.swift */; };
+		C7E06DF51C0FDD4D00EE25C0 /* Coin.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C7E06DF41C0FDD4D00EE25C0 /* Coin.atlas */; };
 		C7EE87341B83D52700165B64 /* SGScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EE87301B83D52700165B64 /* SGScene.swift */; };
 		C7EE87351B83D52700165B64 /* SGExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EE87311B83D52700165B64 /* SGExtensions.swift */; };
 		C7EE87361B83D52700165B64 /* SGResolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EE87321B83D52700165B64 /* SGResolution.swift */; };
@@ -149,7 +150,6 @@
 		6B255B3C1BCC9DC400BA7173 /* GameManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManger.swift; sourceTree = "<group>"; };
 		6B255B3D1BCC9DC400BA7173 /* LayerHUD.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LayerHUD.plist; sourceTree = "<group>"; };
 		6B39290A1BE99F2100AADAFA /* OtherAssets.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = OtherAssets.atlas; sourceTree = "<group>"; };
-		6B39290D1BE9BF9700AADAFA /* SKTexture+Extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKTexture+Extentions.swift"; sourceTree = "<group>"; };
 		6B9186C51BD8764000748116 /* EndingMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndingMenu.swift; sourceTree = "<group>"; };
 		6B92C52F1BE5AC8B00FF8B74 /* DonutRun (tvOS).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DonutRun (tvOS).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B92C5311BE5AC8B00FF8B74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -188,6 +188,7 @@
 		C768AC3A1BD1993100931B22 /* preview (1).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "preview (1).mp3"; sourceTree = "<group>"; };
 		C768AC3C1BD19E5200931B22 /* Wood_Done3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Wood_Done3.wav; sourceTree = "<group>"; };
 		C768AC3E1BD1EE8E00931B22 /* preview (2).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "preview (2).mp3"; sourceTree = "<group>"; };
+		C769488B1BF8E00100644CDB /* SKTexture+Extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKTexture+Extentions.swift"; sourceTree = "<group>"; };
 		C77CDDD21BD457EA00C78402 /* DonutTwoIdle.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = DonutTwoIdle.atlas; sourceTree = "<group>"; };
 		C78E9A6B1BD037E600632F75 /* CharSelect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharSelect.swift; sourceTree = "<group>"; };
 		C791D1E31B7B985E000D4A7E /* DonutRun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DonutRun.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -213,6 +214,7 @@
 		C7B8ED2A1BAF7D67009FC450 /* CoffeeBean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeeBean.swift; sourceTree = "<group>"; };
 		C7B8ED2C1BAF7EFF009FC450 /* CoffeeBean.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = CoffeeBean.atlas; sourceTree = "<group>"; };
 		C7DA30F11B90E14000977F75 /* Cop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cop.swift; sourceTree = "<group>"; };
+		C7E06DF41C0FDD4D00EE25C0 /* Coin.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Coin.atlas; sourceTree = "<group>"; };
 		C7EE872E1B83D4CB00165B64 /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		C7EE87301B83D52700165B64 /* SGScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGScene.swift; sourceTree = "<group>"; };
 		C7EE87311B83D52700165B64 /* SGExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGExtensions.swift; sourceTree = "<group>"; };
@@ -331,7 +333,6 @@
 				C73B36DE1BA36E38006C8875 /* SKNode+Extensions.swift */,
 				C73B36DF1BA36E38006C8875 /* SKTAudio.swift */,
 				C73B36E01BA36E38006C8875 /* SKTEffects.swift */,
-				6B39290D1BE9BF9700AADAFA /* SKTexture+Extentions.swift */,
 				C73B36E11BA36E38006C8875 /* SKTTimingFunctions.swift */,
 				C73B36E21BA36E38006C8875 /* Vector3.swift */,
 			);
@@ -383,6 +384,7 @@
 		C76B4A661BBDC63A008003A7 /* Atlases */ = {
 			isa = PBXGroup;
 			children = (
+				C7E06DF41C0FDD4D00EE25C0 /* Coin.atlas */,
 				6B072C6A1BE18D6000FF73AB /* Donuts */,
 				C7007E841B989FAC008D7921 /* Cop2.atlas */,
 				C7B8ED2C1BAF7EFF009FC450 /* CoffeeBean.atlas */,
@@ -433,6 +435,7 @@
 		C791D1E61B7B985E000D4A7E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C769488B1BF8E00100644CDB /* SKTexture+Extentions.swift */,
 				C791D1FF1B7B985E000D4A7E /* DonutRunTests */,
 				6BC12FC51BE635C300A21C6F /* SGStuff */,
 				C73B36D61BA36E38006C8875 /* SKTUtils */,
@@ -529,7 +532,7 @@
 					};
 					C791D1E21B7B985E000D4A7E = {
 						CreatedOnToolsVersion = 6.3;
-						DevelopmentTeam = QGEUNUGB27;
+						DevelopmentTeam = NUN6ZLGGLC;
 					};
 					C791D1FB1B7B985E000D4A7E = {
 						CreatedOnToolsVersion = 6.3;
@@ -606,6 +609,7 @@
 				C768AC391BD1924200931B22 /* DonutOneIdle.atlas in Resources */,
 				C791D1F71B7B985E000D4A7E /* LaunchScreen.xib in Resources */,
 				6B255B401BCC9DC400BA7173 /* LayerHUD.plist in Resources */,
+				C7E06DF51C0FDD4D00EE25C0 /* Coin.atlas in Resources */,
 				C717171A1BA7493D00B3ABA4 /* DonutDoubleJump.atlas in Resources */,
 				C791D1F41B7B985E000D4A7E /* Images.xcassets in Resources */,
 				C7B8ED2D1BAF7EFF009FC450 /* CoffeeBean.atlas in Resources */,
@@ -646,7 +650,7 @@
 				6B92C5481BE5B99800FF8B74 /* SGExtensions.swift in Sources */,
 				6B92C5491BE5B99C00FF8B74 /* SGResolution.swift in Sources */,
 				6B92C54E1BE5BA0F00FF8B74 /* GameManger.swift in Sources */,
-				6B39290F1BE9BF9700AADAFA /* SKTexture+Extentions.swift in Sources */,
+				C761F2701BFBF542007C74EE /* SKTexture+Extentions.swift in Sources */,
 				6BC12FEB1BE85BFB00A21C6F /* GoNutsFlash.swift in Sources */,
 				6BC12FF01BE85C1500A21C6F /* LayerHUD.swift in Sources */,
 				6B92C54D1BE5BA0B00FF8B74 /* GameConfiguration.swift in Sources */,
@@ -688,10 +692,10 @@
 				6BC12FD21BE84E0B00A21C6F /* MainMenu.swift in Sources */,
 				C791D2111B7BC845000D4A7E /* Donut.swift in Sources */,
 				C7B8ED2B1BAF7D67009FC450 /* CoffeeBean.swift in Sources */,
+				C769488C1BF8E00100644CDB /* SKTexture+Extentions.swift in Sources */,
 				6B9186C61BD8764000748116 /* EndingMenu.swift in Sources */,
 				C7B50A2E1BCE8C8E00509F35 /* GoNutsFlash.swift in Sources */,
 				C7B50A1A1BCCA91E00509F35 /* gradient.swift in Sources */,
-				6B39290E1BE9BF9700AADAFA /* SKTexture+Extentions.swift in Sources */,
 				C73B36E31BA36E38006C8875 /* CGFloat+Extensions.swift in Sources */,
 				C73B36E41BA36E38006C8875 /* CGPoint+Extensions.swift in Sources */,
 				C73B36EA1BA36E38006C8875 /* SKNode+Extensions.swift in Sources */,
@@ -885,10 +889,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = DonutRun/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos9.0;
 			};
 			name = Debug;
@@ -898,10 +904,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = DonutRun/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos9.0;
 			};
 			name = Release;
