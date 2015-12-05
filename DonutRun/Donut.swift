@@ -48,8 +48,8 @@ class Donut: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
 
-    convenience init (imageNamed:String) {
-        self.init(imageNamed: imageNamed, donutNumber:1)
+    convenience init(imageNamed:String) {
+        self.init(imageNamed: imageNamed, donutNumber: 1)
     }
 
     init (imageNamed:String, donutNumber:Int) {

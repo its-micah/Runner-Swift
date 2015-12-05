@@ -77,10 +77,11 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
     var screenWidth:CGFloat = 0
     var screenHeight:CGFloat = 0
     let worldNode:SKNode = SKNode()
-    var theDonut:Donut = Donut(imageNamed: "")
+    var theDonut:Donut = Donut(imageNamed: "", donutNumber: 0)
     var donutSprinkle:SKEmitterNode?
     var flash:GoNutsFlash?
-    var coffeeBean:CoffeeBean = CoffeeBean(imageNamed: "coffeeBean_1")
+    var coffeeBean:CoffeeBean = CoffeeBean(imageNamed: "Coin_1")
+
     var cop:Cop = Cop(imageNamed: "Cop2_1")
     var cop1 = Cop(imageNamed: "Cop2_1")
 
@@ -102,15 +103,15 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
     let buffer:CGFloat = 125;
 
     //mick for lowering bean on simulator
-    var yBean: CGFloat = 100
+    var yBean: CGFloat = 110
 
 
 
     override func didMoveToView(view: SKView) {
         // do setup of simulator vs device here
-//        #if (arch(i386) || arch(x86_64)) && os(iOS)
-//            yBean = -200
-//        #endif
+        #if (arch(i386) || arch(x86_64)) && os(iOS)
+            yBean = 110
+        #endif
 
 
         copArray += [cop1]
@@ -166,10 +167,10 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
 
         addChild(worldNode)
 
-        if self.selectedDonut == 0 {
-            theDonut = Donut(imageNamed: "DonutRun1_1")
-        } else if self.selectedDonut == 1 {
-            theDonut = Donut(imageNamed: "DonutRun2_1")
+        if self.selectedDonut == 1 {
+            theDonut = Donut(imageNamed: "DonutRun_1", donutNumber: 1)
+        } else if self.selectedDonut == 2 {
+            theDonut = Donut(imageNamed: "DonutRun2_1", donutNumber: 2)
         }
 
         worldNode.addChild(theDonut)
@@ -182,6 +183,8 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
         theDonut.zPosition = 101
         //theDonut.setScale(0.7)
         //theDonut.setScale(GameConfiguration.sharedInstance.gameScale) setting this in the donut
+
+        coffeeBean.setScale(0.6)
 
         cop.zPosition = 101
         //cop.setScale(GameConfiguration.sharedInstance.gameScale)

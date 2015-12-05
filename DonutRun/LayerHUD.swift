@@ -89,7 +89,7 @@ class LayerHUD: SKNode {
 
     func addLife(lifeNumber: Int) {
 
-        let lifeImageName: String = "BagOfSugar.png" //+ String(GameConfiguration.sharedInstance.gameScoreImageNumber) + ".png"
+        let lifeImageName: String = "lifeDonut.png" //+ String(GameConfiguration.sharedInstance.gameScoreImageNumber) + ".png"
         let lifeNode = SKSpriteNode(texture: SKTexture(imageNamed: lifeImageName))
         lifeNode.name = "life" + String(lifeNumber)
         lifeNode.posByCanvas(0.25 + CGFloat(Double(lifeNumber - 1) * 0.09), y: 0.4)

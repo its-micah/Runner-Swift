@@ -48,7 +48,7 @@ class CoffeeBean: SKSpriteNode {
     }
 
     func setUpRun() {
-        let textureAtlasArray = SKTexture.createAtlas("CoffeeBean", numberOfImages: 25)
+        let textureAtlasArray = SKTexture.createAtlas("Coin", numberOfImages: 24)
         let atlasAnimation = SKAction.animateWithTextures(textureAtlasArray, timePerFrame: 1/24, resize: true , restore:false )
         runAction =  SKAction.repeatActionForever(atlasAnimation)
     }
