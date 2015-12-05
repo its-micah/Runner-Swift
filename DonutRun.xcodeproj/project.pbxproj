@@ -77,6 +77,8 @@
 		6BC966BE1C1359C200A0635E /* SKTexture+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC966BD1C1359C200A0635E /* SKTexture+Extentions.swift */; };
 		C7007E831B989C00008D7921 /* DonutJump.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C7007E821B989C00008D7921 /* DonutJump.atlas */; };
 		C7007E851B989FAC008D7921 /* Cop2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C7007E841B989FAC008D7921 /* Cop2.atlas */; };
+		C708EE1B1C135B4F0025DF5D /* Coin.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C708EE1A1C135B4F0025DF5D /* Coin.atlas */; };
+		C708EE1C1C135B4F0025DF5D /* Coin.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C708EE1A1C135B4F0025DF5D /* Coin.atlas */; };
 		C717171A1BA7493D00B3ABA4 /* DonutDoubleJump.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C71717191BA7493D00B3ABA4 /* DonutDoubleJump.atlas */; };
 		C73B36E31BA36E38006C8875 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B36D71BA36E38006C8875 /* CGFloat+Extensions.swift */; };
 		C73B36E41BA36E38006C8875 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B36D81BA36E38006C8875 /* CGPoint+Extensions.swift */; };
@@ -159,6 +161,7 @@
 		6BC966BD1C1359C200A0635E /* SKTexture+Extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKTexture+Extentions.swift"; sourceTree = "<group>"; };
 		C7007E821B989C00008D7921 /* DonutJump.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = DonutJump.atlas; sourceTree = "<group>"; };
 		C7007E841B989FAC008D7921 /* Cop2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Cop2.atlas; sourceTree = "<group>"; };
+		C708EE1A1C135B4F0025DF5D /* Coin.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Coin.atlas; sourceTree = "<group>"; };
 		C71717191BA7493D00B3ABA4 /* DonutDoubleJump.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = DonutDoubleJump.atlas; sourceTree = "<group>"; };
 		C73B36D71BA36E38006C8875 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
 		C73B36D81BA36E38006C8875 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
@@ -209,7 +212,6 @@
 		C7B8ED2A1BAF7D67009FC450 /* CoffeeBean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeeBean.swift; sourceTree = "<group>"; };
 		C7B8ED2C1BAF7EFF009FC450 /* CoffeeBean.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = CoffeeBean.atlas; sourceTree = "<group>"; };
 		C7DA30F11B90E14000977F75 /* Cop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cop.swift; sourceTree = "<group>"; };
-		C7E06DF41C0FDD4D00EE25C0 /* Coin.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Coin.atlas; sourceTree = "<group>"; };
 		C7EE872E1B83D4CB00165B64 /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		C7EE87301B83D52700165B64 /* SGScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGScene.swift; sourceTree = "<group>"; };
 		C7EE87311B83D52700165B64 /* SGExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGExtensions.swift; sourceTree = "<group>"; };
@@ -378,7 +380,7 @@
 		C76B4A661BBDC63A008003A7 /* Atlases */ = {
 			isa = PBXGroup;
 			children = (
-				C7E06DF41C0FDD4D00EE25C0 /* Coin.atlas */,
+				C708EE1A1C135B4F0025DF5D /* Coin.atlas */,
 				6B072C6A1BE18D6000FF73AB /* Donuts */,
 				C7007E841B989FAC008D7921 /* Cop2.atlas */,
 				C7B8ED2C1BAF7EFF009FC450 /* CoffeeBean.atlas */,
@@ -573,6 +575,7 @@
 				6B92C53F1BE5AC8B00FF8B74 /* Assets.xcassets in Resources */,
 				6BC12FED1BE85C0800A21C6F /* sprinkle2.png in Resources */,
 				6BC12FCF1BE8321000A21C6F /* DonutRun.atlas in Resources */,
+				C708EE1C1C135B4F0025DF5D /* Coin.atlas in Resources */,
 				6B92C5511BE5BA2400FF8B74 /* Wood_Done3.wav in Resources */,
 				6BC12FD81BE85A8600A21C6F /* GameScene.sks in Resources */,
 				6B92C5521BE5BA2E00FF8B74 /* GothamRnd-Medium.otf in Resources */,
@@ -603,6 +606,7 @@
 				C791D1F71B7B985E000D4A7E /* LaunchScreen.xib in Resources */,
 				C717171A1BA7493D00B3ABA4 /* DonutDoubleJump.atlas in Resources */,
 				C791D1F41B7B985E000D4A7E /* Images.xcassets in Resources */,
+				C708EE1B1C135B4F0025DF5D /* Coin.atlas in Resources */,
 				C7B8ED2D1BAF7EFF009FC450 /* CoffeeBean.atlas in Resources */,
 				C768AC341BD1416900931B22 /* 8bit Jump 03.wav in Resources */,
 				C791D1EB1B7B985E000D4A7E /* GameScene.sks in Resources */,
