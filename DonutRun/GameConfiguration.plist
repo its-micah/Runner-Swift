@@ -5,32 +5,32 @@
 	<key>CharSelect</key>
 	<dict>
 		<key>fontScale(iOS)</key>
-		<real>0.8</real>
+		<real>0.7</real>
 		<key>fontScale(tvOS)</key>
 		<integer>2</integer>
 		<key>playerScale(iOS)</key>
-		<real>0.75</real>
+		<real>0.65</real>
 		<key>playerScale(tvOS)</key>
 		<real>1.75</real>
 	</dict>
 	<key>CoffeeBean</key>
 	<dict>
 		<key>collectableScale(iOS)</key>
-		<real>0.4</real>
+		<real>0.2</real>
 		<key>collectableScale(tvOS)</key>
 		<real>0.9</real>
 	</dict>
 	<key>Cop</key>
 	<dict>
 		<key>killObjectScale(iOS)</key>
-		<integer>1</integer>
+		<real>0.6</real>
 		<key>killObjectScale(tvOS)</key>
 		<integer>2</integer>
 	</dict>
 	<key>Donut</key>
 	<dict>
 		<key>playerScale(iOS)</key>
-		<real>0.6</real>
+		<real>0.4</real>
 		<key>playerScale(tvOS)</key>
 		<integer>1</integer>
 	</dict>
