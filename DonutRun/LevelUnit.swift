@@ -36,9 +36,6 @@ class LevelUnit:SKNode {
     }
     
     func setUpLevel(){
-        
-        buildingsLayer.layerVelocity = CGPoint(x: -80.0, y: 0.0)
-        self.addChild(buildingsLayer)
 
         let diceRoll = arc4random_uniform(6)
 
@@ -162,10 +159,13 @@ class LevelUnit:SKNode {
 
     func addBackgroundObjects() {
 
+        buildingsLayer.layerVelocity = CGPoint(x: -80.0, y: 0.0)
+        self.addChild(buildingsLayer)
+
         let diceRoll = arc4random_uniform(6)
 
         if diceRoll == 0 {
-            imageName = "buildings2"
+            imageName = "building"
         } else if diceRoll == 1 {
             //imageName = "background2"
         } else if diceRoll == 2 {
@@ -184,7 +184,7 @@ class LevelUnit:SKNode {
         let tex:SKTexture = SKTexture(imageNamed: imageName)
         backgroundBuilding = SKSpriteNode(texture: tex, color: SKColor.clearColor(), size: tex.size())
         backgroundBuilding.zPosition = -1.3
-        backgroundBuilding.position = CGPointMake(0, 0)
+        backgroundBuilding.position = CGPointMake(0, -2.5)
         buildingsLayer.addChild(backgroundBuilding)
         // backgroundSprite = SKSpriteNode(texture: nil, color:SKColor.blueColor(), size:theSize)
 
