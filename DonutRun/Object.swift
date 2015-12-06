@@ -85,7 +85,7 @@ class Object: SKNode {
             objectSprite.physicsBody!.affectedByGravity = false
             objectSprite.physicsBody!.restitution = 0.0
             objectSprite.physicsBody!.allowsRotation = false
-
+            objectSprite.setScale(0.7)
 
             let diceRoll = arc4random_uniform(3)
 
