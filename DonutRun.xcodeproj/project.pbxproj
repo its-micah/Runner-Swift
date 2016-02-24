@@ -81,6 +81,10 @@
 		C708EE1C1C135B4F0025DF5D /* Coin.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C708EE1A1C135B4F0025DF5D /* Coin.atlas */; };
 		C708EE1D1C1493F40025DF5D /* SKTexture+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC966BD1C1359C200A0635E /* SKTexture+Extentions.swift */; };
 		C708EE1E1C1494130025DF5D /* LayerHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC966B71C0E87AE00A0635E /* LayerHUD.swift */; };
+		C71310C51C7D30B400EBA785 /* InAppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C71310C21C7D30B400EBA785 /* InAppManager.m */; };
+		C71310C61C7D30B400EBA785 /* InAppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C71310C21C7D30B400EBA785 /* InAppManager.m */; };
+		C71310C71C7D30B400EBA785 /* InAppObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = C71310C41C7D30B400EBA785 /* InAppObserver.m */; };
+		C71310C81C7D30B400EBA785 /* InAppObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = C71310C41C7D30B400EBA785 /* InAppObserver.m */; };
 		C717171A1BA7493D00B3ABA4 /* DonutDoubleJump.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C71717191BA7493D00B3ABA4 /* DonutDoubleJump.atlas */; };
 		C73B36E31BA36E38006C8875 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B36D71BA36E38006C8875 /* CGFloat+Extensions.swift */; };
 		C73B36E41BA36E38006C8875 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B36D81BA36E38006C8875 /* CGPoint+Extensions.swift */; };
@@ -170,6 +174,12 @@
 		C7007E821B989C00008D7921 /* DonutJump.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = DonutJump.atlas; sourceTree = "<group>"; };
 		C7007E841B989FAC008D7921 /* Cop2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Cop2.atlas; sourceTree = "<group>"; };
 		C708EE1A1C135B4F0025DF5D /* Coin.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Coin.atlas; sourceTree = "<group>"; };
+		C71310BF1C7D30B300EBA785 /* DonutRun-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DonutRun-Bridging-Header.h"; sourceTree = "<group>"; };
+		C71310C01C7D30B300EBA785 /* DonutRun (tvOS)-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DonutRun (tvOS)-Bridging-Header.h"; sourceTree = "<group>"; };
+		C71310C11C7D30B400EBA785 /* InAppManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppManager.h; sourceTree = "<group>"; };
+		C71310C21C7D30B400EBA785 /* InAppManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppManager.m; sourceTree = "<group>"; };
+		C71310C31C7D30B400EBA785 /* InAppObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppObserver.h; sourceTree = "<group>"; };
+		C71310C41C7D30B400EBA785 /* InAppObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppObserver.m; sourceTree = "<group>"; };
 		C71717191BA7493D00B3ABA4 /* DonutDoubleJump.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = DonutDoubleJump.atlas; sourceTree = "<group>"; };
 		C73B36D71BA36E38006C8875 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
 		C73B36D81BA36E38006C8875 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
@@ -425,6 +435,10 @@
 		C791D1E51B7B985E000D4A7E /* DonutRun */ = {
 			isa = PBXGroup;
 			children = (
+				C71310C11C7D30B400EBA785 /* InAppManager.h */,
+				C71310C21C7D30B400EBA785 /* InAppManager.m */,
+				C71310C31C7D30B400EBA785 /* InAppObserver.h */,
+				C71310C41C7D30B400EBA785 /* InAppObserver.m */,
 				6BC12FC21BE6347700A21C6F /* Assets */,
 				6B255B3B1BCC9DC400BA7173 /* GameConfiguration.swift */,
 				6BC966B41C0E133200A0635E /* GameConfiguration.plist */,
@@ -439,6 +453,8 @@
 				C791D1E61B7B985E000D4A7E /* Supporting Files */,
 				6BC12FF81BE9983500A21C6F /* DonutRun (iOS) */,
 				6B92C5301BE5AC8B00FF8B74 /* DonutRun (tvOS) */,
+				C71310BF1C7D30B300EBA785 /* DonutRun-Bridging-Header.h */,
+				C71310C01C7D30B300EBA785 /* DonutRun (tvOS)-Bridging-Header.h */,
 			);
 			path = DonutRun;
 			sourceTree = "<group>";
@@ -533,7 +549,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftMigration = 0710;
-				LastSwiftUpdateCheck = 0710;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Micah Lanier";
 				TargetAttributes = {
@@ -677,11 +693,13 @@
 				6BC12FDD1BE85B5600A21C6F /* CGPoint+Extensions.swift in Sources */,
 				6B92C5381BE5AC8B00FF8B74 /* GameViewController.swift in Sources */,
 				6BC12FDA1BE85A9800A21C6F /* CharSelect.swift in Sources */,
+				C71310C81C7D30B400EBA785 /* InAppObserver.m in Sources */,
 				6BC12FEF1BE85C1000A21C6F /* LevelUnit.swift in Sources */,
 				6B92C54B1BE5B9A700FF8B74 /* SGAssetManager.swift in Sources */,
 				6BC12FE61BE85B8700A21C6F /* SKTTimingFunctions.swift in Sources */,
 				C708EE1E1C1494130025DF5D /* LayerHUD.swift in Sources */,
 				6BC12FEA1BE85BF700A21C6F /* gradient.swift in Sources */,
+				C71310C61C7D30B400EBA785 /* InAppManager.m in Sources */,
 				6BC12FE41BE85B7F00A21C6F /* SKTAudio.swift in Sources */,
 				6BC12FDC1BE85B5100A21C6F /* CGFloat+Extensions.swift in Sources */,
 				6B92C5321BE5AC8B00FF8B74 /* AppDelegate.swift in Sources */,
@@ -718,6 +736,7 @@
 				C75E19BD1B8F693800FE5BAC /* GameScene.swift in Sources */,
 				C75E19BE1B8F693800FE5BAC /* LevelUnit.swift in Sources */,
 				C78E9A6C1BD037E600632F75 /* CharSelect.swift in Sources */,
+				C71310C51C7D30B400EBA785 /* InAppManager.m in Sources */,
 				C73B36EC1BA36E38006C8875 /* SKTEffects.swift in Sources */,
 				C7EE873B1B83D8E500165B64 /* SGAssetManager.swift in Sources */,
 				C73B36ED1BA36E38006C8875 /* SKTTimingFunctions.swift in Sources */,
@@ -727,6 +746,7 @@
 				6BC12FD61BE85A6E00A21C6F /* Introducer.swift in Sources */,
 				C73B36E61BA36E38006C8875 /* Int+Extensions.swift in Sources */,
 				C75175FE1B8FB7AC00527E3A /* LayerWorld.swift in Sources */,
+				C71310C71C7D30B400EBA785 /* InAppObserver.m in Sources */,
 				C73B36E81BA36E38006C8875 /* SKAction+SpecialEffects.swift in Sources */,
 				C75E19BF1B8F693800FE5BAC /* Object.swift in Sources */,
 				6B255B3F1BCC9DC400BA7173 /* GameManger.swift in Sources */,
@@ -791,12 +811,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = "DonutRun (tvOS)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.grumpydane.hw.DonutRun--tvOS-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
+				SWIFT_OBJC_BRIDGING_HEADER = "DonutRun/DonutRun (tvOS)-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -807,11 +830,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "DonutRun (tvOS)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.grumpydane.hw.DonutRun--tvOS-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
+				SWIFT_OBJC_BRIDGING_HEADER = "DonutRun/DonutRun (tvOS)-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -904,6 +929,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = DonutRun/Info.plist;
@@ -912,6 +938,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos9.0;
+				SWIFT_OBJC_BRIDGING_HEADER = "DonutRun/DonutRun-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -919,6 +947,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = DonutRun/Info.plist;
@@ -927,6 +956,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos9.0;
+				SWIFT_OBJC_BRIDGING_HEADER = "DonutRun/DonutRun-Bridging-Header.h";
 			};
 			name = Release;
 		};

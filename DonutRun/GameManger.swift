@@ -11,7 +11,7 @@ import UIKit
 
 struct GameManagerDefaultsKeys {
     static let highScoreKey = "highScore"
-    //static let someOtherString  = "someOtherString"
+    static let extraDonutKey = "extraDonut"
     //static let someInt  = "someInt"
 }
 
@@ -23,6 +23,8 @@ class GameManager {
     var gameScoreDifferential: Int = 0
     var gameScoreLast: Int = 0
     var highScore: Int = 0
+
+    var extraDonutsPurchased: Bool = false
 
     var beanCount: Int = 0
     var lifeCount: Int = 0
@@ -40,12 +42,19 @@ class GameManager {
             highScore = highScoreFromDefaults as! Int
         }
 
+        let extraDonutsDefaults: AnyObject? = defaults.objectForKey(GameManagerDefaultsKeys.extraDonutKey)
+        if extraDonutsDefaults == nil {
+            defaults.setObject(0, forKey: GameManagerDefaultsKeys.extraDonutKey)
+        } else {
+            extraDonutsPurchased = extraDonutsDefaults as! Bool
+        }
+
         //var goToBackgroundObserver: AnyObject?
 
-//        let goToBackgroundObserver: AnyObject? = NSNotificationCenter.defaultCenter()
-//            .addObserverForName(UIApplicationDidEnterBackgroundNotification, object: nil, queue: nil) { (note: NSNotification!) -> Void in
-//                GameManager.sharedInstance.Save()
-//        }
+        //        let goToBackgroundObserver: AnyObject? = NSNotificationCenter.defaultCenter()
+        //            .addObserverForName(UIApplicationDidEnterBackgroundNotification, object: nil, queue: nil) { (note: NSNotification!) -> Void in
+        //                GameManager.sharedInstance.Save()
+        //        }
 
         print("GameManager " + __FUNCTION__)
     }
@@ -112,7 +121,12 @@ class GameManager {
         let defaults = NSUserDefaults.standardUserDefaults()
         if self.gameScore > self.highScore {
             self.highScore = self.gameScore
-            defaults.setObject( self.gameScore, forKey: GameManagerDefaultsKeys.highScoreKey)
+            defaults.setObject(self.gameScore, forKey: GameManagerDefaultsKeys.highScoreKey)
+            defaults.synchronize()
+        }
+
+        if self.extraDonutsPurchased {
+            defaults.setObject(1, forKey: GameManagerDefaultsKeys.extraDonutKey)
             defaults.synchronize()
         }
 

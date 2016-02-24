@@ -19,6 +19,17 @@ class CharSelect: SGScene {
         updateFocusIfNeeded()
         self.backgroundColor = UIColor(red: 132/255, green: 202/255, blue: 255/255, alpha: 1.0)
 
+        InAppManager.sharedManager()
+        //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(unlockProduct1) name:@"feature1Purchased" object:nil];
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: "refreshDonuts",
+            name: "feature1Purchased",
+            object: nil)
+
+
+
+
         let charSelect = SKLabelNode(fontNamed: labelFont)
         charSelect.text = "SELECT A DONUT"
         charSelect.posByScreen(0.5, y: 0.8)
@@ -67,8 +78,51 @@ class CharSelect: SGScene {
         donutTwo.name = "donutTwo"
         addChild(donutTwo)
 
+        let donutThree: Donut = Donut(imageNamed: "DonutTwoIdle_5")
+        donutThree.posByScreen(0.8, y: 0.5)
+        donutThree.setScale(GameConfiguration.sharedInstance.getGameConfigurationCGFloat(String(self.dynamicType), settingName: "playerScale"))
+        donutThree.physicsBody?.affectedByGravity = false
+        donutThree.physicsBody?.dynamic = false
+        donutThree.name = "donutThree"
+        addChild(donutThree)
+
         donutOne.startIdle()
         donutTwo.startIdleTwo()
+        donutThree.startIdleTwo()
+
+
+        if !GameManager.sharedInstance.extraDonutsPurchased {
+            let purchase1 = SKLabelNode(fontNamed: labelFont)
+            purchase1.text = "Purchase Dinkle & Jeff"
+            purchase1.posByScreen(0.64, y: 0.1)
+            purchase1.setScale(GameConfiguration.sharedInstance.getGameConfigurationCGFloat(String(self.dynamicType), settingName: "fontScale"))
+            purchase1.zPosition = 10
+            purchase1.name = "purchase1"
+            addChild(purchase1)
+
+            let refresh = SKLabelNode(fontNamed: labelFont)
+            refresh.fontSize = 9
+            refresh.text = "Refresh Purchase"
+            refresh.posByScreen(0.9, y: 0.05)
+            refresh.setScale(GameConfiguration.sharedInstance.getGameConfigurationCGFloat(String(self.dynamicType), settingName: "fontScale"))
+            refresh.zPosition = 10
+            refresh.name = "refresh"
+            addChild(refresh)
+
+            donutTwo.alpha = 0.5
+            donutThree.alpha = 0.5
+
+        }
+
+        //        let purchase2 = SKLabelNode(fontNamed: labelFont)
+        //        purchase2.text = "Purchase"
+        //        purchase2.posByScreen(0.8, y: 0.1)
+        //        purchase2.setScale(GameConfiguration.sharedInstance.getGameConfigurationCGFloat(String(self.dynamicType), settingName: "fontScale"))
+        //        purchase2.zPosition = 10
+        //        purchase2.name = "purchase2"
+        //        addChild(purchase2)
+
+
 
     }
 
@@ -98,27 +152,41 @@ class CharSelect: SGScene {
         for node in nodesAtPoint(location) {
             if node.isKindOfClass(Donut) {
                 let theNode = node
-                if ((theNode.name?.containsString("donut")) != nil) {
-                    self.runAction(SKAction.playSoundFileNamed("Wood_Done3.wav", waitForCompletion: true))
-                    let gameScene = GameScene(size: scene!.size)
+                if (theNode.name == "donutOne" ||
+                    ((theNode.name == "donutTwo" || theNode.name == "donutThree") && GameManager.sharedInstance.extraDonutsPurchased)) {
 
-                    if theNode.name == "donutOne" {
-                        gameScene.selectedDonut = 1
-                    } else if theNode.name == "donutTwo" {
-                        gameScene.selectedDonut = 2
-                    }   else if theNode.name == "donutThree" {
-                        gameScene.selectedDonut = 3
-                    }
+                        self.runAction(SKAction.playSoundFileNamed("Wood_Done3.wav", waitForCompletion: true))
 
-                    gameScene.scaleMode = scaleMode
-                    let transition = SKTransition.fadeWithDuration(1.0)
-                    view?.presentScene(gameScene, transition: transition)
+                        let gameScene = GameScene(size: scene!.size)
+
+                        if theNode.name == "donutOne" {
+                            gameScene.selectedDonut = 1
+                        } else if theNode.name == "donutTwo" {
+                            gameScene.selectedDonut = 2
+                        }   else if theNode.name == "donutThree" {
+                            gameScene.selectedDonut = 3
+                        }
+
+                        gameScene.scaleMode = scaleMode
+                        let transition = SKTransition.fadeWithDuration(1.0)
+                        view?.presentScene(gameScene, transition: transition)
                 }
+            }
+
+            if node.name == "purchase1" {
+                InAppManager.sharedManager().buyFeature1();
             }
         }
 
     }
 
-
-
+    func refreshDonuts() {
+        if (GameManager.sharedInstance.extraDonutsPurchased || InAppManager.sharedManager().isFeature1PurchasedAlready()) {
+            GameManager.sharedInstance.extraDonutsPurchased = true
+            self.childNodeWithName("purchase1")?.removeFromParent()
+            self.childNodeWithName("donutTwo")?.alpha = 1
+            self.childNodeWithName("donutThree")?.alpha = 1
+        }
+    }
+    
 }
