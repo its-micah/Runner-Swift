@@ -62,7 +62,7 @@ class LayerHUD: SKNode {
         scoreLabel.zPosition = 1
         scoreLabel.text = GameConfiguration.sharedInstance.getGameConfigurationString(String(self.dynamicType), settingName: "scoreText")
         scoreLabel.name = "scoreLabel"
-        addChild(scoreLabel)
+        //addChild(scoreLabel)
 
         var score: SKLabelNode!
         score = SKLabelNode(fontNamed: "Futura")
@@ -75,7 +75,7 @@ class LayerHUD: SKNode {
         score.zPosition = 1
         score.text = String(GameManager.sharedInstance.gameScore)
         score.name = "score"
-        addChild(score)
+        //addChild(score)
         self.score = score
 
     }
@@ -109,7 +109,7 @@ class LayerHUD: SKNode {
         coffeeBean.zPosition = 1
         coffeeBean.position = CGPointMake(CGFloat(-380 + Int(arc4random_uniform(70))), CGFloat(150 + (arc4random_uniform(20))))
 
-        addChild(coffeeBean)
+        //addChild(coffeeBean)
     }
 
     func update (delta:CFTimeInterval, positionIn:CGFloat) {
@@ -138,7 +138,7 @@ class LayerHUD: SKNode {
     }
 
     func addPause () {
-        pauseButton = SKLabelNode(fontNamed: "Futura")
+        pauseButton = SKLabelNode(fontNamed: "Gotham Rounded Medium")
         pauseButton.fontSize = 44
         pauseButton.posByScreen(0.45, y: 0.45)
         pauseButton.setScale(GameConfiguration.sharedInstance.gameScale)
@@ -148,17 +148,17 @@ class LayerHUD: SKNode {
         pauseButton.zPosition = 1
         pauseButton.text = "II"
         pauseButton.name = "pauseButton"
-        addChild(pauseButton)
+        //addChild(pauseButton)
     }
 
 
     func addScoreImage () {
-        let scoreImageName: String = "ScoreImage" + GameConfiguration.sharedInstance.getGameConfigurationString(String(self.dynamicType), settingName: "scoreImageNumber") + ".png"
-        let scoreImageTexture: SKTexture = SKTexture(imageNamed: scoreImageName)
-        let scoreImageNode = SKSpriteNode(texture: scoreImageTexture)
-        scoreImageNode.posByScreen(-0.4, y: 0.4)
-        scoreImageNode.setScale(GameConfiguration.sharedInstance.gameScale)
-        addChild(scoreImageNode)
+//        let scoreImageName: String = "ScoreImage" + GameConfiguration.sharedInstance.getGameConfigurationString(String(self.dynamicType), settingName: "scoreImageNumber") + ".png"
+//        let scoreImageTexture: SKTexture = SKTexture(imageNamed: scoreImageName)
+//        let scoreImageNode = SKSpriteNode(texture: scoreImageTexture)
+//        scoreImageNode.posByScreen(-0.4, y: 0.4)
+//        scoreImageNode.setScale(GameConfiguration.sharedInstance.gameScale)
+//        addChild(scoreImageNode)
     }
     
     
