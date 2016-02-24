@@ -70,6 +70,7 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
     var layerBackground01Static = SKNode()
     var layerBackground02Slow = LayerBackground()
     var layerClouds = LayerBackground()
+    var treeLayer = TreeLayer()
     var layerBackground03Fast = LayerBackground()
     var layerHUD = LayerHUD()
 
@@ -184,7 +185,7 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
         //theDonut.setScale(0.7)
         //theDonut.setScale(GameConfiguration.sharedInstance.gameScale) setting this in the donut
 
-        coffeeBean.setScale(0.6)
+        coffeeBean.setScale(0.35)
 
         cop.zPosition = 101
         //cop.setScale(GameConfiguration.sharedInstance.gameScale)
@@ -216,6 +217,7 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
         addChild(layerBackground02Slow)
         layerBackground02Slow.layerVelocity = CGPoint(x: -80.0, y: 0.0)
         addChild(layerClouds)
+        addChild(treeLayer)
         layerClouds.layerVelocity = CGPoint(x: -25, y: 0.0)
         addChild(layerBackground03Fast)
         layerBackground03Fast.layerVelocity = CGPoint(x: -100.0, y: 0.0)
@@ -478,7 +480,7 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
         }
 
 
-        let baseSpeed:CGFloat = 5
+        let baseSpeed:CGFloat = 4.5
 
 
         theDonut.position = CGPointMake(theDonut.position.x + 5, theDonut.position.y)
@@ -652,6 +654,7 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
         donutSprinkle = (NSKeyedUnarchiver.unarchiveObjectWithFile(donutSprinklePath) as! SKEmitterNode)
         donutSprinkle!.position = theDonut.position
         donutSprinkle!.zPosition = 100
+        donutSprinkle!.setScale(0.8)
         donutSprinkle!.name = "donutSprinkle"
         worldNode.addChild(donutSprinkle!)
         let wait = SKAction.waitForDuration(5)
@@ -665,6 +668,7 @@ class GameScene: SGScene, SKPhysicsContactDelegate {
         flash!.zPosition = 200
         flash!.position = theDonut.position
         flash?.blendMode = .Add
+        flash?.setScale(0.4)
         worldNode.addChild(flash!)
         let wait = SKAction.waitForDuration(0.6)
         self.runAction(wait) { () -> Void in

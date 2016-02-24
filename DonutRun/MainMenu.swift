@@ -34,7 +34,7 @@ class MainMenu: SGScene {
         addChild(background)
 
 
-        let highScore = SKLabelNode(fontNamed: "Futura")
+        let highScore = SKLabelNode(fontNamed: "Gotham Rounded Medium")
         highScore.text = "High Score: " + String(GameManager.sharedInstance.highScore)
         //highScore.posByScreen(0.2, y: 0.9)
         highScore.posBySetting(self.dynamicType, settingName: "highScorePosition")
@@ -45,7 +45,7 @@ class MainMenu: SGScene {
         addChild(highScore)
 
 
-        let playGame = SKLabelNode(fontNamed: "Futura")
+        let playGame = SKLabelNode(fontNamed: "Gotham Rounded Medium")
         playGame.text = "PLAY"
         //playGame.posByScreen(0.5, y: 0.3)
         playGame.posBySetting(self.dynamicType, settingName: "playGamePosition")
