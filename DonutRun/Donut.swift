@@ -37,9 +37,9 @@ class Donut: SKSpriteNode {
     var velocity:CGPoint = CGPointMake(0,0)
 
     var jumpAmount:CGFloat = 0
-    var maxJump:CGFloat = 28
-    var maxDoubleJump:CGFloat = 33
-    var minSpeed:CGFloat = 3.5
+    var maxJump:CGFloat = 25
+    var maxDoubleJump:CGFloat = 30
+    var minSpeed:CGFloat = 3
     var jumpCount:CGFloat = 0
 
 
@@ -79,8 +79,8 @@ class Donut: SKSpriteNode {
         self.setScale(GameConfiguration.sharedInstance.getGameConfigurationCGFloat(String(self.dynamicType), settingName: "playerScale"))
 
         setUpRun(donutNumber)
-        setUpJump()
-        setUpDoubleJump()
+        setUpJump(donutNumber)
+        setUpDoubleJump(donutNumber)
         setUpIdle()
         setUpIdleTwo()
         startRun()
@@ -123,14 +123,14 @@ class Donut: SKSpriteNode {
         runAction =  SKAction.repeatActionForever(atlasAnimation)
     }
 
-    func setUpJump() {
-        let textureAtlasArray = SKTexture.createAtlas("DonutJump", numberOfImages: 10)
+    func setUpJump(imageBatchNumber: Int) {
+        let textureAtlasArray = SKTexture.createAtlas("DonutJump", imageBatchNumber: imageBatchNumber, numberOfImages: 10)
         let atlasAnimation = SKAction.animateWithTextures(textureAtlasArray, timePerFrame: 1.0/30, resize: true , restore:false )
         jumpAction =  SKAction.repeatAction(atlasAnimation, count: 1)
     }
 
-    func setUpDoubleJump() {
-        let textureAtlasArray = SKTexture.createAtlas("DonutDoubleJump", numberOfImages: 14)
+    func setUpDoubleJump(imageBatchNumber: Int) {
+        let textureAtlasArray = SKTexture.createAtlas("DonutDoubleJump", imageBatchNumber: imageBatchNumber, numberOfImages: 14)
         let atlasAnimation = SKAction.animateWithTextures(textureAtlasArray, timePerFrame: 1.0/30, resize: true , restore:false )
         doubleJumpAction =  SKAction.repeatAction(atlasAnimation, count: 1)
     }
