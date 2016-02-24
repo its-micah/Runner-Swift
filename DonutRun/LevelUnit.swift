@@ -17,9 +17,11 @@ class LevelUnit:SKNode {
     var levelUnitWidth:CGFloat = 0
     var levelUnitHeight:CGFloat = 0
     var theType:LevelType = LevelType.ground
-    var buildingsLayer: LayerBackground = LayerBackground()
+    var buildingsLayer = BuildingLayer()
+    var treeLayer = TreeLayer()
+    var sceneryObjectLayer = sceneryObject()
     
-    var xAmount:CGFloat = 0.6  //essentially this is our speed
+    var xAmount:CGFloat = 0.45  //essentially this is our speed
     var direction:CGFloat = 1 //will be saved as either 1 or -1
     var numberOfObjectsInLevel:UInt32 = 0
     var offscreenCounter:Int = 0 //anytime an object goes offscreen we add to this, for resetting speed purposes
@@ -161,46 +163,30 @@ class LevelUnit:SKNode {
 
         buildingsLayer.layerVelocity = CGPoint(x: -80.0, y: 0.0)
         self.addChild(buildingsLayer)
+        self.addChild(treeLayer)
+        self.addChild(sceneryObjectLayer)
 
         let diceRoll = arc4random_uniform(6)
 
         if diceRoll == 0 {
-            imageName = "building"
+            buildingsLayer.addBuilding()
         } else if diceRoll == 1 {
-            //imageName = "background2"
+            buildingsLayer.addBuilding()
         } else if diceRoll == 2 {
-            //imageName = "background3"
+            sceneryObjectLayer.addSceneryObject()
         } else if diceRoll == 3 {
-            //imageName = "background1"
+            treeLayer.addTree()
         } else if diceRoll == 4 {
-            //imageName = "background3"
+            sceneryObjectLayer.addSceneryObject()
         } else if diceRoll == 5 {
-            //imageName = "background2"
+            sceneryObjectLayer.addSceneryObject()
         } else if diceRoll == 5 {
-            //imageName = "background4"
+            sceneryObjectLayer.addSceneryObject()
         }
 
-
-        let tex:SKTexture = SKTexture(imageNamed: imageName)
-        backgroundBuilding = SKSpriteNode(texture: tex, color: SKColor.clearColor(), size: tex.size())
-        backgroundBuilding.zPosition = -1.3
-        backgroundBuilding.position = CGPointMake(0, -2.5)
-        buildingsLayer.addChild(backgroundBuilding)
-        // backgroundSprite = SKSpriteNode(texture: nil, color:SKColor.blueColor(), size:theSize)
-
-//        self.addChild(backgroundBuilding)
-
-        
-        
         
     }
 
-    
-    
-    
-    
-    
-    
     
 }
 
